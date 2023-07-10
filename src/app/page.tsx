@@ -8,12 +8,10 @@ import {
 } from "@/variables/data";
 import Link from "next/link";
 import { register } from "swiper/element/bundle";
-import { Carroussel, CarrousselProps } from "@/components/Carroussel";
 
 register();
 
 export default async function Home() {
-
   return (
     <>
       <header className="m-auto flex w-[2000px] items-center justify-between pb-8 pt-6">
@@ -51,7 +49,7 @@ export default async function Home() {
             <article className=" flex flex-col items-center">
               <div className="w-[800px]">
                 <h1 className="w- mb-6 flex-wrap text-9xl">
-                  What's up? I am Matheus Souza
+                  What&apos;s up? I am Matheus Souza
                 </h1>
                 <p className="text-justify text-base leading-6">
                   Specialized in front-end technologies, primarily with the
@@ -108,9 +106,7 @@ export default async function Home() {
               </div>
             ))}
           </section>
-          <section>
-    
-          </section>
+          <section></section>
         </div>
       </main>
       <footer className=" bg-light-gray text-center">
