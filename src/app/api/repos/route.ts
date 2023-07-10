@@ -5,7 +5,7 @@ interface ReposInfoProps {
   name: string;
   html_url: string;
   description: string;
-  screenshot: string
+  screenshot: string;
 }
 
 async function takeScreenshot(url: string) {
@@ -30,22 +30,23 @@ export const GET = async () => {
         },
       }
     );
-  
+
     const data = await response.json();
-    const repos = await Promise.all(data.map(async (item: ReposInfoProps) => {
-      const screenshot = await takeScreenshot(item.html_url)
-      
-      return {
-        id: item.id,
-        name: item.name,
-        description: item.description,
-        screenshot
-      }
-    }
-  ))
-  
+    const repos = await Promise.all(
+      data.map(async (item: ReposInfoProps) => {
+        const screenshot = await takeScreenshot(item.html_url);
+
+        return {
+          id: item.id,
+          name: item.name,
+          description: item.description,
+          screenshot,
+        };
+      })
+    );
+
     return NextResponse.json(repos);
   } catch (err: any) {
-    console.error(err.message)
+    console.error(err.message);
   }
 };

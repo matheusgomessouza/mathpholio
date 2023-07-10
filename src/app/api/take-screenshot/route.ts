@@ -41,6 +41,6 @@ export const POST = async (request: NextRequest) => {
 
     return new Response(filePath);
   } catch (err: any) {
-    console.error(err.message)
+    console.error(err.message);
   }
 };

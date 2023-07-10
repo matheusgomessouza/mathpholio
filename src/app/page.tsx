@@ -94,7 +94,7 @@ export default async function Home() {
               </p>
             </div>
             {techs.map((skill) => (
-              <div className="w-60">
+              <div key={skill.title} className="w-60">
                 <Image
                   width={100}
                   height={100}

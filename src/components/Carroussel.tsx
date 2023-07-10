@@ -4,17 +4,19 @@ import { register } from "swiper/element/bundle";
 // register Swiper custom elements
 register();
 
-
 export interface CarrousselProps {
-  image: string
-  name: string
-  description: string
+  image: string;
+  name: string;
+  description: string;
 }
 
-export async function Carroussel({image, name, description}: CarrousselProps) {
-
+export async function Carroussel({
+  image,
+  name,
+  description,
+}: CarrousselProps) {
   return (
-    <swiper-container slides-per-view="3" >
+    <swiper-container slides-per-view="3">
       <swiper-slide>
         <article>
           <picture>
