@@ -11,7 +11,19 @@ import { register } from "swiper/element/bundle";
 
 register();
 
+interface RepoResponseProps {
+  id: string;
+  name: string;
+  description: string;
+  screenshot: string;
+}
+
 export default async function Home() {
+  const reposInfo = await fetch("http://localhost:3000/api/repos/", {
+    cache: "no-cache",
+  });
+  const repositories = await reposInfo.json();
+
   return (
     <>
       <header className="m-auto flex w-[2000px] items-center justify-between pb-8 pt-6">
@@ -106,7 +118,20 @@ export default async function Home() {
               </div>
             ))}
           </section>
-          <section></section>
+          <section>
+            {repositories.map((item: RepoResponseProps) => (
+              <div key={item.name}>
+                <picture>
+                  <Image
+                    width={360}
+                    height={360}
+                    alt={item.name}
+                    src={item.screenshot}
+                  />
+                </picture>
+              </div>
+            ))}
+          </section>
         </div>
       </main>
       <footer className=" bg-light-gray text-center">

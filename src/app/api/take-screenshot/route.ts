@@ -27,12 +27,7 @@ export const POST = async (request: NextRequest) => {
 
     await page.setViewport({ width: 1920, height: 1080 });
 
-    const filePath = path.resolve(
-      process.cwd(),
-      "public",
-      "screens",
-      `${randomUUID()}.webp`
-    );
+    const filePath = path.resolve("public", "screens", `${randomUUID()}.jpg`);
     await page.screenshot({
       path: filePath,
     });

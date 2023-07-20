@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-interface ReposInfoProps {
+export interface ReposInfoProps {
   id: number;
   name: string;
   html_url: string;
@@ -14,7 +14,6 @@ async function takeScreenshot(url: string) {
     body: JSON.stringify({
       url,
     }),
-    cache: "no-cache",
   });
   const data = await response.text();
   return data;
@@ -30,9 +29,8 @@ export const GET = async () => {
         },
       }
     );
-
     const data = await response.json();
-    const repos = await Promise.all(
+    const repos: ReposInfoProps[] = await Promise.all(
       data.map(async (item: ReposInfoProps) => {
         const screenshot = await takeScreenshot(item.html_url);
 
