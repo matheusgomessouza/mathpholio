@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+
 import {
   websiteLogo,
   menuLabels,
@@ -6,16 +8,15 @@ import {
   techs,
   MenuProps,
 } from "@/variables/data";
-import Link from "next/link";
-import { register } from "swiper/element/bundle";
-
-register();
+import { Carroussel } from "@/components/Carroussel";
 
 interface RepoResponseProps {
   id: string;
+  avatar: string;
   name: string;
   description: string;
-  screenshot: string;
+  url: string;
+  techs: string[];
 }
 
 export default async function Home() {
@@ -118,19 +119,33 @@ export default async function Home() {
               </div>
             ))}
           </section>
-          <section>
-            {repositories.map((item: RepoResponseProps) => (
-              <div key={item.name}>
-                <picture>
+          <section className="">
+            <Carroussel>
+              {repositories.map((item: RepoResponseProps) => (
+                <article
+                  key={item.id}
+                  className="keen-slider__slide flex gap-10"
+                >
                   <Image
-                    width={360}
-                    height={360}
+                    className=""
+                    src={item.avatar}
                     alt={item.name}
-                    src={item.screenshot}
+                    width={460}
+                    height={460}
                   />
-                </picture>
-              </div>
-            ))}
+                  <aside className="w-[50%]">
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                    <Link href={item.url} />
+                    <ul className="flex flex-row">
+                      {item.techs.map((item: string) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </aside>
+                </article>
+              ))}
+            </Carroussel>
           </section>
         </div>
       </main>

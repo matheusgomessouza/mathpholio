@@ -5,18 +5,10 @@ export interface ReposInfoProps {
   name: string;
   html_url: string;
   description: string;
-  screenshot: string;
-}
-
-async function takeScreenshot(url: string) {
-  const response = await fetch("http://localhost:3000/api/take-screenshot", {
-    method: "POST",
-    body: JSON.stringify({
-      url,
-    }),
-  });
-  const data = await response.text();
-  return data;
+  topics: string[];
+  owner: {
+    avatar_url: string;
+  };
 }
 
 export const GET = async () => {
@@ -30,15 +22,16 @@ export const GET = async () => {
       }
     );
     const data = await response.json();
+    console.log(data);
     const repos: ReposInfoProps[] = await Promise.all(
       data.map(async (item: ReposInfoProps) => {
-        const screenshot = await takeScreenshot(item.html_url);
-
         return {
           id: item.id,
+          avatar: item.owner.avatar_url,
           name: item.name,
           description: item.description,
-          screenshot,
+          url: item.html_url,
+          techs: item.topics,
         };
       })
     );
