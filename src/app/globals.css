@@ -7,11 +7,7 @@
   padding: 0;
 }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+:root {}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -21,4 +17,24 @@
   }
 }
 
-body {}
+p, li {
+  font-family: var(--font-khand);
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: var(--font-anton);
+}
+
+.mask {
+  mask-image: url("../../public/assets/paint-mask.svg");
+  mask-size: 2000px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}

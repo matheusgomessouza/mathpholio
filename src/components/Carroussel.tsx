@@ -57,6 +57,8 @@ export function Carroussel({ children }: CarrousselProps) {
           ].map((idx) => {
             return (
               <button
+                aria-label="Go to the next slide"
+                role="button"
                 key={idx}
                 onClick={() => {
                   instanceRef.current?.moveToIdx(idx);

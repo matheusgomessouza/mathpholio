@@ -31,6 +31,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${anton.variable} ${khand.variable}`}>{children}</body>
+      <footer className="bg-light-gray">
+        <p>Mathpholio™️, Copyright {new Date().getFullYear()}</p>
+      </footer>
     </html>
   );
 }
