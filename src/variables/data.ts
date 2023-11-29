@@ -1,14 +1,4 @@
-export interface MenuProps {
-  id: string;
-  title: string;
-  link: string;
-}
-
-export interface TechSkills {
-  icon: string;
-  title: string;
-  description: string;
-}
+import { MenuProps, TechSkills } from "../types/interfaces";
 
 export const websiteLogo: string = "/../public/assets/logo.png";
 export const profilePicture: string = "/../public/assets/irl-3.png";

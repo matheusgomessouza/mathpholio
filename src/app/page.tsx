@@ -1,32 +1,50 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import {
   websiteLogo,
   menuLabels,
   profilePicture,
   techs,
-  MenuProps,
 } from "@/variables/data";
-import { Carroussel } from "@/components/Carroussel";
+import {
+  MenuProps,
+  RepoResponseProps,
+  ReposInfoProps,
+} from "@/types/interfaces";
 
-interface RepoResponseProps {
-  id: string;
-  avatar: string;
-  name: string;
-  description: string;
-  url: string;
-  techs: string[];
-}
+import { CarrousselComponent } from "@/components/Carroussel/Carroussel";
+import TypewriterComponent from "@/components/Typewriter/Typewriter";
+import { ReorderComponent } from "@/components/Reorder/Reorder";
+import { ArrowRight } from "lucide-react";
 
 export default async function Home() {
-  const reposInfo = await fetch("http://localhost:3000/api/repos/", {
-    cache: "no-cache",
+  const res = await fetch(
+    `https://api.github.com/users/matheusgomessouza/repos`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
+      },
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const data: ReposInfoProps[] = await res.json();
+  const repositoriesInfo = data.map((item: ReposInfoProps) => {
+    return {
+      id: item.id,
+      avatar: item.owner.avatar_url,
+      name: item.name,
+      description: item.description,
+      url: item.html_url,
+      techs: item.topics,
+    };
   });
-  const repositories = await reposInfo.json();
-  const repositoriesWithDescription = repositories.filter(
-    (repo: RepoResponseProps) =>
-      repo.description?.length !== 0 && repo.techs.length !== 0
+
+  const reposWithDescriptionAndTopics = repositoriesInfo.filter(
+    (item) => item.description?.length > 20 && item.techs.length > 0
   );
 
   return (
@@ -55,10 +73,10 @@ export default async function Home() {
           </ul>
         </nav>
         <Link
-          href={``}
+          href={`https://www.linkedin.com/messaging/thread/new/?lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3Be26iL7QIQjaCwqy%2FbNjIdQ%3D%3D`}
           aria-label="Reach me out through here"
           target="_blank"
-          className="flex h-12 items-center rounded-lg bg-black px-8 text-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:border hover:border-black hover:bg-white hover:text-black"
+          className="flex h-12 items-center rounded-lg bg-black px-8 text-white drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white hover:text-black hover:drop-shadow-2xl"
         >
           Contact Me
         </Link>
@@ -68,9 +86,7 @@ export default async function Home() {
           <section className="flex items-center justify-between gap-x-8">
             <article className=" flex flex-col items-center">
               <div className="w-[800px]">
-                <h1 className="w- mb-6 flex-wrap pb-10 text-9xl">
-                  What&apos;s up? I am Matheus Souza
-                </h1>
+                <TypewriterComponent />
                 <p className="text-justify text-base leading-6">
                   Specialized in front-end technologies, primarily with the
                   Javascript stack ( React, Node.js, Next.js, and React Native
@@ -85,7 +101,7 @@ export default async function Home() {
                   <Link
                     aria-label="Hire my software development services"
                     href="mailto:matheusg_souza@outlook.com"
-                    className="flex items-center justify-center rounded-lg bg-black  p-2 px-8 text-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:border hover:border-black hover:bg-white hover:text-black"
+                    className="flex items-center justify-center rounded-lg bg-black p-2  px-8 text-white drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  hover:bg-white hover:text-black hover:drop-shadow-2xl"
                   >
                     Hire Me
                   </Link>
@@ -93,7 +109,7 @@ export default async function Home() {
                     aria-label="Want a sneaky pick?"
                     href={`https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US`}
                     target="_blank"
-                    className="rounded-lg border-2 border-neutral-600 border-b-zinc-950 border-l-zinc-950 p-2 px-8 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
+                    className="rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
                   >
                     Know More
                   </Link>
@@ -112,47 +128,33 @@ export default async function Home() {
               </picture>
             </aside>
           </section>
-          <section className="my-20 flex w-full justify-between gap-8">
+          <section className="my-60 flex w-full gap-8">
             <div className="bg-medium-gray flex h-80 w-80 flex-col items-center justify-center bg-black">
               <h2 className="text-8xl text-white">3 +</h2>
               <p className="ml-6 mt-2 flex w-11 items-center justify-center text-4xl font-extrabold leading-10 text-white">
                 Years Working Experience
               </p>
             </div>
-            {techs.map((skill) => (
-              <div key={skill.title} className="flex w-60 flex-col items-start">
-                <Image
-                  width={100}
-                  height={68}
-                  src={skill.icon}
-                  alt={skill.title}
-                  className="h-[100px] pb-8"
-                />
-                <p className="text-justify">{skill.description}</p>
-              </div>
-            ))}
+            <ReorderComponent data={techs} />
           </section>
           <section className="">
-            <Carroussel>
-              {repositoriesWithDescription.map((item: RepoResponseProps) => (
+            <CarrousselComponent>
+              {reposWithDescriptionAndTopics.map((item: RepoResponseProps) => (
                 <article
                   key={item.id}
                   className="keen-slider__slide flex gap-10"
                 >
-                  <Image
-                    className=""
-                    src={item.avatar}
-                    alt={item.name}
-                    width={460}
-                    height={460}
-                  />
-                  <aside className="w-[50%]">
-                    <h3>{item.name}</h3>
-                    <p>{item.description}</p>
+                  <aside className="">
+                    <h1 className="mb-6 text-9xl">{item.name}</h1>
+                    <p className="mb-12">{item.description}</p>
                     <Link
                       href={item.url}
                       aria-label="Know more about this specific project"
-                    />
+                      className=""
+                    >
+                      Know more about this specific project
+                    </Link>
+
                     <ul className="mt-6 flex flex-row flex-wrap justify-start gap-4">
                       {item.techs.map((item: string) => (
                         <li
@@ -166,10 +168,38 @@ export default async function Home() {
                   </aside>
                 </article>
               ))}
-            </Carroussel>
+            </CarrousselComponent>
+          </section>
+          <section>
+            <h1>Work Experience</h1>
+            <div className="flex flex-col gap-10 p-8">
+              <div className="space-y-4">
+                <time className="text-black-100 before:bg-black-50 -ml-8 flex items-center gap-2 text-sm before:h-px before:w-5">
+                  04 / 12 / 2023
+                </time>
+                <p className="text-black-100 text-lg leading-relaxed">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Reprehenderit repellendus est distinctio possimus ipsum?
+                  Facere tempora inventore dignissimos nihil, neque sequi
+                  dolores. Labore saepe commodi obcaecati. Dolorum provident
+                  odit rem.
+                </p>
+
+                <Link
+                  href=""
+                  className="text-black-200 hover:text-black-100 flex items-center gap-2 text-sm"
+                >
+                  Read more
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
           </section>
         </div>
       </main>
+      <footer className="bg-light-gray">
+        <p>Mathpholio™️, Copyright {new Date().getFullYear()}</p>
+      </footer>
     </>
   );
 }
