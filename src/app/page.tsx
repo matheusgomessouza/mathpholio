@@ -17,7 +17,7 @@ import TypewriterComponent from "@/components/Typewriter/Typewriter";
 import { ReorderComponent } from "@/components/Reorder/Reorder";
 import { ArrowRight } from "lucide-react";
 
-export default async function Home() {
+async function getData() {
   const res = await fetch(
     `https://api.github.com/users/matheusgomessouza/repos`,
     {
@@ -31,7 +31,11 @@ export default async function Home() {
     throw new Error("Failed to fetch data");
   }
 
-  const data: ReposInfoProps[] = await res.json();
+  return res.json();
+}
+
+export default async function Home() {
+  const data: ReposInfoProps[] = await getData();
   const repositoriesInfo = data.map((item: ReposInfoProps) => {
     return {
       id: item.id,
@@ -62,7 +66,7 @@ export default async function Home() {
           aria-label="Navigation Menu"
           className="flex items-center"
         >
-          <ul className="flex justify-evenly ">
+          <ul className="flex justify-evenly">
             {menuLabels.map((item: MenuProps) => (
               <li className="mx-2 text-xl" key={item.id}>
                 <a href={item.link} aria-label={`Go to section ${item.title}`}>
@@ -82,7 +86,7 @@ export default async function Home() {
         </Link>
       </header>
       <main className="p-8">
-        <div className="m-auto flex w-[2000px] flex-col">
+        <div className="m-auto flex flex-col">
           <section className="flex items-center justify-between gap-x-8">
             <article className=" flex flex-col items-center">
               <div className="w-[800px]">

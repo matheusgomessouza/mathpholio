@@ -34,7 +34,7 @@ a {
 
 .mask {
   mask-image: url("../../public/assets/paint-mask.svg");
-  mask-size: 2000px;
+  mask-size: 1910px;
   mask-repeat: no-repeat;
   mask-position: center;
 }

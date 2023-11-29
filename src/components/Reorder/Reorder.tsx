@@ -16,7 +16,7 @@ export function ReorderComponent({ data }: ReorderProps) {
       axis="x"
       values={items}
       onReorder={setItems}
-      style={{ boxShadow, y, display: "flex", gap: "18px" }}
+      style={{ boxShadow, y, display: "flex", gap: "18px", width: "inherit" }}
     >
       {items.map((item) => (
         <Reorder.Item key={item.title} value={item}>

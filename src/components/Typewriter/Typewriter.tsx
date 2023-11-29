@@ -3,10 +3,10 @@ import Typewriter from "typewriter-effect";
 
 export default function TypewriterComponent() {
   return (
-    <h1 className="w- mb-6 flex-wrap pb-10 text-9xl">
+    <h1 className="mb-6 flex-wrap pb-10 text-8xl">
       <Typewriter
         options={{
-          strings: ["What's up? I am Matheus Souza."],
+          strings: ["I'm Matheus Souza."],
           autoStart: true,
           loop: true,
         }}
