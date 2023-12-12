@@ -20,15 +20,15 @@ export function ReorderComponent({ data }: ReorderProps) {
     >
       {items.map((item) => (
         <Reorder.Item key={item.title} value={item}>
-          <div className="min-h-full w-80 rounded-lg bg-color-tree bg-opacity-10 p-4">
+          <div className="aspect-square max-h-full rounded-lg bg-color-tree bg-opacity-10 p-4">
             <Image
               width={100}
               height={68}
               src={item.icon}
               alt={item.title}
-              className="mx-auto my-0 h-[100px] pb-8"
+              className="mx-auto my-0 aspect-square"
             />
-            <p className="text-justify">{item.description}</p>
+            <p className="pt-4 text-justify">{item.description}</p>
           </div>
         </Reorder.Item>
       ))}

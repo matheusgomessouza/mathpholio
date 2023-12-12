@@ -16,42 +16,27 @@ import { CarrousselComponent } from "@/components/Carroussel/Carroussel";
 import TypewriterComponent from "@/components/Typewriter/Typewriter";
 import { ReorderComponent } from "@/components/Reorder/Reorder";
 import { ArrowRight } from "lucide-react";
-import Error from "next/error";
-
-async function getGithubData() {
-  try {
-    const res = await fetch(
-      `https://api.github.com/users/matheusgomessouza/repos`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
-        },
-      }
-    );
-    return res.json();
-  } catch (error) {
-    console.error("Unable to retrieve Github repos", error);
-  } finally {
-    console.log("Github API request finished.");
-  }
-}
+import { getGithubData } from "@/services/github-api";
 
 export default async function Home() {
   const data: ReposInfoProps[] = await getGithubData();
-  const repositoriesInfo = data.map((item: ReposInfoProps) => {
-    return {
-      id: item.id,
-      avatar: item.owner.avatar_url,
-      name: item.name,
-      description: item.description,
-      url: item.html_url,
-      techs: item.topics,
-    };
-  });
 
-  const reposWithDescriptionAndTopics = repositoriesInfo.filter(
-    (item) => item.description?.length > 20 && item.techs.length > 0
-  );
+  if (Array.isArray(data)) {
+    const repositoriesInfo = data.map((item: ReposInfoProps) => {
+      return {
+        id: item.id,
+        avatar: item.owner.avatar_url,
+        name: item.name,
+        description: item.description,
+        url: item.html_url,
+        techs: item.topics,
+      };
+    });
+
+    const reposWithDescriptionAndTopics = repositoriesInfo.filter(
+      (item) => item.description?.length > 20 && item.techs.length > 0
+    );
+  }
 
   return (
     <>
@@ -133,12 +118,6 @@ export default async function Home() {
             </aside>
           </section>
           <section className="my-60 flex w-full gap-8">
-            <div className="bg-medium-gray flex h-80 w-80 flex-col items-center justify-center bg-black">
-              <h2 className="text-8xl text-white">3 +</h2>
-              <p className="ml-6 mt-2 flex w-11 items-center justify-center text-4xl font-extrabold leading-10 text-white">
-                Years Working Experience
-              </p>
-            </div>
             <ReorderComponent data={techs} />
           </section>
           <section>
@@ -201,7 +180,7 @@ export default async function Home() {
           </section>
         </div>
       </main>
-      <footer className="bg-light-gray">
+      <footer className="bg-light-gray text-center">
         <p>Mathpholio™️, Copyright {new Date().getFullYear()}</p>
       </footer>
     </>
