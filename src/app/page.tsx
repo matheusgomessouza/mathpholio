@@ -17,8 +17,19 @@ import TypewriterComponent from "@/components/Typewriter/Typewriter";
 import { ReorderComponent } from "@/components/Reorder/Reorder";
 import { ArrowRight } from "lucide-react";
 import { getGithubData } from "@/services/github-api";
+import { useState } from "react";
 
 export default async function Home() {
+  const [repos, setRepos] = useState<
+    Array<{
+      id: string;
+      avatar: string;
+      name: string;
+      description: string;
+      url: string;
+      techs: string[];
+    }>
+  >();
   const data: ReposInfoProps[] = await getGithubData();
 
   if (Array.isArray(data)) {
@@ -36,6 +47,8 @@ export default async function Home() {
     const reposWithDescriptionAndTopics = repositoriesInfo.filter(
       (item) => item.description?.length > 20 && item.techs.length > 0
     );
+
+    setRepos(reposWithDescriptionAndTopics);
   }
 
   return (
@@ -122,7 +135,7 @@ export default async function Home() {
           </section>
           <section>
             <CarrousselComponent>
-              {reposWithDescriptionAndTopics.map((item: RepoResponseProps) => (
+              {repos?.map((item: RepoResponseProps) => (
                 <article
                   key={item.id}
                   className="keen-slider__slide flex gap-10"
