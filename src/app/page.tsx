@@ -16,26 +16,28 @@ import { CarrousselComponent } from "@/components/Carroussel/Carroussel";
 import TypewriterComponent from "@/components/Typewriter/Typewriter";
 import { ReorderComponent } from "@/components/Reorder/Reorder";
 import { ArrowRight } from "lucide-react";
+import Error from "next/error";
 
-async function getData() {
-  const res = await fetch(
-    `https://api.github.com/users/matheusgomessouza/repos`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
-      },
-    }
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+async function getGithubData() {
+  try {
+    const res = await fetch(
+      `https://api.github.com/users/matheusgomessouza/repos`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
+        },
+      }
+    );
+    return res.json();
+  } catch (error) {
+    console.error("Unable to retrieve Github repos", error);
+  } finally {
+    console.log("Github API request finished.");
   }
-
-  return res.json();
 }
 
 export default async function Home() {
-  const data: ReposInfoProps[] = await getData();
+  const data: ReposInfoProps[] = await getGithubData();
   const repositoriesInfo = data.map((item: ReposInfoProps) => {
     return {
       id: item.id,
@@ -53,7 +55,7 @@ export default async function Home() {
 
   return (
     <>
-      <header className="fixed z-10 m-auto flex w-screen items-center justify-evenly bg-gradient-to-b from-white pt-4">
+      <header className="from- fixed z-10 m-auto flex w-full items-center justify-between bg-gradient-to-b px-8 pt-4">
         <Image
           className="glitch invert"
           src={websiteLogo}
@@ -64,7 +66,7 @@ export default async function Home() {
         <nav
           role="navigation"
           aria-label="Navigation Menu"
-          className="flex items-center"
+          className="ml-8 mr-auto flex items-center"
         >
           <ul className="flex justify-evenly">
             {menuLabels.map((item: MenuProps) => (
@@ -85,21 +87,19 @@ export default async function Home() {
           Contact Me
         </Link>
       </header>
+
       <main className="p-8">
         <div className="m-auto flex flex-col">
           <section className="flex items-center justify-between gap-x-8">
             <article className=" flex flex-col items-center">
-              <div className="w-[800px]">
+              <div className="mx-24 w-[800px]">
                 <TypewriterComponent />
                 <p className="text-justify text-base leading-6">
-                  Specialized in front-end technologies, primarily with the
-                  Javascript stack ( React, Node.js, Next.js, and React Native
-                  ). Currently transitioning to full-stack engineering. I
-                  produce content aimed at web/mobile development on my Twitch
-                  channel and in articles, developing live projects, and delving
-                  deeper into the languages I bring to the agenda. Where anyone,
-                  regardless of level, is welcome to ask questions and/or
-                  contribute their ideas.
+                  I am a highly skilled professional with a specialization in
+                  front-end technologies, primarily working with the dynamic
+                  Javascript stack, including React, Node.js, Next.js, and React
+                  Native. Currently, I am in the exciting phase of transitioning
+                  into a full-stack engineering role.
                 </p>
                 <div className="flex gap-4 pt-6">
                   <Link
@@ -141,14 +141,14 @@ export default async function Home() {
             </div>
             <ReorderComponent data={techs} />
           </section>
-          <section className="">
+          <section>
             <CarrousselComponent>
               {reposWithDescriptionAndTopics.map((item: RepoResponseProps) => (
                 <article
                   key={item.id}
                   className="keen-slider__slide flex gap-10"
                 >
-                  <aside className="">
+                  <aside>
                     <h1 className="mb-6 text-9xl">{item.name}</h1>
                     <p className="mb-12">{item.description}</p>
                     <Link

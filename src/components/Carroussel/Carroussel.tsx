@@ -27,7 +27,7 @@ export function CarrousselComponent({ children }: CarrousselProps) {
     <>
       <section
         ref={sliderRef}
-        className="keen-slider rounded-lg bg-color-tree p-10 drop-shadow-2xl"
+        className="keen-slider rounded-lg p-10 drop-shadow-2xl"
       >
         {children}
       </section>

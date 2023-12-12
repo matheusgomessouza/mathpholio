@@ -26,7 +26,7 @@ export function ReorderComponent({ data }: ReorderProps) {
               height={68}
               src={item.icon}
               alt={item.title}
-              className="h-[100px] pb-8"
+              className="mx-auto my-0 h-[100px] pb-8"
             />
             <p className="text-justify">{item.description}</p>
           </div>

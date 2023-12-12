@@ -38,4 +38,10 @@ export const techs: Array<TechSkills> = [
     description:
       "Next.js is an open-source web development framework created by the private company Vercel providing React-based web applications with server-side rendering and static website generation.",
   },
+  {
+    icon: "/assets/git.svg",
+    title: "Git",
+    description:
+      "Git is a distributed version control system[9] that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development. ",
+  },
 ];
