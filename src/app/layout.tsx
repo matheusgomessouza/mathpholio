@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import "../styles/globals.css";
-import { Anton, Khand } from "next/font/google"; // import function to register Swiper custom elements
+import { Anton, Khand } from "next/font/google";
 
 const anton = Anton({
   subsets: ["latin"],

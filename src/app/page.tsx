@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,54 +8,45 @@ import {
 } from "@/variables/data";
 import {
   MenuProps,
-  RepoResponseProps,
-  ReposInfoProps,
+  //  ReposInfoProps
 } from "@/types/interfaces";
 
-import { CarrousselComponent } from "@/components/Carroussel/Carroussel";
+// import { CarrousselComponent } from "@/components/Carroussel/Carroussel";
 import TypewriterComponent from "@/components/Typewriter/Typewriter";
 import { ReorderComponent } from "@/components/Reorder/Reorder";
-import { ArrowRight } from "lucide-react";
-import { getGithubData } from "@/services/github-api";
-import { useState } from "react";
+// import { ArrowRight } from "lucide-react";
+// import { getGithubData } from "@/services/github-api";
 
 export default async function Home() {
-  const [repos, setRepos] = useState<
-    Array<{
-      id: string;
-      avatar: string;
-      name: string;
-      description: string;
-      url: string;
-      techs: string[];
-    }>
-  >();
-  const data: ReposInfoProps[] = await getGithubData();
+  // async function apiCall() {
+  //   const data: ReposInfoProps[] = await getGithubData();
+  //   return data;
+  // }
 
-  if (Array.isArray(data)) {
-    const repositoriesInfo = data.map((item: ReposInfoProps) => {
-      return {
-        id: item.id,
-        avatar: item.owner.avatar_url,
-        name: item.name,
-        description: item.description,
-        url: item.html_url,
-        techs: item.topics,
-      };
-    });
+  // const response = apiCall();
 
-    const reposWithDescriptionAndTopics = repositoriesInfo.filter(
-      (item) => item.description?.length > 20 && item.techs.length > 0
-    );
+  // if (Array.isArray(response)) {
+  //   const repositoriesInfo = response.map((item: ReposInfoProps) => {
+  //     return {
+  //       id: item.id,
+  //       avatar: item.owner.avatar_url,
+  //       name: item.name,
+  //       description: item.description,
+  //       url: item.html_url,
+  //       techs: item.topics,
+  //     };
+  //   });
 
-    setRepos(reposWithDescriptionAndTopics);
-  }
+  //   const reposWithDescriptionAndTopics = repositoriesInfo.filter(
+  //     (item) => item.description?.length > 20 && item.techs.length > 0
+  //   );
+  // }
 
   return (
     <>
       <header className="from- fixed z-10 m-auto flex w-full items-center justify-between bg-gradient-to-b px-8 pt-4">
         <Image
-          className="glitch invert"
+          className="invert"
           src={websiteLogo}
           alt="Website logo - Mathpholio"
           width={215}
@@ -79,10 +68,10 @@ export default async function Home() {
           </ul>
         </nav>
         <Link
-          href={`https://www.linkedin.com/messaging/thread/new/?lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3Be26iL7QIQjaCwqy%2FbNjIdQ%3D%3D`}
+          href="https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US"
           aria-label="Reach me out through here"
           target="_blank"
-          className="flex h-12 items-center rounded-lg bg-black px-8 text-white drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white hover:text-black hover:drop-shadow-2xl"
+          className="flex h-12 items-center rounded-lg bg-black px-8 text-white drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:border hover:border-black hover:bg-white hover:text-black hover:drop-shadow-2xl"
         >
           Contact Me
         </Link>
@@ -105,7 +94,7 @@ export default async function Home() {
                   <Link
                     aria-label="Hire my software development services"
                     href="mailto:matheusg_souza@outlook.com"
-                    className="flex items-center justify-center rounded-lg bg-black p-2  px-8 text-white drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  hover:bg-white hover:text-black hover:drop-shadow-2xl"
+                    className="flex items-center justify-center rounded-lg bg-black p-2  px-8 text-white drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  hover:border hover:border-black hover:bg-white hover:text-black hover:drop-shadow-2xl"
                   >
                     Hire Me
                   </Link>
@@ -123,20 +112,20 @@ export default async function Home() {
             <aside className=" flex items-center justify-center">
               <picture className="w-max">
                 <Image
-                  className="mask"
+                  className="mask h-[950] w-[950] grayscale"
                   src={profilePicture}
-                  width={1050}
-                  height={1050}
+                  width={950}
+                  height={950}
                   alt="Matheus Souza, black hair, huge blackbeard in a room with sunlight in his face"
                 />
               </picture>
             </aside>
           </section>
-          <section className="my-60 flex w-full gap-8">
+          <section className="my-20 flex w-full gap-8">
             <ReorderComponent data={techs} />
           </section>
-          <section>
-            <CarrousselComponent>
+          {/* <section> */}
+          {/* <CarrousselComponent>
               {repos?.map((item: RepoResponseProps) => (
                 <article
                   key={item.id}
@@ -166,9 +155,9 @@ export default async function Home() {
                   </aside>
                 </article>
               ))}
-            </CarrousselComponent>
-          </section>
-          <section>
+            </CarrousselComponent> */}
+          {/* </section> */}
+          {/* <section>
             <h1>Work Experience</h1>
             <div className="flex flex-col gap-10 p-8">
               <div className="space-y-4">
@@ -192,11 +181,13 @@ export default async function Home() {
                 </Link>
               </div>
             </div>
-          </section>
+          </section> */}
         </div>
       </main>
-      <footer className="bg-light-gray text-center">
-        <p>Mathpholio™️, Copyright {new Date().getFullYear()}</p>
+      <footer className="bg-zinc-900 px-4 py-1 text-end text-color-six">
+        <p>
+          Mathpholio™️, Copyright © {new Date().getFullYear()} by Matheus Souza
+        </p>
       </footer>
     </>
   );

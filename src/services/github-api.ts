@@ -6,6 +6,7 @@ export async function getGithubData() {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
         },
+        method: "GET",
       }
     );
     return res.json();
