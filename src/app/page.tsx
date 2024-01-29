@@ -51,6 +51,7 @@ export default async function Home() {
           alt="Website logo - Mathpholio"
           width={215}
           height={80}
+          loading="lazy"
         />
         <nav
           role="navigation"
@@ -117,6 +118,7 @@ export default async function Home() {
                   width={950}
                   height={950}
                   alt="Matheus Souza, black hair, huge blackbeard in a room with sunlight in his face"
+                  loading="lazy"
                 />
               </picture>
             </aside>

@@ -1,7 +1,7 @@
 import { MenuProps, TechSkills } from "../types/interfaces";
 
-export const websiteLogo: string = "/../public/assets/logo.png";
-export const profilePicture: string = "/../public/assets/irl-3.png";
+export const websiteLogo: string = "/assets/logo.png";
+export const profilePicture: string = "/assets/irl-3.png";
 export const menuLabels: Array<MenuProps> = [
   { id: "1", title: "Work experience", link: "" },
   { id: "2", title: "Projects", link: "" },
