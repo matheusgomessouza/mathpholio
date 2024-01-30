@@ -33,16 +33,3 @@ h6,
 a {
   font-family: var(--font-anton);
 }
-
-.mask {
-  mask-image: url("../../public/assets/paint-mask.svg");
-  mask-size: 1730px;
-  mask-repeat: no-repeat;
-  mask-position: right;
-}
-
-@media (min-width: 720px) and (max-width: 1080px) {
-  .mask {
-    mask-size: 1535px;
-  }
-}

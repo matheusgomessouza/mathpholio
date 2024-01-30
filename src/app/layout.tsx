@@ -15,7 +15,7 @@ const khand = Khand({
 });
 
 export const metadata: Metadata = {
-  title: "Mathpholio",
+  title: "Mathpholio!",
   viewport: "width=device-width, initial-scale=1",
   description: "Portfolio website created by Matheus Souza",
 };

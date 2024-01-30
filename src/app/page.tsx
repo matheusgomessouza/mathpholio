@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { menuLabels, profilePicture, techs } from "@/variables/data";
+import { menuLabels, techs } from "@/variables/data";
 import { MenuProps } from "@/types/interfaces";
 
 import TypewriterComponent from "@/components/Typewriter/Typewriter";
@@ -32,7 +31,7 @@ export default async function Home() {
           href="https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US"
           aria-label="Reach me out through here"
           target="_blank"
-          className="flex h-12 items-center rounded-lg bg-black px-8 text-white drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:border hover:border-black hover:bg-white hover:text-black hover:drop-shadow-2xl"
+          className="rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
         >
           Contact Me
         </Link>
@@ -55,7 +54,7 @@ export default async function Home() {
                   <Link
                     aria-label="Hire my software development services"
                     href="mailto:matheusg_souza@outlook.com"
-                    className="flex items-center justify-center rounded-lg bg-black p-2  px-8 text-white drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  hover:border hover:border-black hover:bg-white hover:text-black hover:drop-shadow-2xl"
+                    className="flex h-10 w-36 items-center justify-center rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
                   >
                     Hire Me
                   </Link>
@@ -63,7 +62,7 @@ export default async function Home() {
                     aria-label="Want a sneaky pick?"
                     href={`https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US`}
                     target="_blank"
-                    className="rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
+                    className="flex h-10 w-36 items-center justify-center rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
                   >
                     Know More
                   </Link>
@@ -73,7 +72,7 @@ export default async function Home() {
             {/** Still in progress */}
             <aside className="flex items-center justify-center"></aside>
           </section>
-          <section className="my-20 flex w-full gap-8">
+          <section id="skills" className="my-20 flex w-full gap-8">
             <ReorderComponent data={techs} />
           </section>
         </div>
