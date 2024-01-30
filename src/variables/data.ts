@@ -1,7 +1,7 @@
 import { MenuProps, TechSkills } from "../types/interfaces";
 
 export const websiteLogo: string = "/assets/logo.png";
-export const profilePicture: string = "/assets/irl-3.png";
+export const profilePicture: string = "/assets/me.png";
 export const menuLabels: Array<MenuProps> = [
   { id: "1", title: "Work experience", link: "" },
   { id: "2", title: "Projects", link: "" },
@@ -42,6 +42,6 @@ export const techs: Array<TechSkills> = [
     icon: "/assets/git.svg",
     title: "Git",
     description:
-      "Git is a distributed version control system[9] that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development. ",
+      "Git is a distributed version control system that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development. ",
   },
 ];

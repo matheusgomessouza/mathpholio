@@ -1,58 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  websiteLogo,
-  menuLabels,
-  profilePicture,
-  techs,
-} from "@/variables/data";
-import {
-  MenuProps,
-  //  ReposInfoProps
-} from "@/types/interfaces";
+import { menuLabels, profilePicture, techs } from "@/variables/data";
+import { MenuProps } from "@/types/interfaces";
 
-// import { CarrousselComponent } from "@/components/Carroussel/Carroussel";
 import TypewriterComponent from "@/components/Typewriter/Typewriter";
 import { ReorderComponent } from "@/components/Reorder/Reorder";
-// import { ArrowRight } from "lucide-react";
-// import { getGithubData } from "@/services/github-api";
 
 export default async function Home() {
-  // async function apiCall() {
-  //   const data: ReposInfoProps[] = await getGithubData();
-  //   return data;
-  // }
-
-  // const response = apiCall();
-
-  // if (Array.isArray(response)) {
-  //   const repositoriesInfo = response.map((item: ReposInfoProps) => {
-  //     return {
-  //       id: item.id,
-  //       avatar: item.owner.avatar_url,
-  //       name: item.name,
-  //       description: item.description,
-  //       url: item.html_url,
-  //       techs: item.topics,
-  //     };
-  //   });
-
-  //   const reposWithDescriptionAndTopics = repositoriesInfo.filter(
-  //     (item) => item.description?.length > 20 && item.techs.length > 0
-  //   );
-  // }
-
   return (
     <>
-      <header className="from- fixed z-10 m-auto flex w-full items-center justify-between bg-gradient-to-b px-8 pt-4">
-        <Image
-          className="invert"
-          src={websiteLogo}
-          alt="Website logo - Mathpholio"
-          width={215}
-          height={80}
-          loading="lazy"
-        />
+      <header className="fixed z-10 m-auto flex w-full items-center justify-between bg-gradient-to-b px-8 pt-4">
+        <h1 className="cssanimation leRainDrop sequence infinite text-4xl">
+          Mathpholio!
+        </h1>
         <nav
           role="navigation"
           aria-label="Navigation Menu"
@@ -79,8 +39,8 @@ export default async function Home() {
       </header>
 
       <main className="p-8">
-        <div className="m-auto flex flex-col">
-          <section className="flex items-center justify-between gap-x-8">
+        <div className="m-auto mt-8 flex flex-col">
+          <section className="flex h-[850px] items-center justify-between gap-x-8">
             <article className=" flex flex-col items-center">
               <div className="mx-24 w-[800px]">
                 <TypewriterComponent />
@@ -110,83 +70,15 @@ export default async function Home() {
                 </div>
               </div>
             </article>
-            <aside className=" flex items-center justify-center">
-              <picture className="w-max">
-                <Image
-                  className="mask h-[950] w-[950] grayscale"
-                  src={profilePicture}
-                  width={950}
-                  height={950}
-                  alt="Matheus Souza, black hair, huge blackbeard in a room with sunlight in his face"
-                  loading="lazy"
-                />
-              </picture>
-            </aside>
+            {/** Still in progress */}
+            <aside className="flex items-center justify-center"></aside>
           </section>
           <section className="my-20 flex w-full gap-8">
             <ReorderComponent data={techs} />
           </section>
-          {/* <section> */}
-          {/* <CarrousselComponent>
-              {repos?.map((item: RepoResponseProps) => (
-                <article
-                  key={item.id}
-                  className="keen-slider__slide flex gap-10"
-                >
-                  <aside>
-                    <h1 className="mb-6 text-9xl">{item.name}</h1>
-                    <p className="mb-12">{item.description}</p>
-                    <Link
-                      href={item.url}
-                      aria-label="Know more about this specific project"
-                      className=""
-                    >
-                      Know more about this specific project
-                    </Link>
-
-                    <ul className="mt-6 flex flex-row flex-wrap justify-start gap-4">
-                      {item.techs.map((item: string) => (
-                        <li
-                          key={item}
-                          className="rounded-xl bg-black px-10 text-white"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </aside>
-                </article>
-              ))}
-            </CarrousselComponent> */}
-          {/* </section> */}
-          {/* <section>
-            <h1>Work Experience</h1>
-            <div className="flex flex-col gap-10 p-8">
-              <div className="space-y-4">
-                <time className="text-black-100 before:bg-black-50 -ml-8 flex items-center gap-2 text-sm before:h-px before:w-5">
-                  04 / 12 / 2023
-                </time>
-                <p className="text-black-100 text-lg leading-relaxed">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Reprehenderit repellendus est distinctio possimus ipsum?
-                  Facere tempora inventore dignissimos nihil, neque sequi
-                  dolores. Labore saepe commodi obcaecati. Dolorum provident
-                  odit rem.
-                </p>
-
-                <Link
-                  href=""
-                  className="text-black-200 hover:text-black-100 flex items-center gap-2 text-sm"
-                >
-                  Read more
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </section> */}
         </div>
       </main>
-      <footer className="bg-zinc-900 px-4 py-1 text-end text-color-six">
+      <footer className="fixed bottom-0 w-full bg-zinc-900 px-4 py-1 text-end text-color-six">
         <p>
           Mathpholio™️, Copyright © {new Date().getFullYear()} by Matheus Souza
         </p>

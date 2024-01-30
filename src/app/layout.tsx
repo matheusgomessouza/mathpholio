@@ -27,7 +27,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>{/* <link rel="icon" href="/favicon.ico" sizes="any" /> */}</head>
+      <head>
+        <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+        <link
+          href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${anton.variable} ${khand.variable}`}>{children}</body>
     </html>
   );

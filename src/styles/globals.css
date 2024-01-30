@@ -7,7 +7,8 @@
   padding: 0;
 }
 
-:root {}
+:root {
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -17,7 +18,8 @@
   }
 }
 
-p, li {
+p,
+li {
   font-family: var(--font-khand);
   font-size: 1rem;
 }
@@ -36,5 +38,11 @@ a {
   mask-image: url("../../public/assets/paint-mask.svg");
   mask-size: 1730px;
   mask-repeat: no-repeat;
-  mask-position: center;
+  mask-position: right;
+}
+
+@media (min-width: 720px) and (max-width: 1080px) {
+  .mask {
+    mask-size: 1535px;
+  }
 }
