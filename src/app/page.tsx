@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { ImGithub } from "react-icons/im";
+import { FaLinkedin } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
 import { menuLabels, techs } from "@/variables/data";
 import { MenuProps } from "@/types/interfaces";
 
@@ -28,12 +31,13 @@ export default async function Home() {
           </ul>
         </nav>
         <Link
-          href="https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US"
+          href="mailto:matheusg_souza@outlook.com"
           aria-label="Reach me out through here"
           target="_blank"
-          className="rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
+          className="flex h-10 items-center gap-1 rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
         >
           Contact Me
+          <IoIosMail size={24} />
         </Link>
       </header>
 
@@ -52,19 +56,22 @@ export default async function Home() {
                 </p>
                 <div className="flex gap-4 pt-6">
                   <Link
-                    aria-label="Hire my software development services"
-                    href="mailto:matheusg_souza@outlook.com"
-                    className="flex h-10 w-36 items-center justify-center rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
+                    aria-label="Check out my LinkedIn page"
+                    target="_blank"
+                    href="https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US"
+                    className="flex h-10 w-36 items-center justify-center gap-1 rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
                   >
-                    Hire Me
+                    LinkedIn
+                    <FaLinkedin />
                   </Link>
                   <Link
-                    aria-label="Want a sneaky pick?"
-                    href={`https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US`}
+                    aria-label="Check out my Github page"
+                    href={`https://www.github.com/matheusgomessouza`}
                     target="_blank"
-                    className="flex h-10 w-36 items-center justify-center rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
+                    className="flex h-10 w-36 items-center justify-center gap-1 rounded-lg bg-white p-2 px-8 drop-shadow-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white"
                   >
-                    Know More
+                    Github
+                    <ImGithub />
                   </Link>
                 </div>
               </div>
