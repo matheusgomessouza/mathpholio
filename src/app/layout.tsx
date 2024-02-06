@@ -34,7 +34,14 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${anton.variable} ${khand.variable}`}>{children}</body>
+      <body className={`${anton.variable} ${khand.variable}`}>
+        {children}
+        <script
+          async
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
+        ></script>
+      </body>
     </html>
   );
 }

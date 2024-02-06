@@ -16,11 +16,18 @@ export function ReorderComponent({ data }: ReorderProps) {
       axis="x"
       values={items}
       onReorder={setItems}
-      style={{ boxShadow, y, display: "flex", gap: "18px", width: "inherit" }}
+      style={{
+        boxShadow,
+        y,
+        display: "flex",
+        alignItems: "center",
+        width: "inherit",
+      }}
+      className="flex-wrap lg:flex-nowrap"
     >
       {items.map((item) => (
         <Reorder.Item key={item.title} value={item}>
-          <div className="flex aspect-square max-h-full flex-col items-center justify-center rounded-lg p-4">
+          <div className="flex aspect-square max-h-full flex-col items-center justify-center p-4">
             <Image
               width={80}
               height={80}
@@ -28,7 +35,9 @@ export function ReorderComponent({ data }: ReorderProps) {
               alt={item.title}
               className="mx-auto my-0 aspect-square h-40 w-32 grayscale"
             />
-            <p className="pt-4 text-center">{item.description}</p>
+            <p className="hidden pt-4 text-center lg:flex">
+              {item.description}
+            </p>
           </div>
         </Reorder.Item>
       ))}
