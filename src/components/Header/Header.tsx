@@ -1,16 +1,50 @@
-"use-client";
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 
-import { IoIosMail } from "react-icons/io";
+import { IoIosMail, IoIosClose } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { menuLabels } from "@/variables/data";
 import { MenuProps } from "@/types/interfaces";
 
 export default function HeaderComponent() {
+  const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
+
   return (
     <>
       <header className="flex w-full items-center justify-between gap-2 p-4 lg:hidden">
-        <GiHamburgerMenu size={32} />
+        <GiHamburgerMenu
+          size={32}
+          onClick={() => setToggleMobileMenu(!toggleMobileMenu)}
+        />
+        {toggleMobileMenu && (
+          <div className="absolute left-0 top-0 z-50 h-screen w-full bg-black bg-opacity-80 p-4 transition ease-in lg:hidden">
+            <nav
+              role="navigation"
+              aria-label="Navigation Menu"
+              className="relative flex items-center"
+            >
+              <ul className="flex flex-col justify-evenly gap-4">
+                {menuLabels.map((item: MenuProps) => (
+                  <li className="mx-2 text-xl text-color-six" key={item.id}>
+                    <a
+                      href={item.link}
+                      aria-label={`Go to section ${item.title}`}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <IoIosClose
+                size={40}
+                fill="#ffff"
+                className="absolute right-0 top-0"
+                onClick={() => setToggleMobileMenu(false)}
+              />
+            </nav>
+          </div>
+        )}
         <h1 className="cssanimation leFadeInRight sequence text-2xl">
           Mathpholio!
         </h1>

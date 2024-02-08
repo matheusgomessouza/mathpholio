@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ImGithub } from "react-icons/im";
-import { techs } from "@/variables/data";
 import { FaLinkedin } from "react-icons/fa";
 
+import { techs } from "@/variables/data";
 import TypewriterComponent from "@/components/Typewriter/Typewriter";
 import { ReorderComponent } from "@/components/Reorder/Reorder";
 import HeaderComponent from "@/components/Header/Header";
 
-export default async function Home() {
+export default function Home() {
   return (
     <>
       <HeaderComponent />
@@ -50,9 +50,8 @@ export default async function Home() {
             <aside className="flex items-center justify-center"></aside>
           </section>
           <section id="skills" className="my-20 block w-full gap-8">
-            <p>Tech skills</p>
             <h2>
-              Building the highest quality application with the following
+              Building the highest quality applications with the following
               technologies
             </h2>
             <ReorderComponent data={techs} />
@@ -60,9 +59,7 @@ export default async function Home() {
         </div>
       </main>
       <footer className="fixed bottom-0 w-full bg-zinc-900 px-4 py-1 text-center text-color-six lg:text-end">
-        <p>
-          Mathpholio™️, Copyright © {new Date().getFullYear()} by Matheus Souza
-        </p>
+        <p>Mathpholio™️, Copyright © 2024 by Matheus Souza</p>
       </footer>
     </>
   );

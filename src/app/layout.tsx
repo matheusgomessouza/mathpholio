@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Mathpholio!",
   viewport: "width=device-width, initial-scale=1",
   description: "Portfolio website created by Matheus Souza",
+  themeColor: [{ color: "#000", media: "(prefers-color-scheme:dark)" }],
 };
 
 export default function RootLayout({
