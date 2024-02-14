@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import "../styles/globals.css";
 import { Anton, Khand } from "next/font/google";
+import { Providers } from "./providers";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
         <link
@@ -36,7 +37,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${anton.variable} ${khand.variable}`}>
-        {children}
+        <Providers>{children}</Providers>
         <script
           async
           type="text/javascript"

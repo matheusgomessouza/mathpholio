@@ -4,12 +4,10 @@ import { Reorder, useMotionValue } from "framer-motion";
 import { useState } from "react";
 import { ReorderProps } from "../../types/interfaces";
 import Image from "next/image";
-import { useRaisedShadow } from "./use-raised-shadow";
 
 export function ReorderComponent({ data }: ReorderProps) {
   const [items, setItems] = useState(data);
   const y = useMotionValue(0);
-  const boxShadow = useRaisedShadow(y);
 
   return (
     <Reorder.Group
@@ -17,7 +15,6 @@ export function ReorderComponent({ data }: ReorderProps) {
       values={items}
       onReorder={setItems}
       style={{
-        boxShadow,
         y,
         display: "flex",
         alignItems: "center",

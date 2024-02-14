@@ -33,3 +33,11 @@ h6,
 a {
   font-family: var(--font-anton);
 }
+
+.mask {
+  mask-image: url("../../public/assets/paint-mask.svg");
+  mask-size: 1150px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  /* filter: invert(1) contrast(5) brightness(0.8) grayscale(1) */
+}
