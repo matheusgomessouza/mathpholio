@@ -12,7 +12,7 @@ export default function HeaderComponent() {
 
   return (
     <>
-      <header className="flex w-full items-center justify-between gap-2 p-4 lg:hidden">
+      <header className="mobile flex w-full items-center justify-between gap-2 p-4 lg:hidden">
         <GiHamburgerMenu
           size={32}
           onClick={() => setToggleMobileMenu(!toggleMobileMenu)}
@@ -62,7 +62,7 @@ export default function HeaderComponent() {
         </Link>
       </header>
 
-      <header className=" fixed z-10 m-auto hidden w-full items-center justify-between bg-gradient-to-b px-8 pt-4 lg:flex">
+      <header className="fixed z-10 m-auto hidden w-full items-center justify-between bg-gradient-to-b px-8 pt-4 lg:flex">
         <h1 className="cssanimation leFadeInRight  sequence text-4xl">
           Mathpholio!
         </h1>

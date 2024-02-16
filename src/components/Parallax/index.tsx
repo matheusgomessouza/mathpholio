@@ -56,7 +56,7 @@ export default function ParallaxComponent() {
         <div className="four absolute left-48 top-72 hidden h-16 w-16 rounded-full bg-black lg:block" />
       </Parallax>
       <Parallax speed={-5}>
-        <div className="five absolute left-0 top-24 hidden h-48 w-48 rounded-full bg-black lg:block" />
+        <div className="five absolute hidden h-24 w-48 rounded-b-full bg-black lg:left-0 lg:top-24 lg:block lg:h-48 lg:w-48 lg:rounded-full" />
       </Parallax>
       <aside className="flex w-1/2 items-center justify-center">
         <Parallax speed={-1}>
@@ -68,24 +68,24 @@ export default function ParallaxComponent() {
               height={700}
               sizes=""
               alt="A person with a long beard, serious expression"
-              className="relative z-[2] w-screen"
+              className="relative z-[2] w-[85vw]"
             />
           </div>
         </Parallax>
       </aside>
 
       <Parallax speed={-5}>
-        <div className="two absolute right-0 hidden h-16 w-16 rounded-full bg-black lg:block" />
+        <div className="two absolute right-16 top-0 h-8 w-8 rounded-full bg-black lg:right-24 lg:block lg:h-16 lg:w-16" />
       </Parallax>
       <Parallax speed={-5}>
-        <div className="six absolute right-24 top-56 hidden h-44  w-44 rounded-full bg-black lg:block" />
+        <div className="six absolute right-32 top-56 h-28 w-28 rounded-full bg-black lg:right-24 lg:top-56 lg:block lg:h-44 lg:w-44" />
       </Parallax>
-      <div className="seven absolute bottom-96 right-0 -mr-8 hidden h-48 w-24 rounded-l-full bg-black lg:block" />
+      <div className="seven absolute right-0 top-1/2 -mr-8 h-14 w-7 rounded-l-full bg-black lg:bottom-96 lg:right-0 lg:block lg:h-48 lg:w-24" />
       <Parallax speed={-5}>
         <div className="eight absolute bottom-72 right-44 hidden h-32 w-32 rounded-full bg-black lg:block" />
       </Parallax>
       <Parallax speed={5}>
-        <div className="nine absolute bottom-96 right-96 hidden h-16 w-16 rounded-full bg-black lg:block" />
+        <div className="nine absolute right-24 top-0  h-16 w-16 rounded-full bg-black lg:bottom-96 lg:right-96 lg:block" />
       </Parallax>
     </section>
   );
