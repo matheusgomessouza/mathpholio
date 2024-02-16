@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <HeaderComponent />
-      <main className="p-8">
+      <main className="p-8 pb-16">
         <div className="m-auto mt-8 flex flex-col">
           <ParallaxComponent />
           {/* <section id="skills" className="my-20 block w-full gap-8">
@@ -19,7 +19,7 @@ export default function Home() {
           </section> */}
         </div>
       </main>
-      <footer className="bottom-0 w-full bg-zinc-900 px-4 py-1 text-center text-color-six lg:text-end">
+      <footer className="fixed bottom-0 w-full bg-zinc-900 px-4 py-1 text-center text-color-six lg:relative lg:text-end">
         <p>Mathpholio™️, Copyright © 2024 by Matheus Souza</p>
       </footer>
     </>
