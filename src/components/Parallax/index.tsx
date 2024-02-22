@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Parallax, ParallaxBanner } from "react-scroll-parallax";
+import { Parallax } from "react-scroll-parallax";
 
 import myPicture from "../../../public/assets/main-circle.png";
 import TypewriterComponent from "@/components/Typewriter/Typewriter";
@@ -14,7 +14,7 @@ export default function ParallaxComponent() {
     <section className="relative flex flex-col-reverse items-center xl:h-screen xl:flex-row">
       <div className="first absolute right-1/4 top-0 -mt-16 hidden h-40 w-80 rounded-b-full bg-black xl:block" />
       <article className="flex w-1/2 flex-col items-center">
-        <div className="xl:mx-24 xl:w-[800px]">
+        <div className="sm:w-full xl:mx-24 2xl:w-[800px]">
           <TypewriterComponent />
           <p className="text-center text-base leading-6 xl:text-justify">
             I am a highly skilled professional with a specialization in
@@ -46,9 +46,9 @@ export default function ParallaxComponent() {
         </div>
       </article>
 
-      <div className="one absolute right-0 top-0 -mr-8 h-32 w-16 rounded-l-full bg-black xl:block xl:h-96 xl:w-48" />
+      <div className="one absolute right-0 top-0 -mr-8 h-32 w-16 rounded-l-full bg-black xl:block 2xl:h-96 2xl:w-48" />
       <Parallax speed={5}>
-        <div className="three absolute bottom-80 left-32 hidden h-64 w-64 rounded-full bg-black lg:bottom-28 lg:left-0 xl:block" />
+        <div className="three absolute bottom-80 left-32 hidden h-64 w-64 rounded-full bg-black lg:bottom-28 lg:left-0 xl:block xl:h-32 xl:w-32" />
       </Parallax>
       <Parallax speed={-5}>
         <div className="four absolute left-48 top-72 hidden h-16 w-16 rounded-full bg-black xl:block" />
@@ -58,7 +58,7 @@ export default function ParallaxComponent() {
       </Parallax>
       <aside className="flex w-1/2 items-center justify-center">
         <Parallax speed={-1}>
-          <div className="relative flex h-auto w-screen items-center justify-center before:absolute before:z-[1] before:h-auto before:w-screen before:rounded-full before:bg-black before:content-[''] xl:h-[900px] xl:w-[900px]">
+          <div className="relative flex h-auto w-screen items-center justify-center before:absolute before:z-[1] before:h-auto before:w-screen before:rounded-full before:bg-black before:content-[''] xl:h-[900px] xl:w-auto">
             <Image
               priority={true}
               src={myPicture}

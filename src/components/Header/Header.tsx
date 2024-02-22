@@ -31,12 +31,12 @@ export default function HeaderComponent() {
                     key={item.id}
                     onClick={() => setToggleMobileMenu(false)}
                   >
-                    <a
+                    <Link
                       href={item.link}
                       aria-label={`Go to section ${item.title}`}
                     >
                       {item.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -74,9 +74,12 @@ export default function HeaderComponent() {
           <ul className="flex justify-evenly">
             {menuLabels.map((item: MenuProps) => (
               <li className="mx-2 text-xl" key={item.id}>
-                <a href={item.link} aria-label={`Go to section ${item.title}`}>
+                <Link
+                  href={item.link}
+                  aria-label={`Go to section ${item.title}`}
+                >
                   {item.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
