@@ -58,7 +58,7 @@ export default function ParallaxComponent() {
       </Parallax>
       <aside className="flex w-1/2 items-center justify-center">
         <Parallax speed={-1}>
-          <div className="relative flex h-auto w-screen items-center justify-center before:absolute before:z-[1] before:h-auto before:w-screen before:rounded-full before:bg-black before:content-[''] xl:h-[900px] xl:w-auto">
+          <div className="relative flex h-auto w-screen items-center justify-center before:absolute before:z-[1] before:h-auto before:w-screen before:rounded-full before:bg-black before:content-[''] xl:h-auto xl:w-auto">
             <Image
               priority={true}
               src={myPicture}
@@ -76,7 +76,7 @@ export default function ParallaxComponent() {
         <div className="two absolute right-16 top-0 h-8 w-8 rounded-full bg-black xl:block xl:h-16 xl:w-16" />
       </Parallax>
       <Parallax speed={-5}>
-        <div className="six absolute right-32 top-56 h-28 w-28 rounded-full bg-black xl:top-56 xl:block xl:h-44 xl:w-44" />
+        <div className="six absolute right-32 top-56 h-28 w-28 rounded-full bg-black xl:top-48 xl:block xl:h-44 xl:w-44" />
       </Parallax>
       <div className="seven absolute right-0 top-1/2 -mr-8 h-14 w-7 rounded-l-full bg-black xl:bottom-96 xl:right-0 xl:block xl:h-48 xl:w-24" />
       <Parallax speed={-5}>
