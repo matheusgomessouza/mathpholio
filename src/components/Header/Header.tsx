@@ -75,6 +75,7 @@ export default function HeaderComponent() {
             {menuLabels.map((item: MenuProps) => (
               <li className="mx-2 text-xl" key={item.id}>
                 <Link
+                  className="nav"
                   href={item.link}
                   aria-label={`Go to section ${item.title}`}
                 >

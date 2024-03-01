@@ -7,6 +7,35 @@
   padding: 0;
 }
 
+/* Hide the default scrollbar */
+body {
+  scrollbar-width: thin; /* For Firefox */
+  overflow-y: scroll; /* For WebKit-based browsers */
+}
+
+/* WebKit */
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Firefox */
+body {
+  scrollbar-width: none;
+}
+
+/* IE/Edge */
+body {
+  -ms-overflow-style: none;
+}
+
 :root {
 }
 
@@ -34,10 +63,6 @@ a {
   font-family: var(--font-anton);
 }
 
-.mask {
-  mask-image: url("../../public/assets/paint-mask.svg");
-  mask-size: 1150px;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  /* filter: invert(1) contrast(5) brightness(0.8) grayscale(1) */
+a.nav {
+  font-family: var(--font-khand)
 }
