@@ -24,10 +24,10 @@ export default function HeaderComponent() {
               aria-label="Navigation Menu"
               className="relative flex items-center"
             >
-              <ul className="flex flex-col justify-evenly gap-4">
+              <ul className="mt-2 flex flex-col justify-evenly gap-4">
                 {menuLabels.map((item: MenuProps) => (
                   <li
-                    className="mx-2 text-xl text-color-six"
+                    className="text-xl text-color-six"
                     key={item.id}
                     onClick={() => setToggleMobileMenu(false)}
                   >
@@ -62,7 +62,7 @@ export default function HeaderComponent() {
         </Link>
       </header>
 
-      <header className="fixed z-10 m-auto hidden w-full items-center justify-between bg-gradient-to-b px-8 pt-4 lg:flex">
+      <header className="fixed z-10 m-auto hidden w-full items-center justify-between bg-gradient-to-b px-[9%] pt-8 lg:flex">
         <h1 className="cssanimation leFadeInRight  sequence text-4xl">
           Mathpholio!
         </h1>
@@ -73,9 +73,9 @@ export default function HeaderComponent() {
         >
           <ul className="flex justify-evenly">
             {menuLabels.map((item: MenuProps) => (
-              <li className="mx-2 text-xl" key={item.id}>
+              <li className="relative mx-2 text-xl" key={item.id}>
                 <Link
-                  className="nav"
+                  className="nav hover: before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-black before:transition-all before:duration-200 before:content-[''] before:hover:w-full dark:before:bg-white"
                   href={item.link}
                   aria-label={`Go to section ${item.title}`}
                 >
@@ -89,7 +89,7 @@ export default function HeaderComponent() {
           href="mailto:matheusg_souza@outlook.com"
           aria-label="Reach me out through here"
           target="_blank"
-          className="flex h-10 items-center justify-center gap-2 rounded-lg bg-black p-2 px-8 text-white transition delay-150 duration-300 hover:bg-white hover:text-black hover:drop-shadow-2xl"
+          className="flex h-10 w-36 items-center justify-center gap-1 rounded-xl bg-black  p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white dark:border dark:border-solid"
         >
           Contact
           <IoIosMail size={24} />

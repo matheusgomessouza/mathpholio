@@ -30,14 +30,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="scroll-smooth"
+      className="scroll-smooth dark:bg-black dark:text-white"
       style={{ scrollBehavior: "smooth" }}
     >
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+        <link
+          href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
+          rel="stylesheet"
+        ></link>
       </head>
       <body className={`${anton.variable} ${khand.variable}`}>
         <Providers>{children}</Providers>
+        <script
+          defer
+          async
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
+        ></script>
       </body>
     </html>
   );
