@@ -30,6 +30,12 @@ export interface TechSkills {
   description: string;
 }
 
+export interface Services {
+  id: string;
+  title: string;
+  icon: string;
+}
+
 export interface ReorderProps {
   data: Array<TechSkills>;
 }

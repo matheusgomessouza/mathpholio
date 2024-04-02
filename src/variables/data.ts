@@ -1,4 +1,4 @@
-import { MenuProps, TechSkills } from "../types/interfaces";
+import { MenuProps, TechSkills, Services } from "../types/interfaces";
 
 export const websiteLogo: string = "/assets/logo.png";
 export const menuLabels: Array<MenuProps> = [
@@ -6,6 +6,12 @@ export const menuLabels: Array<MenuProps> = [
   { id: "2", title: "Projects", link: "#projects" },
   { id: "3", title: "Skills", link: "#skills" },
 ];
+export const services: Array<Services> = [
+  { id: "1", title: "Web development", icon: "/assets/web.svg" },
+  { id: "2", title: "Mobile development", icon: "/assets/mobile.svg" },
+  { id: "3", title: "Back-end development", icon: "/assets/server.svg" },
+];
+
 export const techs: Array<TechSkills> = [
   {
     icon: "/assets/react.svg",
@@ -41,6 +47,18 @@ export const techs: Array<TechSkills> = [
     icon: "/assets/git.svg",
     title: "Git",
     description:
-      "Git is a distributed version control system that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development. ",
+      "Git is a distributed version control system that tracks changes in any set of computer files, usually used for coordinating work among programmers who are collaboratively developing source code during software development.",
+  },
+  {
+    icon: "/assets/expo.svg",
+    title: "Expo",
+    description:
+      "Expo is a comprehensive platform and framework designed to facilitate the development, deployment, and management of universal native apps using React Native.",
+  },
+  {
+    icon: "/assets/jest.svg",
+    title: "Jest",
+    description:
+      "Jest is a JavaScript testing framework designed to ensure correctness of any JavaScript codebase. It allows you to write tests with an approachable, familiar and feature-rich API that gives you results quickly.",
   },
 ];

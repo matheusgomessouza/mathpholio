@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import "../styles/globals.css";
 import { Anton, Khand } from "next/font/google";
-import { Providers } from "./providers";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -41,7 +40,7 @@ export default function RootLayout({
         ></link>
       </head>
       <body className={`${anton.variable} ${khand.variable}`}>
-        <Providers>{children}</Providers>
+        {children}
         <script
           defer
           async
