@@ -32,7 +32,7 @@ export default function Home() {
                     aria-label="Check out my LinkedIn page"
                     target="_blank"
                     href="https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US"
-                    className="flex h-10 w-36 items-center justify-center gap-1 rounded-xl bg-black p-2 px-8  text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white dark:border dark:border-solid"
+                    className=" flex h-10 w-36 items-center justify-center gap-1 rounded-xl bg-black p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 dark:border dark:border-solid dark:bg-white dark:text-black"
                   >
                     LinkedIn
                     <FaLinkedin />
@@ -41,7 +41,7 @@ export default function Home() {
                     aria-label="Check out my Github page"
                     href={`https://www.github.com/matheusgomessouza`}
                     target="_blank"
-                    className="flex h-10 w-36 items-center  justify-center gap-1 rounded-xl bg-black p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-black hover:text-white dark:border dark:border-solid"
+                    className="flex h-10 w-36 items-center justify-center gap-1  rounded-xl bg-black p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 dark:border dark:border-solid dark:bg-white dark:text-black"
                   >
                     Github
                     <ImGithub />
@@ -49,8 +49,8 @@ export default function Home() {
                 </div>
               </div>
             </article>
-            <aside className="flex w-1/2 items-center justify-center">
-              <div className="relative flex h-auto w-screen items-center justify-center before:absolute before:z-[1] before:h-auto before:w-screen before:rounded-full before:bg-black before:content-[''] xl:h-auto xl:w-auto">
+            <aside className="flex items-center justify-center lg:w-1/2">
+              <div className="relative flex h-auto w-screen items-center justify-center xl:h-auto xl:w-auto">
                 <Image
                   priority={true}
                   src={myPicture}
@@ -58,14 +58,15 @@ export default function Home() {
                   height={700}
                   sizes=""
                   alt="A person with a long beard, serious expression"
-                  className="relative z-[2] w-[85vw] brightness-100 invert dark:invert-0 lg:w-[35vw] xl:w-[45vw]"
+                  className="relative z-[2] brightness-100 invert dark:invert-0 lg:w-[35vw] xl:w-[45vw]"
                 />
               </div>
             </aside>
           </section>
-          <div id="skills" className="h-2 lg:h-48" />
+          <div id="skills" className="h-8 lg:h-32" />
+
           <section className="mt-12">
-            <p>Tech Skills</p>
+            <p className="text-2xl">Tech Skills</p>
             <h2 className="lg:mb-12">
               Building the highest quality application with the following
               technologies
@@ -76,7 +77,7 @@ export default function Home() {
                 return (
                   <div
                     key={item.title}
-                    className="-ml-8 mt-8 flex h-52 w-[90vw] items-center rounded-r-[60px] bg-black p-4 dark:bg-white lg:hidden"
+                    className="-ml-8 mt-8 flex h-52 w-[90vw] items-center rounded-r-[30px] bg-black p-4 dark:bg-white lg:hidden"
                   >
                     <article className="flex gap-4">
                       <div className="flex flex-col items-center justify-center text-center">
@@ -103,7 +104,7 @@ export default function Home() {
                 return (
                   <div
                     key={item.title}
-                    className="ml-[0.7rem] mt-8 flex h-52 w-[90vw] items-center rounded-l-[60px] bg-black p-4 dark:bg-white lg:hidden"
+                    className="ml-[0.7rem] mt-8 flex h-52 w-[90vw] items-center rounded-l-[30px] bg-black p-4 dark:bg-white lg:hidden"
                   >
                     <article className="flex flex-row-reverse gap-2">
                       <div className="flex flex-col items-center justify-center text-center">
@@ -140,7 +141,7 @@ export default function Home() {
                     alt={item.title}
                     width={100}
                     height={100}
-                    className=" grayscale invert"
+                    className="dark:invert"
                   />
                   <p className="pb-4 text-black dark:text-white">
                     {item.title}
@@ -149,27 +150,39 @@ export default function Home() {
               ))}
             </section>
 
-            <p id="services" className="mt-32">
+            <p
+              id="services"
+              className="mt-12 text-center text-2xl lg:text-left"
+            >
               My Services
             </p>
-            <h2>Developing to all major types of projects scopes</h2>
+            <h2 className="mb-12 text-center lg:text-left">
+              Developing to all major types of projects scopes
+            </h2>
             <section className="flex w-full flex-col justify-between gap-10 lg:mt-10 lg:flex lg:flex-row">
               {services.map((item: interfaces.Services) => (
                 <div
                   key={item.id}
-                  className="flex flex-col items-center gap-8 rounded-3xl border border-solid border-white bg-white p-8"
+                  className="flex flex-col items-center gap-8 rounded-3xl border border-solid border-white bg-black p-8 dark:bg-white"
                 >
-                  <p className="text-2xl text-black">{item.title}</p>
+                  <p className="text-2xl text-white dark:text-black">
+                    {item.title}
+                  </p>
                   <Image
                     alt={item.title}
                     src={item.icon}
-                    width={400}
-                    height={400}
-                    className="invert"
+                    width={600}
+                    height={600}
+                    className="dark:invert"
                   />
                 </div>
               ))}
             </section>
+            <div id="work-experience" className="h-2 lg:h-32" />
+            <p id="services" className="mt-12 text-2xl">
+              Work experiences
+            </p>
+            <h2>Working on small to great scale projects</h2>
           </section>
         </div>
       </main>
