@@ -7,38 +7,6 @@
   padding: 0;
 }
 
-/* Hide the default scrollbar */
-body {
-  scrollbar-width: thin; /* For Firefox */
-  overflow-y: scroll; /* For WebKit-based browsers */
-}
-
-/* WebKit */
-body::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-
-/* Firefox */
-body {
-  scrollbar-width: none;
-}
-
-/* IE/Edge */
-body {
-  -ms-overflow-style: none;
-}
-
-:root {
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -64,17 +32,5 @@ a {
 }
 
 a.nav {
-  font-family: var(--font-khand)
-}
-
-.neonText {
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #bc13fe,
-    0 0 82px #bc13fe,
-    0 0 92px #bc13fe,
-    0 0 102px #bc13fe,
-    0 0 151px #bc13fe;
+  font-family: var(--font-khand);
 }

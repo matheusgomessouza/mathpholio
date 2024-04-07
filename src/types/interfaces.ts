@@ -34,6 +34,7 @@ export interface Services {
   id: string;
   title: string;
   icon: string;
+  description: string;
 }
 
 export interface ReorderProps {

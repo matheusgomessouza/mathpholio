@@ -58,9 +58,9 @@ export default function HeaderComponent() {
           href="mailto:matheusg_souza@outlook.com"
           aria-label="Reach me out through here"
           target="_blank"
-          className="flex h-10 items-center gap-1 rounded-lg bg-white p-2 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 "
+          className="flex h-10 items-center gap-1 rounded-lg bg-black p-2 text-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 dark:bg-color-four"
         >
-          <IoIosMail size={24} fill="#000" />
+          <IoIosMail size={24} />
         </Link>
       </header>
 
@@ -93,10 +93,10 @@ export default function HeaderComponent() {
           href="mailto:matheusg_souza@outlook.com"
           aria-label="Reach me out through here"
           target="_blank"
-          className="flex h-10 w-36 items-center justify-center gap-1 rounded-xl bg-black  p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110   dark:border-solid dark:bg-white dark:text-black"
+          className="flex h-10 w-36 items-center justify-center gap-1 rounded-xl bg-black  p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 dark:border-solid dark:bg-color-four dark:text-white"
         >
           Contact
-          <IoIosMail size={24} />
+          <IoIosMail size={20} />
         </Link>
       </header>
     </>

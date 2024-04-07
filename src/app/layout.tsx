@@ -16,9 +16,7 @@ const khand = Khand({
 
 export const metadata: Metadata = {
   title: "Mathpholio!",
-  viewport: "width=device-width, initial-scale=1",
   description: "Portfolio website created by Matheus Souza",
-  themeColor: [{ color: "#000", media: "(prefers-color-scheme:dark)" }],
 };
 
 export default function RootLayout({
@@ -42,8 +40,13 @@ export default function RootLayout({
       <body className={`${anton.variable} ${khand.variable}`}>
         {children}
         <script
-          defer
           async
+          defer
+          src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
+        ></script>
+        <script
+          async
+          defer
           type="text/javascript"
           src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
         ></script>

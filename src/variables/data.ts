@@ -7,9 +7,27 @@ export const menuLabels: Array<MenuProps> = [
   { id: "3", title: "Skills", link: "#skills" },
 ];
 export const services: Array<Services> = [
-  { id: "1", title: "Web development", icon: "/assets/web.svg" },
-  { id: "2", title: "Mobile development", icon: "/assets/mobile.svg" },
-  { id: "3", title: "Back-end development", icon: "/assets/server.svg" },
+  {
+    id: "1",
+    title: "Web development",
+    icon: "/assets/web.svg",
+    description:
+      "Crafting captivating digital experiences with the JavaScript development stack. Transforming designs into interactive interfaces for seamless user engagement. Elevating brands with visually stunning layouts and responsive design.",
+  },
+  {
+    id: "2",
+    title: "Mobile development",
+    icon: "/assets/mobile.svg",
+    description:
+      "Transforming ideas into intuitive mobile apps. Expertise in iOS and Android platforms. Seamlessly blending design and functionality for a standout user experience. Elevate your brand with our mobile development expertise.",
+  },
+  {
+    id: "3",
+    title: "Back-end development",
+    icon: "/assets/server.svg",
+    description:
+      "Powering your applications with robust backend solutions. Expertise in databases, APIs, and server-side technologies. Ensuring scalability, security, and reliability. Elevate your digital infrastructure with our backend development expertise.",
+  },
 ];
 
 export const techs: Array<TechSkills> = [
