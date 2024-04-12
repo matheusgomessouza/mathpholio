@@ -64,7 +64,7 @@ export default function HeaderComponent() {
         </Link>
       </header>
 
-      <header className="fixed z-10 m-auto hidden w-full items-center justify-between bg-gradient-to-b from-white px-[9%] pt-8 dark:from-black lg:flex">
+      <header className="fixed z-50 m-auto hidden w-full items-center justify-between bg-gradient-to-b from-white px-[9%] pt-8 dark:from-black lg:flex">
         <h1 className="text-4xl">
           <Link href="#" className="cssanimation leFadeInRight sequence">
             Mathpholio!
