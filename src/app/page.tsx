@@ -123,7 +123,11 @@ export default function Home() {
                             alt={item.title}
                             width={300}
                             height={300}
-                            className="dark:invert-1 invert"
+                            className={
+                              isLastTechsItem(index, techs.length)
+                                ? undefined
+                                : "invert dark:invert"
+                            }
                           />
                         </div>
                         <div className="flex items-center justify-center">
@@ -138,12 +142,12 @@ export default function Home() {
               })}
             </section>
 
-            <section className="hidden justify-between gap-8 before:absolute before:left-0 before:z-10 before:h-80 before:w-[100vw] before:bg-black before:content-[''] before:dark:bg-color-four lg:flex lg:w-full lg:items-center 2xl:gap-20">
+            <section className="hidden items-center justify-between gap-8 before:absolute before:left-0 before:z-10 before:h-80 before:w-full before:bg-black before:content-[''] before:dark:bg-color-four lg:flex lg:w-full lg:items-center 2xl:gap-20">
               <article className="z-20 text-white">
                 <h2 className="mb-6 w-4 text-4xl leading-tight lg:text-2xl">
                   Revolutionizing Development
                 </h2>
-                <p className="w-72 lg:mb-12">
+                <p className="w-72">
                   Unleashing the power of ReactJS, React Native, Node.js,
                   Next.js, Expo, Jest, Git, and TypeScript for efficiency,
                   scalability, and innovation in software development.
@@ -210,7 +214,7 @@ export default function Home() {
             </section>
             <div id="work-experience" className="h-2 lg:h-32" />
             <p className="mt-12 text-2xl">Work experiences</p>
-            <h2>Working on small to great scale projects</h2>
+            <h2>On development...</h2>
           </section>
         </div>
       </main>
