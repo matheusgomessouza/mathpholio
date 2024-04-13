@@ -20,7 +20,7 @@ export default function Home() {
       <HeaderComponent />
       <main className="p-8 pb-16 xl:px-[9%]">
         <div className="m-auto flex flex-col lg:mt-8">
-          <section className="relative flex h-[100vh] flex-col-reverse items-center justify-end xl:h-screen xl:flex-row">
+          <section className="relative flex flex-col-reverse items-center xl:h-screen xl:flex-row">
             <article className="flex w-1/2 flex-col items-center">
               <div className="sm:w-full">
                 <TypewriterComponent />
