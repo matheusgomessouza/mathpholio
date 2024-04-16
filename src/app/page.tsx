@@ -24,7 +24,7 @@ export default function Home() {
             <article className="flex w-1/2 flex-col items-center">
               <div className="sm:w-full">
                 <TypewriterComponent />
-                <p className="text-center text-base leading-6 lg:text-left 2xl:w-9/12 2xl:text-left">
+                <p className="text-center text-base leading-6 lg:text-left 2xl:w-9/12 2xl:text-left 2xl:text-xl">
                   I am a highly skilled professional with a specialization in
                   front-end technologies, primarily working with the dynamic
                   Javascript stack, including <strong>React</strong>,{" "}
@@ -213,8 +213,201 @@ export default function Home() {
               </div>
             </section>
             <div id="work-experience" className="h-2 lg:h-32" />
-            <p className="mt-12 text-2xl">Work experiences</p>
-            <h2>On development...</h2>
+            <section>
+              <article>
+                <h2 className="mb-6 text-4xl leading-tight lg:text-2xl 2xl:text-4xl">
+                  Building Solutions Across Technologies and Industries
+                </h2>
+                <p className="2xl:text-2xl">
+                  Bringing, over 3 years of experience, interactive and scalable
+                  web applications. I’ve a strong foundation in both front-end
+                  and full-stack development, with a proven track record of
+                  delivering projects across HTML, CSS, Javascript, React/React
+                  Native, Typescript, and various others technologies. My
+                  experience spans different industries.
+                </p>
+              </article>
+              <article className="w-full py-16">
+                <section className="flex items-center justify-between">
+                  <h3>Software Developer</h3>
+                  <h3 className="underline">Cognizant</h3>
+                  <section className="flex items-center justify-between gap-8">
+                    <i>São Paulo, SP, Brazil</i>
+                    <h3>04/2022 - Current</h3>
+                  </section>
+                </section>
+                <ul className="mt-4 list-disc pl-8">
+                  <li className="w-3/4">
+                    Implement features and layouts from Figma into a{" "}
+                    <strong>React/React Native + Expo</strong> application,
+                    utilizing <strong>Redux/ContextAPI</strong> for state
+                    management, <strong>Typescript</strong>, and a client Design
+                    System similar to Material UI.
+                  </li>
+                  <li>
+                    Write functional and unit tests with <strong>Jest</strong>{" "}
+                    and <strong>Testing Library</strong>.
+                  </li>
+                  <li>
+                    Utilize <strong>Axios</strong> to write HTTP requests.
+                  </li>
+                  <li>
+                    Use <strong>Git</strong> for code versioning and{" "}
+                    <strong>Azure DevOps</strong> to CI/CD and code repository
+                    hosting service.
+                  </li>
+                  <li>
+                    Contribute to Code Reviews, Technical Interviews and Q&A
+                    sessions with a foreign technical team.
+                  </li>
+                  <li>
+                    Analyze reports on AWS and SAP in order to identify
+                    production environment failed requests.
+                  </li>
+                  <li>Implement triggers and rules on Datadog.</li>
+                </ul>
+              </article>
+              <article className="w-full py-16">
+                <section className="flex items-center justify-between">
+                  <h3>Frontend Developer</h3>
+                  <h3 className="underline">Serasa</h3>
+                  <section className="flex items-center justify-between gap-8">
+                    <i>Blumenau, SC, Brazil</i>
+                    <h3>07/2021 - 02/2022</h3>
+                  </section>
+                </section>
+                <ul className="mt-4 list-disc pl-8">
+                  <li className="w-3/4">
+                    Convert layouts built on Figma to a <strong>React</strong>{" "}
+                    application, using
+                    <strong>Typescript</strong> to ensure scalability and add
+                    static typing to the code base.
+                  </li>
+                  <li>
+                    Implement API calls using <strong>Axios</strong> and{" "}
+                    <strong>Redux-saga</strong> to preserve the payload in the
+                    application contexts.
+                  </li>
+                  <li>
+                    Implement functional testing for the <strong>React</strong>{" "}
+                    application components with <strong>Jest</strong> and{" "}
+                    <strong>Testing Library</strong>.
+                  </li>
+                  <li>
+                    Implement layout adjustments in a{" "}
+                    <strong>React/Angular/Next.js</strong>
+                    application, using <strong>SASS</strong> as stylesheet
+                    language.
+                  </li>
+                  <li>
+                    Deploy code changes using <strong>Jenkins</strong> and{" "}
+                    <strong>Bitbucket</strong> platforms.
+                  </li>
+                  <li>
+                    Participate in BDD meetings to discuss the
+                    application/features expected behavior.
+                  </li>
+                  <li>
+                    Create mail templates using <strong>Mjml framework</strong>.
+                  </li>
+                  <li>
+                    Contribute to Code Reviews to ensure quality deliveries.
+                  </li>
+                  <li>
+                    Use <strong>Git</strong> for local code versioning and{" "}
+                    <strong>Bitbucket</strong> for code repository hosting
+                    service.
+                  </li>
+                  <li>
+                    Work alongside the Data Analysis team to implement code
+                    triggers to store user interactions for{" "}
+                    <strong>Google Analytics</strong>
+                    during the user`&apos;`s journey in the application.
+                  </li>
+                </ul>
+              </article>
+
+              <article className="w-full py-16">
+                <section className="flex items-center justify-between">
+                  <h3>Software Developer</h3>
+                  <h3 className="underline">Cognizant</h3>
+                  <section className="flex items-center justify-between gap-8">
+                    <i>São Paulo, SP, Brazil</i>
+                    <h3>04/2022 - Current</h3>
+                  </section>
+                </section>
+                <ul className="mt-4 list-disc pl-8">
+                  <li className="w-3/4">
+                    Implement features and layouts from Figma into a{" "}
+                    <strong>React/React Native + Expo</strong> application,
+                    utilizing <strong>Redux/ContextAPI</strong> for state
+                    management, <strong>Typescript</strong>, and a client Design
+                    System similar to Material UI.
+                  </li>
+                  <li>
+                    Write functional and unit tests with <strong>Jest</strong>{" "}
+                    and <strong>Testing Library</strong>.
+                  </li>
+                  <li>
+                    Utilize <strong>Axios</strong> to write HTTP requests.
+                  </li>
+                  <li>
+                    Use <strong>Git</strong> for code versioning and{" "}
+                    <strong>Azure DevOps</strong> to CI/CD and code repository
+                    hosting service.
+                  </li>
+                  <li>
+                    Contribute to Code Reviews, Technical Interviews and Q&A
+                    sessions with a foreign technical team.
+                  </li>
+                  <li>
+                    Analyze reports on AWS and SAP in order to identify
+                    production environment failed requests.
+                  </li>
+                  <li>Implement triggers and rules on Datadog.</li>
+                </ul>
+              </article>
+              <article className="w-full py-16">
+                <section className="flex items-center justify-between">
+                  <h3>Software Developer</h3>
+                  <h3 className="underline">Cognizant</h3>
+                  <section className="flex items-center justify-between gap-8">
+                    <i>São Paulo, SP, Brazil</i>
+                    <h3>04/2022 - Current</h3>
+                  </section>
+                </section>
+                <ul className="mt-4 list-disc pl-8">
+                  <li className="w-3/4">
+                    Implement features and layouts from Figma into a{" "}
+                    <strong>React/React Native + Expo</strong> application,
+                    utilizing <strong>Redux/ContextAPI</strong> for state
+                    management, <strong>Typescript</strong>, and a client Design
+                    System similar to Material UI.
+                  </li>
+                  <li>
+                    Write functional and unit tests with <strong>Jest</strong>{" "}
+                    and <strong>Testing Library</strong>.
+                  </li>
+                  <li>
+                    Utilize <strong>Axios</strong> to write HTTP requests.
+                  </li>
+                  <li>
+                    Use <strong>Git</strong> for code versioning and{" "}
+                    <strong>Azure DevOps</strong> to CI/CD and code repository
+                    hosting service.
+                  </li>
+                  <li>
+                    Contribute to Code Reviews, Technical Interviews and Q&A
+                    sessions with a foreign technical team.
+                  </li>
+                  <li>
+                    Analyze reports on AWS and SAP in order to identify
+                    production environment failed requests.
+                  </li>
+                  <li>Implement triggers and rules on Datadog.</li>
+                </ul>
+              </article>
+            </section>
           </section>
         </div>
       </main>
