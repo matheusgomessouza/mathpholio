@@ -213,8 +213,8 @@ export default function Home() {
               </div>
             </section>
             <div id="work-experience" className="h-2 lg:h-32" />
-            <section>
-              <article>
+            <section className=" flex flex-col justify-center lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:h-[1340px] lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four">
+              <article className="relative z-20 xl:mt-8 2xl:mt-16">
                 <h2 className="mb-6 text-4xl leading-tight lg:text-2xl 2xl:text-4xl">
                   Building Solutions Across Technologies and Industries
                 </h2>
@@ -227,7 +227,8 @@ export default function Home() {
                   experience spans different industries.
                 </p>
               </article>
-              <article className="w-full py-16">
+
+              <article className="relative z-20 w-full py-8">
                 <section className="flex items-center justify-between">
                   <h3>Software Developer</h3>
                   <h3 className="underline">Cognizant</h3>
@@ -267,7 +268,7 @@ export default function Home() {
                   <li>Implement triggers and rules on Datadog.</li>
                 </ul>
               </article>
-              <article className="w-full py-16">
+              <article className="relative z-20 w-full py-8">
                 <section className="flex items-center justify-between">
                   <h3>Frontend Developer</h3>
                   <h3 className="underline">Serasa</h3>
@@ -326,85 +327,76 @@ export default function Home() {
                   </li>
                 </ul>
               </article>
-
-              <article className="w-full py-16">
+              <article className="relative z-20 w-full py-8">
                 <section className="flex items-center justify-between">
-                  <h3>Software Developer</h3>
-                  <h3 className="underline">Cognizant</h3>
+                  <h3>Frontend Developer</h3>
+                  <h3 className="underline">Prospecta Digital</h3>
                   <section className="flex items-center justify-between gap-8">
-                    <i>São Paulo, SP, Brazil</i>
-                    <h3>04/2022 - Current</h3>
+                    <i>SJRP, SP, Brazil</i>
+                    <h3>08/2020 - 05/2021</h3>
                   </section>
                 </section>
                 <ul className="mt-4 list-disc pl-8">
                   <li className="w-3/4">
-                    Implement features and layouts from Figma into a{" "}
-                    <strong>React/React Native + Expo</strong> application,
-                    utilizing <strong>Redux/ContextAPI</strong> for state
-                    management, <strong>Typescript</strong>, and a client Design
-                    System similar to Material UI.
+                    Convert layouts built in Adobe Photoshop into a{" "}
+                    <strong>Wordpress</strong> or
+                    <strong> Tray Ecommerce</strong> platform, using{" "}
+                    <strong>Elementor</strong> or <strong>Oxygen</strong>{" "}
+                    plugins, always using good practices for{" "}
+                    <strong>SEO</strong> and optimization.
                   </li>
                   <li>
-                    Write functional and unit tests with <strong>Jest</strong>{" "}
-                    and <strong>Testing Library</strong>.
+                    Implement features in <strong>HTML/CSS</strong> and{" "}
+                    <strong>Javascript</strong>.
                   </li>
                   <li>
-                    Utilize <strong>Axios</strong> to write HTTP requests.
+                    Implement new layouts on the <strong>PHP</strong> website
+                    using <strong>Smarty</strong>.
                   </li>
                   <li>
-                    Use <strong>Git</strong> for code versioning and{" "}
-                    <strong>Azure DevOps</strong> to CI/CD and code repository
-                    hosting service.
+                    Implement features on a <strong>React</strong> financial
+                    project that uses
+                    <strong> Redux</strong> as a state management library.
                   </li>
                   <li>
-                    Contribute to Code Reviews, Technical Interviews and Q&A
-                    sessions with a foreign technical team.
+                    Create a P.O.C for a mobile application using{" "}
+                    <strong>React Native</strong>.
                   </li>
                   <li>
-                    Analyze reports on AWS and SAP in order to identify
-                    production environment failed requests.
+                    Deploy websites on hosting websites like{" "}
+                    <strong>Locaweb</strong>, <strong>Hostinger</strong>, etc.
                   </li>
-                  <li>Implement triggers and rules on Datadog.</li>
+                  <li>
+                    Deploy the files with the code changes using{" "}
+                    <strong>Filezilla (FTP protocol)</strong>.
+                  </li>
                 </ul>
               </article>
-              <article className="w-full py-16">
+              <article className="relative z-20 w-full py-8">
                 <section className="flex items-center justify-between">
-                  <h3>Software Developer</h3>
-                  <h3 className="underline">Cognizant</h3>
+                  <h3>Frontend Developer</h3>
+                  <h3 className="underline">W3midia</h3>
                   <section className="flex items-center justify-between gap-8">
-                    <i>São Paulo, SP, Brazil</i>
-                    <h3>04/2022 - Current</h3>
+                    <i>SJRP, SP, Brazil</i>
+                    <h3>06/2020 - 07/2020</h3>
                   </section>
                 </section>
                 <ul className="mt-4 list-disc pl-8">
                   <li className="w-3/4">
-                    Implement features and layouts from Figma into a{" "}
-                    <strong>React/React Native + Expo</strong> application,
-                    utilizing <strong>Redux/ContextAPI</strong> for state
-                    management, <strong>Typescript</strong>, and a client Design
-                    System similar to Material UI.
+                    Implement features using <strong>HTML/CSS</strong>,{" "}
+                    <strong>Javascript</strong> and <strong>PHP</strong>.
                   </li>
                   <li>
-                    Write functional and unit tests with <strong>Jest</strong>{" "}
-                    and <strong>Testing Library</strong>.
+                    Deploy the files with the code changes using{" "}
+                    <strong>Filezilla (FTP protocol)</strong>.
                   </li>
                   <li>
-                    Utilize <strong>Axios</strong> to write HTTP requests.
+                    Fix bugs in websites that were in a production environment.
                   </li>
                   <li>
-                    Use <strong>Git</strong> for code versioning and{" "}
-                    <strong>Azure DevOps</strong> to CI/CD and code repository
-                    hosting service.
+                    Implement new layouts in a proprietary <strong>CMS</strong>{" "}
+                    provided by the company to the clients.
                   </li>
-                  <li>
-                    Contribute to Code Reviews, Technical Interviews and Q&A
-                    sessions with a foreign technical team.
-                  </li>
-                  <li>
-                    Analyze reports on AWS and SAP in order to identify
-                    production environment failed requests.
-                  </li>
-                  <li>Implement triggers and rules on Datadog.</li>
                 </ul>
               </article>
             </section>
