@@ -214,31 +214,36 @@ export default function Home() {
             </section>
             <div id="work-experience" className="h-2 lg:h-32" />
             <section className=" flex flex-col justify-center lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:h-[1340px] lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four">
-              <article className="relative z-20 xl:mt-8 2xl:mt-16">
-                <h2 className="mb-6 text-4xl leading-tight lg:text-2xl 2xl:text-4xl">
+              <article className="relative z-20 mt-12 text-center xl:mt-8 xl:text-left 2xl:mt-16">
+                <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
                   Building Solutions Across Technologies and Industries
                 </h2>
                 <p className="2xl:text-2xl">
-                  Bringing, over 3 years of experience, interactive and scalable
-                  web applications. I’ve a strong foundation in both front-end
-                  and full-stack development, with a proven track record of
-                  delivering projects across HTML, CSS, Javascript, React/React
-                  Native, Typescript, and various others technologies. My
-                  experience spans different industries.
+                  With over 3 years of experience in developing interactive and
+                  scalable web applications, I have a strong foundation in both
+                  front-end and full-stack development. I have a proven track
+                  record of delivering projects across various technologies,
+                  including HTML, CSS, Javascript, React/React Native,
+                  Typescript, and more. My experience spans across different
+                  industries.
                 </p>
               </article>
 
               <article className="relative z-20 w-full py-8">
-                <section className="flex items-center justify-between">
-                  <h3>Software Developer</h3>
-                  <h3 className="underline">Cognizant</h3>
-                  <section className="flex items-center justify-between gap-8">
+                <section className="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8">
+                  <div className="flex w-full items-center justify-between md:hidden">
+                    <h3>Software Developer</h3>
+                    <h3 className="underline md:hidden">Cognizant</h3>
+                  </div>
+                  <h3 className="hidden lg:flex">Software Developer</h3>
+                  <h3 className="hidden underline lg:flex">Cognizant</h3>
+                  <section className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end">
                     <i>São Paulo, SP, Brazil</i>
                     <h3>04/2022 - Current</h3>
                   </section>
                 </section>
                 <ul className="mt-4 list-disc pl-8">
-                  <li className="w-3/4">
+                  <li className="xl:w-3/4">
                     Implement features and layouts from Figma into a{" "}
                     <strong>React/React Native + Expo</strong> application,
                     utilizing <strong>Redux/ContextAPI</strong> for state
@@ -269,19 +274,23 @@ export default function Home() {
                 </ul>
               </article>
               <article className="relative z-20 w-full py-8">
-                <section className="flex items-center justify-between">
-                  <h3>Frontend Developer</h3>
-                  <h3 className="underline">Serasa</h3>
-                  <section className="flex items-center justify-between gap-8">
+                <section className="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8">
+                  <div className="flex w-full items-center justify-between md:hidden">
+                    <h3>Frontend Developer</h3>
+                    <h3 className="underline md:hidden">Serasa</h3>
+                  </div>
+                  <h3 className="hidden lg:flex">Frontend Developer</h3>
+                  <h3 className="hidden underline lg:flex">Serasa</h3>
+                  <section className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end">
                     <i>Blumenau, SC, Brazil</i>
                     <h3>07/2021 - 02/2022</h3>
                   </section>
                 </section>
                 <ul className="mt-4 list-disc pl-8">
-                  <li className="w-3/4">
+                  <li className="xl:w-3/4">
                     Convert layouts built on Figma to a <strong>React</strong>{" "}
                     application, using
-                    <strong>Typescript</strong> to ensure scalability and add
+                    <strong> Typescript </strong> to ensure scalability and add
                     static typing to the code base.
                   </li>
                   <li>
@@ -296,7 +305,7 @@ export default function Home() {
                   </li>
                   <li>
                     Implement layout adjustments in a{" "}
-                    <strong>React/Angular/Next.js</strong>
+                    <strong>React/Angular/Next.js </strong>
                     application, using <strong>SASS</strong> as stylesheet
                     language.
                   </li>
@@ -322,22 +331,28 @@ export default function Home() {
                   <li>
                     Work alongside the Data Analysis team to implement code
                     triggers to store user interactions for{" "}
-                    <strong>Google Analytics</strong>
-                    during the user`&apos;`s journey in the application.
+                    <strong>Google Analytics </strong>
+                    during the user&apos;s journey in the application.
                   </li>
                 </ul>
               </article>
               <article className="relative z-20 w-full py-8">
-                <section className="flex items-center justify-between">
-                  <h3>Frontend Developer</h3>
-                  <h3 className="underline">Prospecta Digital</h3>
-                  <section className="flex items-center justify-between gap-8">
+                <section className="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8">
+                  <div className="flex w-full items-center justify-between md:hidden">
+                    <h3>Frontend Developer</h3>
+                    <h3 className="underline md:hidden">Prospecta Digital</h3>
+                  </div>
+                  <h3 className="hidden lg:flex">Frontend Developer</h3>
+                  <h3 className="hidden underline lg:flex">
+                    Prospecta Digital
+                  </h3>
+                  <section className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end">
                     <i>SJRP, SP, Brazil</i>
                     <h3>08/2020 - 05/2021</h3>
                   </section>
                 </section>
                 <ul className="mt-4 list-disc pl-8">
-                  <li className="w-3/4">
+                  <li className="xl:w-3/4">
                     Convert layouts built in Adobe Photoshop into a{" "}
                     <strong>Wordpress</strong> or
                     <strong> Tray Ecommerce</strong> platform, using{" "}
@@ -373,16 +388,20 @@ export default function Home() {
                 </ul>
               </article>
               <article className="relative z-20 w-full py-8">
-                <section className="flex items-center justify-between">
-                  <h3>Frontend Developer</h3>
-                  <h3 className="underline">W3midia</h3>
-                  <section className="flex items-center justify-between gap-8">
+                <section className="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8">
+                  <div className="flex w-full items-center justify-between md:hidden">
+                    <h3>Frontend Developer</h3>
+                    <h3 className="underline md:hidden">W3midia</h3>
+                  </div>
+                  <h3 className="hidden lg:flex">Frontend Developer</h3>
+                  <h3 className="hidden underline lg:flex">W3midia</h3>
+                  <section className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end">
                     <i>SJRP, SP, Brazil</i>
                     <h3>06/2020 - 07/2020</h3>
                   </section>
                 </section>
                 <ul className="mt-4 list-disc pl-8">
-                  <li className="w-3/4">
+                  <li className="xl:w-3/4">
                     Implement features using <strong>HTML/CSS</strong>,{" "}
                     <strong>Javascript</strong> and <strong>PHP</strong>.
                   </li>
@@ -398,6 +417,21 @@ export default function Home() {
                     provided by the company to the clients.
                   </li>
                 </ul>
+              </article>
+            </section>
+
+            <div className="h-20" id="projects" />
+            <section>
+              <article className="flex flex-col justify-center">
+                <h2
+                  id="services"
+                  className="mx-auto mb-8 mt-12 w-4/5 text-center text-2xl lg:mx-0 lg:text-left 2xl:text-4xl 2xl:leading-tight"
+                >
+                  Personal Projects
+                </h2>
+                <p className="text-center lg:flex lg:w-80 lg:text-left 2xl:w-11/12 2xl:text-2xl">
+                  Section on development...
+                </p>
               </article>
             </section>
           </section>
