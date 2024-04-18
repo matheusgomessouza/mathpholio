@@ -213,7 +213,7 @@ export default function Home() {
               </div>
             </section>
             <div id="work-experience" className="h-2 lg:h-32" />
-            <section className=" flex flex-col justify-center lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:h-[1340px] lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four">
+            <section className="flex flex-col justify-center text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:h-[1340px] lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four">
               <article className="relative z-20 mt-12 text-center xl:mt-8 xl:text-left 2xl:mt-16">
                 <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
                   Building Solutions Across Technologies and Industries
