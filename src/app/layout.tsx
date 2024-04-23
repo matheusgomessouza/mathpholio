@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import "./globals.css";
+import "../styles/globals.css";
 import { Anton, Khand } from "next/font/google";
 
 const anton = Anton({
@@ -15,8 +15,7 @@ const khand = Khand({
 });
 
 export const metadata: Metadata = {
-  title: "Mathpholio",
-  viewport: "width=device-width, initial-scale=1",
+  title: "Mathpholio!",
   description: "Portfolio website created by Matheus Souza",
 };
 
@@ -26,11 +25,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="scroll-smooth dark:bg-black dark:text-white"
+      style={{ scrollBehavior: "smooth" }}
+    >
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+        <link
+          href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
+          rel="stylesheet"
+        ></link>
       </head>
-      <body className={`${anton.variable} ${khand.variable}`}>{children}</body>
+      <body className={`${anton.variable} ${khand.variable}`}>
+        {children}
+        <script
+          async
+          src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
+        ></script>
+        <script
+          async
+          defer
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
+        ></script>
+      </body>
     </html>
   );
 }
