@@ -6,6 +6,7 @@ import { IoIosMail, IoIosClose } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { menuLabels } from "@/variables/data";
 import { MenuProps } from "@/types/interfaces";
+import ButtonComponent from "../Button/ButtonComponent";
 
 export default function HeaderComponent() {
   const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
@@ -89,15 +90,13 @@ export default function HeaderComponent() {
             ))}
           </ul>
         </nav>
-        <Link
-          href="mailto:matheusg_souza@outlook.com"
-          aria-label="Reach me out through here"
-          target="_blank"
-          className="flex h-10 w-36 items-center justify-center gap-1 rounded-xl bg-black  p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 dark:border-solid dark:bg-color-four dark:text-white"
+        <ButtonComponent
+          label="Contact"
+          link="mailto:matheusg_souza@outlook.com"
+          ariaLabel="Send me an email"
         >
-          Contact
           <IoIosMail size={20} />
-        </Link>
+        </ButtonComponent>
       </header>
     </>
   );

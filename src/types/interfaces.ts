@@ -1,3 +1,6 @@
+import React from "react";
+import { ListFormat, LiteralLikeNode } from "typescript";
+
 export type ReposInfoProps = {
   id: string;
   name: string;
@@ -39,4 +42,19 @@ export interface Services {
 
 export interface ReorderProps {
   data: Array<TechSkills>;
+}
+
+export interface ButtonComponentProps {
+  label: string;
+  link: string;
+  ariaLabel: string;
+  children: React.ReactElement;
+}
+
+export interface ExperienceDescriptionComponentProps {
+  jobTitle: string;
+  company: string;
+  locality: string;
+  period: string;
+  children: React.ReactNode;
 }

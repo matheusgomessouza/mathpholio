@@ -1,20 +1,22 @@
-import Link from "next/link";
 import Image from "next/image";
 import { ImGithub } from "react-icons/im";
 import { FaLinkedin } from "react-icons/fa";
 
 import { techs, services } from "@/variables/data";
 import * as interfaces from "@/types/interfaces";
-import HeaderComponent from "@/components/Header/Header";
 import myPicture from "../../public/assets/main-circle.png";
-import TypewriterComponent from "@/components/Typewriter/Typewriter";
 
-const isLastTechsItem = (item: number, length: number) => {
-  if (item === length - 1) return true;
-  return false;
-};
+import HeaderComponent from "@/components/Header/HeaderComponent";
+import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
+import ButtonComponent from "@/components/Button/ButtonComponent";
+import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
 
 export default function Home() {
+  const isLastTechsItem = (item: number, length: number) => {
+    if (item === length - 1) return true;
+    return false;
+  };
+
   return (
     <>
       <HeaderComponent />
@@ -33,24 +35,20 @@ export default function Home() {
                   phase of transitioning into a full-stack engineering role.
                 </p>
                 <div className="flex gap-4 pt-6">
-                  <Link
-                    aria-label="Check out my LinkedIn page"
-                    target="_blank"
-                    href="https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US"
-                    className="flex h-10 w-36 items-center justify-center gap-1 rounded-xl bg-black p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 dark:border-solid dark:bg-color-four dark:text-white"
+                  <ButtonComponent
+                    label="LinkedIn"
+                    link="https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US"
+                    ariaLabel="Check out my LinkedIn page"
                   >
-                    LinkedIn
                     <FaLinkedin />
-                  </Link>
-                  <Link
-                    aria-label="Check out my Github page"
-                    href={`https://www.github.com/matheusgomessouza`}
-                    target="_blank"
-                    className="flex h-10 w-36 items-center justify-center gap-1  rounded-xl bg-black p-2 px-8 text-white drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 dark:bg-color-four dark:text-white"
+                  </ButtonComponent>
+                  <ButtonComponent
+                    label="Github"
+                    link="https://www.github.com/matheusgomessouza"
+                    ariaLabel="Check out my Github page"
                   >
-                    Github
                     <ImGithub />
-                  </Link>
+                  </ButtonComponent>
                 </div>
               </div>
             </article>
@@ -228,196 +226,157 @@ export default function Home() {
                   industries.
                 </p>
               </article>
-
-              <article className="relative z-20 w-full py-8">
-                <section className="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8">
-                  <div className="flex w-full items-center justify-between md:hidden">
-                    <h3>Software Developer</h3>
-                    <h3 className="underline md:hidden">Cognizant</h3>
-                  </div>
-                  <h3 className="hidden lg:flex">Software Developer</h3>
-                  <h3 className="hidden underline lg:flex">Cognizant</h3>
-                  <section className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end">
-                    <i>São Paulo, SP, Brazil</i>
-                    <h3>04/2022 - Current</h3>
-                  </section>
-                </section>
-                <ul className="mt-4 list-disc pl-8">
-                  <li className="xl:w-3/4">
-                    Implement features and layouts from Figma into a{" "}
-                    <strong>React/React Native + Expo</strong> application,
-                    utilizing <strong>Redux/ContextAPI</strong> for state
-                    management, <strong>Typescript</strong>, and a client Design
-                    System similar to Material UI.
-                  </li>
-                  <li>
-                    Write functional and unit tests with <strong>Jest</strong>{" "}
-                    and <strong>Testing Library</strong>.
-                  </li>
-                  <li>
-                    Utilize <strong>Axios</strong> to write HTTP requests.
-                  </li>
-                  <li>
-                    Use <strong>Git</strong> for code versioning and{" "}
-                    <strong>Azure DevOps</strong> to CI/CD and code repository
-                    hosting service.
-                  </li>
-                  <li>
-                    Contribute to Code Reviews, Technical Interviews and Q&A
-                    sessions with a foreign technical team.
-                  </li>
-                  <li>
-                    Analyze reports on AWS and SAP in order to identify
-                    production environment failed requests.
-                  </li>
-                  <li>Implement triggers and rules on Datadog.</li>
-                </ul>
-              </article>
-              <article className="relative z-20 w-full py-8">
-                <section className="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8">
-                  <div className="flex w-full items-center justify-between md:hidden">
-                    <h3>Frontend Developer</h3>
-                    <h3 className="underline md:hidden">Serasa</h3>
-                  </div>
-                  <h3 className="hidden lg:flex">Frontend Developer</h3>
-                  <h3 className="hidden underline lg:flex">Serasa</h3>
-                  <section className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end">
-                    <i>Blumenau, SC, Brazil</i>
-                    <h3>07/2021 - 02/2022</h3>
-                  </section>
-                </section>
-                <ul className="mt-4 list-disc pl-8">
-                  <li className="xl:w-3/4">
-                    Convert layouts built on Figma to a <strong>React</strong>{" "}
-                    application, using
-                    <strong> Typescript </strong> to ensure scalability and add
-                    static typing to the code base.
-                  </li>
-                  <li>
-                    Implement API calls using <strong>Axios</strong> and{" "}
-                    <strong>Redux-saga</strong> to preserve the payload in the
-                    application contexts.
-                  </li>
-                  <li>
-                    Implement functional testing for the <strong>React</strong>{" "}
-                    application components with <strong>Jest</strong> and{" "}
-                    <strong>Testing Library</strong>.
-                  </li>
-                  <li>
-                    Implement layout adjustments in a{" "}
-                    <strong>React/Angular/Next.js </strong>
-                    application, using <strong>SASS</strong> as stylesheet
-                    language.
-                  </li>
-                  <li>
-                    Deploy code changes using <strong>Jenkins</strong> and{" "}
-                    <strong>Bitbucket</strong> platforms.
-                  </li>
-                  <li>
-                    Participate in BDD meetings to discuss the
-                    application/features expected behavior.
-                  </li>
-                  <li>
-                    Create mail templates using <strong>Mjml framework</strong>.
-                  </li>
-                  <li>
-                    Contribute to Code Reviews to ensure quality deliveries.
-                  </li>
-                  <li>
-                    Use <strong>Git</strong> for local code versioning and{" "}
-                    <strong>Bitbucket</strong> for code repository hosting
-                    service.
-                  </li>
-                  <li>
-                    Work alongside the Data Analysis team to implement code
-                    triggers to store user interactions for{" "}
-                    <strong>Google Analytics </strong>
-                    during the user&apos;s journey in the application.
-                  </li>
-                </ul>
-              </article>
-              <article className="relative z-20 w-full py-8">
-                <section className="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8">
-                  <div className="flex w-full items-center justify-between md:hidden">
-                    <h3>Frontend Developer</h3>
-                    <h3 className="underline md:hidden">Prospecta Digital</h3>
-                  </div>
-                  <h3 className="hidden lg:flex">Frontend Developer</h3>
-                  <h3 className="hidden underline lg:flex">
-                    Prospecta Digital
-                  </h3>
-                  <section className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end">
-                    <i>SJRP, SP, Brazil</i>
-                    <h3>08/2020 - 05/2021</h3>
-                  </section>
-                </section>
-                <ul className="mt-4 list-disc pl-8">
-                  <li className="xl:w-3/4">
-                    Convert layouts built in Adobe Photoshop into a{" "}
-                    <strong>Wordpress</strong> or
-                    <strong> Tray Ecommerce</strong> platform, using{" "}
-                    <strong>Elementor</strong> or <strong>Oxygen</strong>{" "}
-                    plugins, always using good practices for{" "}
-                    <strong>SEO</strong> and optimization.
-                  </li>
-                  <li>
-                    Implement features in <strong>HTML/CSS</strong> and{" "}
-                    <strong>Javascript</strong>.
-                  </li>
-                  <li>
-                    Implement new layouts on the <strong>PHP</strong> website
-                    using <strong>Smarty</strong>.
-                  </li>
-                  <li>
-                    Implement features on a <strong>React</strong> financial
-                    project that uses
-                    <strong> Redux</strong> as a state management library.
-                  </li>
-                  <li>
-                    Create a P.O.C for a mobile application using{" "}
-                    <strong>React Native</strong>.
-                  </li>
-                  <li>
-                    Deploy websites on hosting websites like{" "}
-                    <strong>Locaweb</strong>, <strong>Hostinger</strong>, etc.
-                  </li>
-                  <li>
-                    Deploy the files with the code changes using{" "}
-                    <strong>Filezilla (FTP protocol)</strong>.
-                  </li>
-                </ul>
-              </article>
-              <article className="relative z-20 w-full py-8">
-                <section className="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8">
-                  <div className="flex w-full items-center justify-between md:hidden">
-                    <h3>Frontend Developer</h3>
-                    <h3 className="underline md:hidden">W3midia</h3>
-                  </div>
-                  <h3 className="hidden lg:flex">Frontend Developer</h3>
-                  <h3 className="hidden underline lg:flex">W3midia</h3>
-                  <section className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end">
-                    <i>SJRP, SP, Brazil</i>
-                    <h3>06/2020 - 07/2020</h3>
-                  </section>
-                </section>
-                <ul className="mt-4 list-disc pl-8">
-                  <li className="xl:w-3/4">
-                    Implement features using <strong>HTML/CSS</strong>,{" "}
-                    <strong>Javascript</strong> and <strong>PHP</strong>.
-                  </li>
-                  <li>
-                    Deploy the files with the code changes using{" "}
-                    <strong>Filezilla (FTP protocol)</strong>.
-                  </li>
-                  <li>
-                    Fix bugs in websites that were in a production environment.
-                  </li>
-                  <li>
-                    Implement new layouts in a proprietary <strong>CMS</strong>{" "}
-                    provided by the company to the clients.
-                  </li>
-                </ul>
-              </article>
+              <ExperienceDescriptionComponent
+                jobTitle="Software Developer"
+                company="Cognizant"
+                locality="São Paulo, SP, Brazil"
+                period="04/2022 - Current"
+              >
+                <li className="xl:w-3/4">
+                  Implement features and layouts from Figma into a{" "}
+                  <strong>React/React Native + Expo</strong> application,
+                  utilizing <strong>Redux/ContextAPI</strong> for state
+                  management, <strong>Typescript</strong>, and a client Design
+                  System similar to Material UI.
+                </li>
+                <li>
+                  Write functional and unit tests with <strong>Jest</strong> and{" "}
+                  <strong>Testing Library</strong>.
+                </li>
+                <li>
+                  Utilize <strong>Axios</strong> to write HTTP requests.
+                </li>
+                <li>
+                  Use <strong>Git</strong> for code versioning and{" "}
+                  <strong>Azure DevOps</strong> to CI/CD and code repository
+                  hosting service.
+                </li>
+                <li>
+                  Contribute to Code Reviews, Technical Interviews and Q&A
+                  sessions with a foreign technical team.
+                </li>
+                <li>
+                  Analyze reports on AWS and SAP in order to identify production
+                  environment failed requests.
+                </li>
+                <li>Implement triggers and rules on Datadog.</li>
+              </ExperienceDescriptionComponent>
+              <ExperienceDescriptionComponent
+                jobTitle="Frontend Developer"
+                company="Serasa"
+                locality="Blumenau, SC, Brazil"
+                period="07/2021 - 02/2022"
+              >
+                <li className="xl:w-3/4">
+                  Convert layouts built on Figma to a <strong>React</strong>{" "}
+                  application, using
+                  <strong> Typescript </strong> to ensure scalability and add
+                  static typing to the code base.
+                </li>
+                <li>
+                  Implement API calls using <strong>Axios</strong> and{" "}
+                  <strong>Redux-saga</strong> to preserve the payload in the
+                  application contexts.
+                </li>
+                <li>
+                  Implement functional testing for the <strong>React</strong>{" "}
+                  application components with <strong>Jest</strong> and{" "}
+                  <strong>Testing Library</strong>.
+                </li>
+                <li>
+                  Implement layout adjustments in a{" "}
+                  <strong>React/Angular/Next.js </strong>
+                  application, using <strong>SASS</strong> as stylesheet
+                  language.
+                </li>
+                <li>
+                  Deploy code changes using <strong>Jenkins</strong> and{" "}
+                  <strong>Bitbucket</strong> platforms.
+                </li>
+                <li>
+                  Participate in BDD meetings to discuss the
+                  application/features expected behavior.
+                </li>
+                <li>
+                  Create mail templates using <strong>Mjml framework</strong>.
+                </li>
+                <li>
+                  Contribute to Code Reviews to ensure quality deliveries.
+                </li>
+                <li>
+                  Use <strong>Git</strong> for local code versioning and{" "}
+                  <strong>Bitbucket</strong> for code repository hosting
+                  service.
+                </li>
+                <li>
+                  Work alongside the Data Analysis team to implement code
+                  triggers to store user interactions for{" "}
+                  <strong>Google Analytics </strong>
+                  during the user&apos;s journey in the application.
+                </li>
+              </ExperienceDescriptionComponent>
+              <ExperienceDescriptionComponent
+                jobTitle="Frontend Developer"
+                company="Prospecta Digital"
+                locality="SJRP, SP, Brazil"
+                period="08/2020 - 05/2021"
+              >
+                <li className="xl:w-3/4">
+                  Convert layouts built in Adobe Photoshop into a{" "}
+                  <strong>Wordpress</strong> or
+                  <strong> Tray Ecommerce</strong> platform, using{" "}
+                  <strong>Elementor</strong> or <strong>Oxygen</strong> plugins,
+                  always using good practices for <strong>SEO</strong> and
+                  optimization.
+                </li>
+                <li>
+                  Implement features in <strong>HTML/CSS</strong> and{" "}
+                  <strong>Javascript</strong>.
+                </li>
+                <li>
+                  Implement new layouts on the <strong>PHP</strong> website
+                  using <strong>Smarty</strong>.
+                </li>
+                <li>
+                  Implement features on a <strong>React</strong> financial
+                  project that uses
+                  <strong> Redux</strong> as a state management library.
+                </li>
+                <li>
+                  Create a P.O.C for a mobile application using{" "}
+                  <strong>React Native</strong>.
+                </li>
+                <li>
+                  Deploy websites on hosting websites like{" "}
+                  <strong>Locaweb</strong>, <strong>Hostinger</strong>, etc.
+                </li>
+                <li>
+                  Deploy the files with the code changes using{" "}
+                  <strong>Filezilla (FTP protocol)</strong>.
+                </li>
+              </ExperienceDescriptionComponent>
+              <ExperienceDescriptionComponent
+                jobTitle="Frontend Developer"
+                company="W3midia"
+                locality="SJRP, SP, Brazil"
+                period="06/2020 - 07/2020"
+              >
+                <li className="xl:w-3/4">
+                  Implement features using <strong>HTML/CSS</strong>,{" "}
+                  <strong>Javascript</strong> and <strong>PHP</strong>.
+                </li>
+                <li>
+                  Deploy the files with the code changes using{" "}
+                  <strong>Filezilla (FTP protocol)</strong>.
+                </li>
+                <li>
+                  Fix bugs in websites that were in a production environment.
+                </li>
+                <li>
+                  Implement new layouts in a proprietary <strong>CMS</strong>{" "}
+                  provided by the company to the clients.
+                </li>
+              </ExperienceDescriptionComponent>
             </section>
 
             <div className="h-20" id="projects" />
