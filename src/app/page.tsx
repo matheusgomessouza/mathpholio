@@ -389,7 +389,7 @@ export default async function Home() {
               <article className="flex flex-col justify-center">
                 <h2
                   id="services"
-                  className="mx-auto mb-8 mt-12 w-4/5 text-center text-2xl lg:mx-0 lg:text-left 2xl:text-4xl 2xl:leading-tight"
+                  className="mx-auto mb-8 w-4/5 text-center text-2xl lg:mx-0 lg:text-left xl:mt-12 2xl:text-4xl 2xl:leading-tight"
                 >
                   Expertise in Software Development with Diverse Projects and
                   Cutting-Edge Solutions

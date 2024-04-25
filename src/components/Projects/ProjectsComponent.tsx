@@ -24,7 +24,13 @@ export default function ProjectsComponent({
         <li>{pushed_at}</li>
         {homepage ? <li>{homepage}</li> : null}
         {license ? <li>{license.name}</li> : null}
-        {topics ? <li>{topics}</li> : null}
+        {topics ? (
+          <ul>
+            {topics.map((item: string) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        ) : null}
       </ul>
     </article>
   );
