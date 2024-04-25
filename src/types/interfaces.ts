@@ -58,3 +58,19 @@ export interface ExperienceDescriptionComponentProps {
   period: string;
   children: React.ReactNode;
 }
+
+export interface GithubReposProps {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  pushed_at: string;
+  homepage?: string;
+  license?: {
+    key: string;
+    name: string;
+  } | null;
+  topics: Array<string>;
+}

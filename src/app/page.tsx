@@ -6,16 +6,21 @@ import { techs, services } from "@/variables/data";
 import * as interfaces from "@/types/interfaces";
 import myPicture from "../../public/assets/main-circle.png";
 
+import { getGithubData } from "@/services/github-api";
+
 import HeaderComponent from "@/components/Header/HeaderComponent";
 import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
 import ButtonComponent from "@/components/Button/ButtonComponent";
 import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
+import ProjectsComponent from "@/components/Projects/ProjectsComponent";
 
-export default function Home() {
+export default async function Home() {
   const isLastTechsItem = (item: number, length: number) => {
     if (item === length - 1) return true;
     return false;
   };
+
+  const data = await getGithubData();
 
   return (
     <>
@@ -211,8 +216,8 @@ export default function Home() {
               </div>
             </section>
             <div id="work-experience" className="h-2 lg:h-32" />
-            <section className="flex flex-col justify-center dark:text-white lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:h-[1340px] lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four">
-              <article className="relative z-20 mt-12 text-center xl:mt-8 xl:text-left 2xl:mt-16">
+            <section className="flex flex-col justify-center dark:text-white lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[1380px] 2xl:before:h-[1480px]">
+              <article className="relative z-20 mt-12 text-center xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
                   Building Solutions Across Technologies and Industries
                 </h2>
@@ -386,17 +391,44 @@ export default function Home() {
                   id="services"
                   className="mx-auto mb-8 mt-12 w-4/5 text-center text-2xl lg:mx-0 lg:text-left 2xl:text-4xl 2xl:leading-tight"
                 >
-                  Personal Projects
+                  Expertise in Software Development with Diverse Projects and
+                  Cutting-Edge Solutions
                 </h2>
                 <p className="text-center lg:flex lg:w-80 lg:text-left 2xl:w-11/12 2xl:text-2xl">
-                  Section on development...
+                  Harnessing years of experience in software engineering, I
+                  specialize in crafting robust and scalable applications
+                  tailored to meet dynamic business needs. My Github portfolio
+                  demonstrates my proficiency across a wide range of
+                  technologies, including HTML, CSS, Javascript, Typescript,
+                  React, Redux, Next.js, React Native, Expo, Node.js,
+                  Express.js, Jest, Docker, SQL, Prisma ORM, and more. Each
+                  project underscores my ability to innovate and deliver
+                  effective solutions in various domains, showcasing my
+                  commitment to excellence and continuous learning.
                 </p>
+              </article>
+              <article className="mt-20">
+                {data.map((item: interfaces.GithubReposProps) => (
+                  <ProjectsComponent
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    html_url={item.html_url}
+                    description={item.description}
+                    created_at={item.created_at}
+                    updated_at={item.updated_at}
+                    pushed_at={item.pushed_at}
+                    homepage={item.homepage}
+                    license={item.license}
+                    topics={item.topics}
+                  />
+                ))}
               </article>
             </section>
           </section>
         </div>
       </main>
-      <footer className="fixed bottom-0 w-full bg-black px-4 py-1 text-center text-color-six dark:bg-color-four lg:relative lg:text-end">
+      <footer className="fixed bottom-0 w-full bg-black px-4 py-1 text-center text-color-six dark:bg-color-four lg:relative">
         <p className="text-white dark:text-white">
           Mathpholio™️, Copyright © 2024 by Matheus Souza
         </p>
