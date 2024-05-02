@@ -417,7 +417,6 @@ export default async function Home() {
                     description={item.description}
                     created_at={item.created_at}
                     updated_at={item.updated_at}
-                    pushed_at={item.pushed_at}
                     homepage={item.homepage}
                     license={item.license}
                     topics={item.topics}

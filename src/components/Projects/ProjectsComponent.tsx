@@ -1,5 +1,8 @@
 "use client";
 import * as interfaces from "@/types/interfaces";
+import { ImGithub } from "react-icons/im";
+import ButtonComponent from "../Button/ButtonComponent";
+import Link from "next/link";
 
 export default function ProjectsComponent({
   id,
@@ -8,30 +11,86 @@ export default function ProjectsComponent({
   description,
   created_at,
   updated_at,
-  pushed_at,
   homepage,
   license,
   topics,
 }: interfaces.GithubReposProps) {
+  function convertDateFormat(date: string) {
+    const isoDate = new Date(date);
+    const formattedDate = isoDate
+      .toISOString()
+      .split("T")[0]
+      .replace(/-/g, "/");
+
+    return formattedDate;
+  }
+
   return (
-    <article key={id} className="mb-8">
-      <ul>
-        <li>{name}</li>
-        <li>{html_url}</li>
-        <li>{description}</li>
-        <li>{created_at}</li>
-        <li>{updated_at}</li>
-        <li>{pushed_at}</li>
-        {homepage ? <li>{homepage}</li> : null}
-        {license ? <li>{license.name}</li> : null}
+    <article
+      key={id}
+      className="mb-8 flex flex-col-reverse items-center justify-between gap-6 xl:flex-row xl:gap-20 xl:text-xl"
+    >
+      <aside className="w-full xl:w-1/2">
+        <strong className="font-alt font-normal">{name}</strong>
+        <p>{description}</p>
+        <section className=" mt-4 flex flex-col gap-1 xl:mt-6">
+          {license ? (
+            <span className="font-alt font-normal">{license.name}</span>
+          ) : null}
+          <div className="flex items-center gap-1">
+            <div className="xl:hidden">
+              <ButtonComponent
+                isMobile
+                label="Github"
+                link={html_url}
+                ariaLabel="Check out the GitHub page for this project!"
+              >
+                <ImGithub />
+              </ButtonComponent>
+            </div>
+            <div className="hidden gap-1 xl:flex">
+              <span className="font-alt font-normal">Github:</span>
+              <Link href={html_url} className="font-sans underline-offset-2">
+                {html_url}
+              </Link>
+            </div>
+          </div>
+          {homepage ? (
+            <div className="flex items-center gap-1">
+              <span className="font-alt font-normal">Link:</span>
+              <Link href={homepage} className="font-sans underline-offset-2">
+                {homepage}
+              </Link>
+            </div>
+          ) : null}
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              <span className="font-alt font-normal">Created at:</span>
+              <p>{convertDateFormat(created_at)}</p>
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="font-alt font-normal">Updated at:</span>
+              <p>{convertDateFormat(updated_at)}</p>
+            </div>
+          </div>
+        </section>
         {topics ? (
-          <ul>
+          <ul className="mt-8 flex w-full flex-wrap items-center gap-2">
             {topics.map((item: string) => (
-              <li key={item}>{item}</li>
+              <li
+                key={item}
+                className="rounded-full bg-color-two p-1 px-6 font-alt text-sm font-normal xl:text-base"
+              >
+                {item}
+              </li>
             ))}
           </ul>
         ) : null}
-      </ul>
+      </aside>
+
+      <figure className="w-full xl:w-1/2">
+        <div className="h-60 w-full rounded-lg bg-color-two xl:h-[50vh]"></div>
+      </figure>
     </article>
   );
 }

@@ -48,6 +48,7 @@ export interface ButtonComponentProps {
   label: string;
   link: string;
   ariaLabel: string;
+  isMobile?: boolean;
   children: React.ReactElement;
 }
 
@@ -66,7 +67,6 @@ export interface GithubReposProps {
   description: string;
   created_at: string;
   updated_at: string;
-  pushed_at: string;
   homepage?: string;
   license?: {
     key: string;
