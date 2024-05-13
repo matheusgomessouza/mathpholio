@@ -14,6 +14,7 @@ export default function ProjectsComponent({
   homepage,
   license,
   topics,
+  languages,
 }: interfaces.GithubReposProps) {
   function convertDateFormat(date: string) {
     const isoDate = new Date(date);
@@ -74,6 +75,10 @@ export default function ProjectsComponent({
             </div>
           </div>
         </section>
+        <div className="flex items-center gap-1">
+          <span className="font-alt font-normal">Related Languages:</span>
+          <p>{languages}</p>
+        </div>
         {topics ? (
           <ul className="mt-8 flex w-full flex-wrap items-center gap-2">
             {topics.map((item: string) => (
@@ -89,7 +94,7 @@ export default function ProjectsComponent({
       </aside>
 
       <figure className="w-full xl:w-1/2">
-        <div className="h-60 w-full rounded-lg bg-color-two xl:h-[50vh]"></div>
+        <div className="h-60 w-full rounded-3xl bg-color-two xl:h-[50vh]"></div>
       </figure>
     </article>
   );

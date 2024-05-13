@@ -12,15 +12,17 @@ import HeaderComponent from "@/components/Header/HeaderComponent";
 import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
 import ButtonComponent from "@/components/Button/ButtonComponent";
 import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
-import ProjectsComponent from "@/components/Projects/ProjectsComponent";
+import CarouselComponent from "@/components/Button/CarouselComponent";
 
 export default async function Home() {
+  const response = await getGithubData();
+  const converted = Object.entries(response);
+  // console.log(converted);
+
   const isLastTechsItem = (item: number, length: number) => {
     if (item === length - 1) return true;
     return false;
   };
-
-  const data = await getGithubData();
 
   return (
     <>
@@ -407,22 +409,7 @@ export default async function Home() {
                   commitment to excellence and continuous learning.
                 </p>
               </article>
-              <article className="mt-20">
-                {data.map((item: interfaces.GithubReposProps) => (
-                  <ProjectsComponent
-                    key={item.id}
-                    id={item.id}
-                    name={item.name}
-                    html_url={item.html_url}
-                    description={item.description}
-                    created_at={item.created_at}
-                    updated_at={item.updated_at}
-                    homepage={item.homepage}
-                    license={item.license}
-                    topics={item.topics}
-                  />
-                ))}
-              </article>
+              <CarouselComponent data={converted} />
             </section>
           </section>
         </div>

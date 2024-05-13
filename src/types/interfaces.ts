@@ -73,4 +73,5 @@ export interface GithubReposProps {
     name: string;
   } | null;
   topics: Array<string>;
+  languages?: any;
 }
