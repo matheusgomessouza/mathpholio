@@ -18,12 +18,12 @@ export default function ProjectsComponent({
 }: interfaces.GithubReposProps) {
   function convertDateFormat(date: string) {
     const isoDate = new Date(date);
-    const formattedDate = isoDate
-      .toISOString()
-      .split("T")[0]
-      .replace(/-/g, "/");
-
-    return formattedDate;
+    // const formattedDate = isoDate
+    //   .toISOString()
+    //   .split("T")[0]
+    //   .replace(/-/g, "/");
+    console.log(isoDate);
+    return date;
   }
 
   return (
