@@ -1,4 +1,4 @@
-export async function getGithubData() {
+export async function getGithubReposData() {
   try {
     const res = await fetch(
       `https://api.github.com/users/matheusgomessouza/repos`,

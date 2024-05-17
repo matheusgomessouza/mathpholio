@@ -6,7 +6,7 @@ import { techs, services } from "@/variables/data";
 import * as interfaces from "@/types/interfaces";
 import myPicture from "../../public/assets/main-circle.png";
 
-import { getGithubData } from "@/services/github-api";
+import { getGithubReposData } from "@/services/github-api";
 
 import HeaderComponent from "@/components/Header/HeaderComponent";
 import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
@@ -15,10 +15,7 @@ import ExperienceDescriptionComponent from "@/components/ExperienceDescription/E
 import CarouselComponent from "@/components/Button/CarouselComponent";
 
 export default async function Home() {
-  const response = await getGithubData();
-  const converted = Object.entries(response);
-  // console.log(converted);
-
+  const githubReposResponse = await getGithubReposData();
   const isLastTechsItem = (item: number, length: number) => {
     if (item === length - 1) return true;
     return false;
@@ -409,7 +406,7 @@ export default async function Home() {
                   commitment to excellence and continuous learning.
                 </p>
               </article>
-              <CarouselComponent data={converted} />
+              <CarouselComponent data={githubReposResponse} />
             </section>
           </section>
         </div>
