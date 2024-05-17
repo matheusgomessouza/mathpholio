@@ -12,7 +12,7 @@ import HeaderComponent from "@/components/Header/HeaderComponent";
 import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
 import ButtonComponent from "@/components/Button/ButtonComponent";
 import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
-import CarouselComponent from "@/components/Button/CarouselComponent";
+import CarouselComponent from "@/components/Carousel/CarouselComponent";
 
 export default async function Home() {
   const githubReposResponse = await getGithubReposData();
