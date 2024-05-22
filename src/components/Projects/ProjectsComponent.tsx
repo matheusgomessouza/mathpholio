@@ -17,13 +17,15 @@ export default function ProjectsComponent({
   languages,
 }: interfaces.GithubReposProps) {
   function convertDateFormat(date: string) {
-    const isoDate = new Date(date);
-    const formattedDate = isoDate
-      .toISOString()
-      .split("T")[0]
-      .replace(/-/g, "/");
+    if (date) {
+      const isoDate = new Date(date);
+      const formattedDate = isoDate
+        .toISOString()
+        .split("T")[0]
+        .replace(/-/g, "/");
 
-    return formattedDate;
+      return formattedDate;
+    }
   }
 
   return (
