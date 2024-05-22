@@ -41,11 +41,6 @@ export default function RootLayout({
         {children}
         <script
           async
-          src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
-        ></script>
-        <script
-          async
-          defer
           type="text/javascript"
           src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
         ></script>
