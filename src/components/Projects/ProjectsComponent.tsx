@@ -115,7 +115,7 @@ export default function ProjectsComponent({
           </figure>
         </article>
       ) : (
-        <span className="font-sans">Error on rendering slides...</span>
+        <span className="font-sans">Unable to render slides...</span>
       )}
     </>
   );
