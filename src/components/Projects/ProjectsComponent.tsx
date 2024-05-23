@@ -3,6 +3,7 @@ import * as interfaces from "@/types/interfaces";
 import { ImGithub } from "react-icons/im";
 import ButtonComponent from "../Button/ButtonComponent";
 import Link from "next/link";
+import { useCallback, useEffect } from "react";
 
 export default function ProjectsComponent({
   id,
@@ -14,9 +15,9 @@ export default function ProjectsComponent({
   homepage,
   license,
   topics,
-  languages,
+  language,
 }: interfaces.GithubReposProps) {
-  function convertDateFormat(date: string) {
+  const convertDateFormat = useCallback((date: string) => {
     if (date) {
       const isoDate = new Date(date);
       const formattedDate = isoDate
@@ -26,23 +27,18 @@ export default function ProjectsComponent({
 
       return formattedDate;
     }
-  }
+  }, []);
+
+  useEffect(() => {
+    console.log(language);
+  }, []);
 
   return (
     <>
-      {id &&
-      name &&
-      html_url &&
-      description &&
-      created_at &&
-      updated_at &&
-      homepage &&
-      license &&
-      topics &&
-      languages ? (
+      {id && name && html_url && created_at && updated_at ? (
         <article
           key={id}
-          className="keen-slider__slide mb-8 flex flex-col-reverse items-center justify-between gap-6 xl:flex-row xl:gap-20 xl:text-xl"
+          className="keen-slider__slide mb-8 flex flex-col-reverse items-center justify-between gap-6 px-6 xl:flex-row xl:gap-20 xl:text-xl"
         >
           <aside className="w-full xl:w-1/2">
             <strong className="font-alt font-normal">{name}</strong>
@@ -94,10 +90,12 @@ export default function ProjectsComponent({
                 </div>
               </div>
             </section>
-            <div className="flex items-center gap-1">
-              <span className="font-alt font-normal">Related Languages:</span>
-              <p>{languages}</p>
-            </div>
+            {language && (
+              <div className="flex items-center gap-1">
+                <span className="font-alt font-normal">Related Languages:</span>
+                <p>{language}</p>
+              </div>
+            )}
             {topics ? (
               <ul className="mt-8 flex w-full flex-wrap items-center gap-2">
                 {topics.map((item: string) => (
@@ -117,7 +115,7 @@ export default function ProjectsComponent({
           </figure>
         </article>
       ) : (
-        <span>Error on rendering slides...</span>
+        <span className="font-sans">Error on rendering slides...</span>
       )}
     </>
   );

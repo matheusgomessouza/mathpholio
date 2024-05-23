@@ -1,5 +1,4 @@
 import React from "react";
-import { ListFormat, LiteralLikeNode } from "typescript";
 
 export type ReposInfoProps = {
   id: string;
@@ -73,7 +72,7 @@ export interface GithubReposProps {
     name: string;
   } | null;
   topics: Array<string>;
-  languages?: any;
+  language?: any;
 }
 
 export interface GithubReposResponseProps {
