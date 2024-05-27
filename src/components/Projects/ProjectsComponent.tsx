@@ -1,11 +1,13 @@
 "use client";
+
+import { memo } from "react";
 import * as interfaces from "@/types/interfaces";
 import { ImGithub } from "react-icons/im";
 import ButtonComponent from "../Button/ButtonComponent";
 import Link from "next/link";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 
-export default function ProjectsComponent({
+const ProjectsComponent = memo(function ProjectsComponent({
   id,
   name,
   html_url,
@@ -29,21 +31,17 @@ export default function ProjectsComponent({
     }
   }, []);
 
-  useEffect(() => {
-    console.log(language);
-  }, []);
-
   return (
     <>
       {id && name && html_url && created_at && updated_at ? (
         <article
           key={id}
-          className="keen-slider__slide mb-8 flex flex-col-reverse items-center justify-between gap-6 px-6 xl:flex-row xl:gap-20 xl:text-xl"
+          className="keen-slider__slide mb-8 flex flex-col-reverse items-center justify-end gap-6 px-6 xl:flex-row xl:justify-between xl:gap-20 xl:text-xl"
         >
           <aside className="w-full xl:w-1/2">
             <strong className="font-alt font-normal">{name}</strong>
-            <p>{description}</p>
-            <section className=" mt-4 flex flex-col gap-1 xl:mt-6">
+            <p className="xl:text-base 2xl:text-xl">{description}</p>
+            <section className="mt-4 flex flex-col gap-1 xl:mt-6 xl:text-base 2xl:text-xl">
               {license ? (
                 <span className="font-alt font-normal">{license.name}</span>
               ) : null}
@@ -92,8 +90,10 @@ export default function ProjectsComponent({
             </section>
             {language && (
               <div className="flex items-center gap-1">
-                <span className="font-alt font-normal">Related Languages:</span>
-                <p>{language}</p>
+                <span className="font-alt font-normal xl:text-base 2xl:text-xl">
+                  Related Languages:
+                </span>
+                <p className="xl:text-base 2xl:text-xl">{language}</p>
               </div>
             )}
             {topics ? (
@@ -101,7 +101,7 @@ export default function ProjectsComponent({
                 {topics.map((item: string) => (
                   <li
                     key={item}
-                    className="rounded-full bg-color-two p-1 px-6 font-alt text-sm font-normal xl:text-base"
+                    className="rounded-full bg-color-two p-1 px-6 font-alt text-sm font-normal text-color-eight xl:text-xs 2xl:text-base"
                   >
                     {item}
                   </li>
@@ -119,4 +119,6 @@ export default function ProjectsComponent({
       )}
     </>
   );
-}
+});
+
+export default ProjectsComponent;

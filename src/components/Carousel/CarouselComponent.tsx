@@ -99,8 +99,8 @@ export default function CarouselComponent({ data }: { data: any }) {
       </article>
 
       {loaded && instanceRef.current && (
-        <section className="relative mt-16 flex items-center justify-center">
-          <div className="hidden justify-center px-0 py-3 md:flex">
+        <section className="relative mt-16 flex items-center justify-center xl:mt-8">
+          <div className="hidden justify-center px-0 py-3 xl:flex">
             {[
               ...Array(instanceRef.current.track.details.slides.length).keys(),
             ].map((idx) => {
@@ -118,7 +118,7 @@ export default function CarouselComponent({ data }: { data: any }) {
               );
             })}
           </div>
-          <section className="absolute right-6 ml-auto flex gap-4">
+          <section className="absolute right-6 ml-auto hidden gap-4 xl:flex">
             <div
               className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-color-two"
               onClick={(e: any) =>

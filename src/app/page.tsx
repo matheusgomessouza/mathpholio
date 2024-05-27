@@ -383,7 +383,7 @@ export default async function Home() {
               </ExperienceDescriptionComponent>
             </section>
 
-            <div className="h-20" id="projects" />
+            <div className="h-8 xl:h-20" id="projects" />
             <section>
               <article className="flex flex-col justify-center">
                 <h2
@@ -393,7 +393,7 @@ export default async function Home() {
                   Expertise in Software Development with Diverse Projects and
                   Cutting-Edge Solutions
                 </h2>
-                <p className="text-center lg:flex lg:text-left 2xl:w-11/12 2xl:text-2xl">
+                <p className="text-center lg:flex lg:text-left 2xl:text-2xl">
                   Harnessing years of experience in software engineering, I
                   specialize in crafting robust and scalable applications
                   tailored to meet dynamic business needs. My Github portfolio
