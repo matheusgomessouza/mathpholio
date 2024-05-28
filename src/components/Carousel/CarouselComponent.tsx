@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -9,7 +10,11 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 import ProjectsComponent from "../Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
 
-export default function CarouselComponent({ data }: { data: any }) {
+const CarouselComponent = memo(function CarouselComponent({
+  data,
+}: {
+  data: any;
+}) {
   const [repos, setRepos] = useState<interfaces.GithubReposProps[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,7 +24,6 @@ export default function CarouselComponent({ data }: { data: any }) {
     renderMode: "performance",
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
-      console.log(currentSlide);
     },
     created() {
       setLoaded(true);
@@ -63,7 +67,6 @@ export default function CarouselComponent({ data }: { data: any }) {
 
         return arrayWithRepoProps;
       });
-
       return extractedReposProps.flat();
     },
     []
@@ -76,7 +79,7 @@ export default function CarouselComponent({ data }: { data: any }) {
 
   useEffect(() => {
     setRepos(convertedPayloadData);
-  }, [data, transformPayload, convertedPayloadData]);
+  }, [convertedPayloadData]);
 
   return (
     <>
@@ -140,4 +143,6 @@ export default function CarouselComponent({ data }: { data: any }) {
       )}
     </>
   );
-}
+});
+
+export default CarouselComponent;
