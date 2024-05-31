@@ -30,56 +30,9 @@ const CarouselComponent = memo(function CarouselComponent({
     },
   });
 
-  const transformPayload = useCallback(
-    (value: Array<interfaces.GithubReposResponseProps>) => {
-      const convertedObjectInArray = Object.entries(value);
-      const filteredReposObjects: interfaces.GithubReposResponseProps[] =
-        convertedObjectInArray.map((arr) => arr[1]);
-
-      const extractedReposProps = filteredReposObjects.map((arr) => {
-        let arrayWithRepoProps = [];
-
-        const {
-          id,
-          name,
-          html_url,
-          description,
-          created_at,
-          updated_at,
-          homepage,
-          license,
-          topics,
-          language,
-        } = arr;
-
-        arrayWithRepoProps.push({
-          id,
-          name,
-          html_url,
-          description,
-          created_at,
-          updated_at,
-          homepage,
-          license,
-          topics,
-          language,
-        });
-
-        return arrayWithRepoProps;
-      });
-      return extractedReposProps.flat();
-    },
-    []
-  );
-
-  const convertedPayloadData = useMemo(
-    () => transformPayload(data),
-    [data, transformPayload]
-  );
-
   useEffect(() => {
-    setRepos(convertedPayloadData);
-  }, [convertedPayloadData]);
+    setRepos(data);
+  }, [data]);
 
   return (
     <>

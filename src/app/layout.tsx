@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import "../styles/globals.css";
 import { Anton, Khand } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
       </head>
       <body className={`${anton.variable} ${khand.variable}`}>
         {children}
+        <Analytics />
         <script
           async
           type="text/javascript"

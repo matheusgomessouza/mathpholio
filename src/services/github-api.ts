@@ -1,4 +1,10 @@
-export async function getGithubReposData() {
+import * as interfaces from "@/types/interfaces";
+
+export async function getGithubReposData(): Promise<
+  interfaces.GithubReposResponseProps[]
+> {
+  let response;
+
   try {
     const res = await fetch(
       `https://api.github.com/users/matheusgomessouza/repos`,
@@ -9,10 +15,14 @@ export async function getGithubReposData() {
         method: "GET",
       }
     );
-    return res.json();
+    const data = await res.json();
+
+    response = data;
   } catch (error) {
     console.error("Unable to retrieve Github repos", error);
   }
+
+  return response;
 }
 
 export async function getRepoLanguages(repoName: string) {
@@ -26,7 +36,9 @@ export async function getRepoLanguages(repoName: string) {
         method: "GET",
       }
     );
-    return res.json();
+    const data = await res.json();
+
+    return data;
   } catch (error) {
     console.error("Unable to retrieve Github repo language", error);
   }

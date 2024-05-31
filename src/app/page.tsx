@@ -13,13 +13,11 @@ import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
 import ButtonComponent from "@/components/Button/ButtonComponent";
 import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
 import CarouselComponent from "@/components/Carousel/CarouselComponent";
+import { isLastTechsItem, transformPayload } from "@/utils/utils";
 
 export default async function Home() {
-  const githubReposResponse = await getGithubReposData();
-  const isLastTechsItem = (item: number, length: number) => {
-    if (item === length - 1) return true;
-    return false;
-  };
+  const githubReposPayload = await getGithubReposData();
+  const response = transformPayload(githubReposPayload);
 
   return (
     <>
@@ -406,7 +404,7 @@ export default async function Home() {
                   commitment to excellence and continuous learning.
                 </p>
               </article>
-              <CarouselComponent data={githubReposResponse} />
+              <CarouselComponent data={response} />
             </section>
           </section>
         </div>
