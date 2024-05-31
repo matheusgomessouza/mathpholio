@@ -1,7 +1,7 @@
 "use client";
 
 import { memo } from "react";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
@@ -40,24 +40,25 @@ const CarouselComponent = memo(function CarouselComponent() {
   return (
     <>
       <article ref={sliderRef} className="keen-slider mt-20">
-        {repos.map((item: interfaces.GithubReposProps) => (
-          <ProjectsComponent
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            html_url={item.html_url}
-            description={item.description}
-            created_at={item.created_at}
-            updated_at={item.updated_at}
-            homepage={item.homepage}
-            license={item.license}
-            topics={item.topics}
-            language={item.language}
-          />
-        ))}
+        {repos &&
+          repos.map((item: interfaces.GithubReposProps) => (
+            <ProjectsComponent
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              html_url={item.html_url}
+              description={item.description}
+              created_at={item.created_at}
+              updated_at={item.updated_at}
+              homepage={item.homepage}
+              license={item.license}
+              topics={item.topics}
+              language={item.language}
+            />
+          ))}
       </article>
 
-      {loaded && instanceRef.current && (
+      {repos && loaded && instanceRef.current && (
         <section className="relative mt-16 flex items-center justify-center xl:mt-8">
           <div className="hidden justify-center px-0 py-3 xl:flex">
             {[
