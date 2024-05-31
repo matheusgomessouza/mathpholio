@@ -6,19 +6,14 @@ import { techs, services } from "@/variables/data";
 import * as interfaces from "@/types/interfaces";
 import myPicture from "../../public/assets/main-circle.png";
 
-import { getGithubReposData } from "@/services/github-api";
-
 import HeaderComponent from "@/components/Header/HeaderComponent";
 import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
 import ButtonComponent from "@/components/Button/ButtonComponent";
 import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
 import CarouselComponent from "@/components/Carousel/CarouselComponent";
-import { isLastTechsItem, transformPayload } from "@/utils/utils";
+import { isLastTechsItem } from "@/utils/utils";
 
 export default async function Home() {
-  const githubReposPayload = await getGithubReposData();
-  const response = transformPayload(githubReposPayload);
-
   return (
     <>
       <HeaderComponent />
@@ -213,6 +208,7 @@ export default async function Home() {
               </div>
             </section>
             <div id="work-experience" className="h-2 lg:h-32" />
+
             <section className="flex flex-col justify-center dark:text-white lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[1380px] 2xl:before:h-[1480px]">
               <article className="relative z-20 mt-12 text-center xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
@@ -404,7 +400,7 @@ export default async function Home() {
                   commitment to excellence and continuous learning.
                 </p>
               </article>
-              <CarouselComponent data={response} />
+              <CarouselComponent />
             </section>
           </section>
         </div>

@@ -10,11 +10,7 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 import ProjectsComponent from "../Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
 
-const CarouselComponent = memo(function CarouselComponent({
-  data,
-}: {
-  data: any;
-}) {
+const CarouselComponent = memo(function CarouselComponent() {
   const [repos, setRepos] = useState<interfaces.GithubReposProps[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,9 +26,16 @@ const CarouselComponent = memo(function CarouselComponent({
     },
   });
 
+  async function getGithubReposData() {
+    const response = await fetch("/api/github/repos");
+    const githubData = await response.json();
+
+    setRepos(githubData.data);
+  }
+
   useEffect(() => {
-    setRepos(data);
-  }, [data]);
+    getGithubReposData();
+  }, []);
 
   return (
     <>
