@@ -27,7 +27,9 @@ const CarouselComponent = memo(function CarouselComponent() {
   });
 
   async function getGithubReposData() {
-    const response = await fetch("/api/github/repos");
+    const response = await fetch(
+      `${process.env.URL ? process.env.URL : ""}/api/github/repos`
+    );
     const githubData = await response.json();
 
     setRepos(githubData.data);
