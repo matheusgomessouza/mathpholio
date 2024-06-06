@@ -16,7 +16,7 @@ const CarouselComponent = memo(function CarouselComponent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    slides: repos.length ? repos.length : 32,
+    slides: repos && repos.length ? repos.length : 32,
     renderMode: "performance",
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
@@ -41,7 +41,11 @@ const CarouselComponent = memo(function CarouselComponent() {
 
   return (
     <>
-      <article ref={sliderRef} className="keen-slider mt-20">
+      <article
+        ref={sliderRef}
+        className="keen-slider mt-20"
+        role="slider-wrapper"
+      >
         {repos &&
           repos.map((item: interfaces.GithubReposProps) => (
             <ProjectsComponent
