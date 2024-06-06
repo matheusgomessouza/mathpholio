@@ -8,7 +8,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias / This project was de
 - [React](https://react.dev/)
 - [Typescript](https://www.typescriptlang.org/)
 - [TailwindCSS](https://tailwindcss.com/)
-- [Jest](https://jestjs.io/)
+- [Vitest](https://vitest.dev/)
+- [Mock Service Worker](https://mswjs.io/)
+- [Husky](https://typicode.github.io/husky/)
+
 
 ---
 
