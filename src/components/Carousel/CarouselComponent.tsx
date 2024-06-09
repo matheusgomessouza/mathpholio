@@ -1,7 +1,6 @@
 "use client";
 
-import { memo } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 

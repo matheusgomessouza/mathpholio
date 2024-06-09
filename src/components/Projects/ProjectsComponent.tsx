@@ -7,7 +7,7 @@ import ButtonComponent from "../Button/ButtonComponent";
 import Link from "next/link";
 import { convertDateFormat } from "@/utils/utils";
 
-const ProjectsComponent = memo(function ProjectsComponent({
+export default function ProjectsComponent({
   id,
   name,
   html_url,
@@ -107,6 +107,4 @@ const ProjectsComponent = memo(function ProjectsComponent({
       )}
     </>
   );
-});
-
-export default ProjectsComponent;
+}

@@ -13,7 +13,7 @@ import ExperienceDescriptionComponent from "@/components/ExperienceDescription/E
 import CarouselComponent from "@/components/Carousel/CarouselComponent";
 import { isLastTechsItem } from "@/utils/utils";
 
-export default async function Home() {
+export default function Home() {
   return (
     <>
       <HeaderComponent />
