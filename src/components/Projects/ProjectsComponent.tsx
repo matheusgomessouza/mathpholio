@@ -24,8 +24,6 @@ const ProjectsComponent = memo(function ProjectsComponent({
       {id && name && html_url && created_at && updated_at ? (
         <article
           key={id}
-          role="slider"
-          aria-valuenow={id}
           className="keen-slider__slide mb-8 flex flex-col-reverse items-center justify-end gap-6 px-6 xl:flex-row xl:justify-between xl:gap-20 xl:text-xl"
         >
           <aside className="w-full xl:w-1/2">

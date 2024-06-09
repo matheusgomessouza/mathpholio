@@ -36,7 +36,14 @@ const CarouselComponent = memo(function CarouselComponent() {
   }
 
   useEffect(() => {
-    getGithubReposData();
+    (async () => {
+      const response = await fetch(
+        `${process.env.URL ? process.env.URL : ""}/api/github/repos`
+      );
+      const githubData = await response.json();
+
+      setRepos(githubData.data);
+    })();
   }, []);
 
   return (
@@ -64,46 +71,51 @@ const CarouselComponent = memo(function CarouselComponent() {
           ))}
       </article>
 
-      {repos && loaded && instanceRef.current && (
-        <section className="relative mt-16 flex items-center justify-center xl:mt-8">
-          <div className="hidden justify-center px-0 py-3 xl:flex">
-            {[
-              ...Array(instanceRef.current.track.details.slides.length).keys(),
-            ].map((idx) => {
-              return (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    instanceRef.current?.moveToIdx(idx);
-                  }}
-                  className={
-                    "mx-1 my-0 h-3 w-3 cursor-pointer rounded-full border-0 bg-color-five p-1" +
-                    (currentSlide === idx ? " bg-white" : "")
-                  }
-                ></button>
-              );
-            })}
-          </div>
-          <section className="absolute right-6 ml-auto hidden gap-4 xl:flex">
-            <div
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-color-two"
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.prev()
-              }
-            >
-              <MdOutlineChevronLeft size={24} color="#FFFF" />
+      {typeof repos !== "undefined" &&
+        repos.length > 0 &&
+        loaded &&
+        instanceRef.current && (
+          <section className="relative mt-16 flex items-center justify-center xl:mt-8">
+            <div className="hidden justify-center px-0 py-3 xl:flex">
+              {[
+                ...Array(
+                  instanceRef.current.track.details.slides.length
+                ).keys(),
+              ].map((idx) => {
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      instanceRef.current?.moveToIdx(idx);
+                    }}
+                    className={
+                      "mx-1 my-0 h-3 w-3 cursor-pointer rounded-full border-0 bg-color-five p-1" +
+                      (currentSlide === idx ? " bg-white" : "")
+                    }
+                  ></button>
+                );
+              })}
             </div>
-            <div
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-color-two"
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.next()
-              }
-            >
-              <MdOutlineChevronRight size={24} color="#FFFF" />
-            </div>
+            <section className="absolute right-6 ml-auto hidden gap-4 xl:flex">
+              <div
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-color-two"
+                onClick={(e: any) =>
+                  e.stopPropagation() || instanceRef.current?.prev()
+                }
+              >
+                <MdOutlineChevronLeft size={24} color="#FFFF" />
+              </div>
+              <div
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-color-two"
+                onClick={(e: any) =>
+                  e.stopPropagation() || instanceRef.current?.next()
+                }
+              >
+                <MdOutlineChevronRight size={24} color="#FFFF" />
+              </div>
+            </section>
           </section>
-        </section>
-      )}
+        )}
     </>
   );
 });

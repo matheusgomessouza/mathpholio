@@ -23,7 +23,7 @@ export async function GET(): Promise<
   }
 }
 
-function payloadManipulation(
+export function payloadManipulation(
   value: Array<interfaces.GithubReposResponseProps>
 ): Array<interfaces.GithubReposProps> {
   const convertedObjectInArray = Object.entries(value);

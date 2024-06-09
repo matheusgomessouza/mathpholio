@@ -63,13 +63,16 @@ export interface GithubReposProps {
   id: number;
   name: string;
   html_url: string;
-  description: string;
+  description: string | null;
   created_at: string;
   updated_at: string;
-  homepage?: string;
+  homepage?: string | null;
   license?: {
     key: string;
     name: string;
+    spdx_id: string;
+    url: string;
+    node_id: string;
   } | null;
   topics: Array<string>;
   language?: any;
@@ -92,7 +95,7 @@ export interface GithubReposResponseProps {
   created_at: string;
   default_branch: string;
   deployments_url: string;
-  description: string;
+  description: string | null;
   disabled: boolean;
   downloads_url: string;
   events_url: string;
@@ -111,7 +114,7 @@ export interface GithubReposResponseProps {
   has_pages: boolean;
   has_projects: boolean;
   has_wiki: boolean;
-  homepage: string;
+  homepage: string | null;
   hooks_url: string;
   html_url: string;
   id: number;
@@ -126,6 +129,9 @@ export interface GithubReposResponseProps {
   license: {
     key: string;
     name: string;
+    spdx_id: string;
+    url: string;
+    node_id: string;
   } | null;
   merges_url: string;
   milestones_url: string;
@@ -149,7 +155,7 @@ export interface GithubReposResponseProps {
     organizations_url: string;
     received_events_url: string;
     repos_url: string;
-    site_admin: false;
+    site_admin: boolean;
     starred_url: string;
     subscriptions_url: string;
     type: string;
