@@ -1,4 +1,4 @@
-import { payloadManipulation } from "@/app/api/github/repos/route";
+import { payloadManipulation } from "@/utils/utils";
 import { describe, test, expect, expectTypeOf } from "vitest";
 
 const mockData = [
