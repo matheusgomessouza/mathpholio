@@ -1,6 +1,5 @@
 "use client";
 
-import { memo } from "react";
 import * as interfaces from "@/types/interfaces";
 import { ImGithub } from "react-icons/im";
 import ButtonComponent from "../Button/ButtonComponent";
