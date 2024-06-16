@@ -32,6 +32,7 @@ export default function RootLayout({
       className="scroll-smooth dark:bg-black dark:text-white"
       style={{ scrollBehavior: "smooth" }}
     >
+      <title>Mathpholio!</title>
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
         <link

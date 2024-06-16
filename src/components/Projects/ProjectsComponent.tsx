@@ -1,3 +1,5 @@
+"use client";
+
 import * as interfaces from "@/types/interfaces";
 import { ImGithub } from "react-icons/im";
 import ButtonComponent from "../Button/ButtonComponent";
@@ -42,7 +44,10 @@ export default function ProjectsComponent({
               </div>
               <div className="hidden gap-1 xl:flex">
                 <span className="font-alt font-normal">Github:</span>
-                <Link href={html_url} className="font-sans underline-offset-2">
+                <Link
+                  href={html_url ?? ""}
+                  className="font-sans underline-offset-2"
+                >
                   {html_url}
                 </Link>
               </div>
@@ -50,7 +55,10 @@ export default function ProjectsComponent({
             {homepage ? (
               <div className="flex items-center gap-1">
                 <span className="font-alt font-normal">Link:</span>
-                <Link href={homepage} className="font-sans underline-offset-2">
+                <Link
+                  href={homepage ?? ""}
+                  className="font-sans underline-offset-2"
+                >
                   {homepage}
                 </Link>
               </div>
