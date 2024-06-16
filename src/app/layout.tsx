@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import "../styles/globals.css";
 import { Anton, Khand } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
       className="scroll-smooth dark:bg-black dark:text-white"
       style={{ scrollBehavior: "smooth" }}
     >
+      <title>Mathpholio!</title>
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
         <link
@@ -41,6 +43,7 @@ export default function RootLayout({
       <body className={`${anton.variable} ${khand.variable}`}>
         {children}
         <Analytics />
+        <SpeedInsights />
         <script
           async
           type="text/javascript"

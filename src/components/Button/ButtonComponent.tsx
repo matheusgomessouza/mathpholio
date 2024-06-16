@@ -17,7 +17,7 @@ export default function ButtonComponent({
     <Link
       aria-label={ariaLabel}
       target="_blank"
-      href={link}
+      href={link ?? ""}
       className={className}
     >
       {label}
