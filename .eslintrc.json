@@ -1,9 +1,6 @@
 {
-  "extends": [
-    "next/core-web-vitals", 
-    "prettier"
-  ],
-  "plugins": ["prettier"],
+  "extends": ["next/core-web-vitals", "prettier"],
+  "plugins": ["prettier", "jsx-a11y"],
   "rules": {
     "prettier/prettier": "error",
     "arrow-body-style": "off",
