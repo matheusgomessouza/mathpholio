@@ -9,8 +9,9 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 import ProjectsComponent from "../Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
 import { payloadManipulation } from "@/utils/utils";
+import { Loading } from "../Loading/LoadingComponent";
 
-const CarouselComponent = memo(function CarouselComponent() {
+export function CarouselComponent() {
   const [repos, setRepos] = useState<interfaces.GithubReposProps[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -34,6 +35,7 @@ const CarouselComponent = memo(function CarouselComponent() {
           headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
           },
+          method: "GET",
         }
       );
 
@@ -114,10 +116,4 @@ const CarouselComponent = memo(function CarouselComponent() {
       )}
     </>
   );
-});
-
-function Loading() {
-  return <h2>Loading...</h2>;
 }
-
-export default CarouselComponent;
