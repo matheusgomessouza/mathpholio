@@ -27,8 +27,8 @@ export function CarouselComponent() {
     },
   });
 
-  useEffect(() => {
-    (async () => {
+  async function getGitHubReposData() {
+    try {
       const response = await fetch(
         "https://api.github.com/users/matheusgomessouza/repos",
         {
@@ -43,7 +43,16 @@ export function CarouselComponent() {
       const payload = payloadManipulation(data);
 
       setRepos(payload);
-    })();
+    } catch (error) {
+      console.error(
+        "Unable to retrieve GitHub response /getGitHubReposData",
+        error
+      );
+    }
+  }
+
+  useEffect(() => {
+    getGitHubReposData();
   }, []);
 
   return (
