@@ -25,7 +25,7 @@ export function payloadManipulation(
     convertedObjectInArray.map((arr) => arr[1]);
 
   const extractedReposProps = filteredReposObjects.map((arr) => {
-    let arrayWithRepoProps = [];
+    let arrayWithRepoProps: Array<interfaces.GithubReposProps> = [];
 
     const {
       id,

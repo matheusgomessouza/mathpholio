@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, Suspense } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
@@ -8,6 +8,7 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 
 import ProjectsComponent from "../Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
+import { payloadManipulation } from "@/utils/utils";
 
 const CarouselComponent = memo(function CarouselComponent() {
   const [repos, setRepos] = useState<interfaces.GithubReposProps[]>([]);
@@ -28,11 +29,18 @@ const CarouselComponent = memo(function CarouselComponent() {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        `${process.env.URL ? process.env.URL : ""}/api/github/repos`
+        "https://api.github.com/users/matheusgomessouza/repos",
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
+          },
+        }
       );
-      const githubData = await response.json();
 
-      setRepos(githubData.data);
+      const data = await response.json();
+      const payload = payloadManipulation(data);
+
+      setRepos(payload);
     })();
   }, []);
 
@@ -43,23 +51,25 @@ const CarouselComponent = memo(function CarouselComponent() {
         className="keen-slider mt-20"
         role="slider-wrapper"
       >
-        {typeof repos !== "undefined" &&
-          repos.length > 0 &&
-          repos.map((item: interfaces.GithubReposProps) => (
-            <ProjectsComponent
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              html_url={item.html_url}
-              description={item.description}
-              created_at={item.created_at}
-              updated_at={item.updated_at}
-              homepage={item.homepage}
-              license={item.license}
-              topics={item.topics}
-              language={item.language}
-            />
-          ))}
+        <Suspense fallback={<Loading />}>
+          {typeof repos !== "undefined" &&
+            repos.length > 0 &&
+            repos.map((item: interfaces.GithubReposProps) => (
+              <ProjectsComponent
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                html_url={item.html_url}
+                description={item.description}
+                created_at={item.created_at}
+                updated_at={item.updated_at}
+                homepage={item.homepage}
+                license={item.license}
+                topics={item.topics}
+                language={item.language}
+              />
+            ))}
+        </Suspense>
       </article>
 
       {repos && loaded && instanceRef.current && (
@@ -105,5 +115,9 @@ const CarouselComponent = memo(function CarouselComponent() {
     </>
   );
 });
+
+function Loading() {
+  return <h2>Loading...</h2>;
+}
 
 export default CarouselComponent;

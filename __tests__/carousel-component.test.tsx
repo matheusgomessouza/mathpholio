@@ -513,7 +513,7 @@ const repos = [
 ];
 
 export const restHandlers = [
-  http.get("/api/github/repos", () => {
+  http.get("https://api.github.com/users/matheusgomessouza/repos", () => {
     return HttpResponse.json(repos);
   }),
 ];
