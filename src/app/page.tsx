@@ -10,7 +10,7 @@ import HeaderComponent from "@/components/Header/HeaderComponent";
 import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
 import ButtonComponent from "@/components/Button/ButtonComponent";
 import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
-import CarouselComponent from "@/components/Carousel/CarouselComponent";
+import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
 import { isLastTechsItem } from "@/utils/utils";
 
 export default function Home() {
