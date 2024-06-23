@@ -12,7 +12,9 @@ export async function GET(): Promise<
       `https://api.github.com/users/matheusgomessouza/repos`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN_ACCESS}`,
+          Accept: "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2022-11-28",
         },
         method: "GET",
       }

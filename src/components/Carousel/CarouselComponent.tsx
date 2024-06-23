@@ -8,7 +8,6 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 
 import ProjectsComponent from "../Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
-import { payloadManipulation } from "@/utils/utils";
 import { Loading } from "../Loading/LoadingComponent";
 
 export function CarouselComponent() {
@@ -27,22 +26,13 @@ export function CarouselComponent() {
     },
   });
 
-  async function getGitHubReposData() {
+  async function getGitHubReposRouteHandler() {
     try {
-      const response = await fetch(
-        "https://api.github.com/users/matheusgomessouza/repos",
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.GITHUB_TOKEN_ACCESS}`,
-          },
-          method: "GET",
-        }
-      );
-
-      const data = await response.json();
-      const payload = payloadManipulation(data);
-
-      setRepos(payload);
+      await fetch("/api/github/repos")
+        .then((response) => response.json())
+        .then((repos) => {
+          setRepos(repos.data);
+        });
     } catch (error) {
       console.error(
         "Unable to retrieve GitHub response /getGitHubReposData",
@@ -52,7 +42,7 @@ export function CarouselComponent() {
   }
 
   useEffect(() => {
-    getGitHubReposData();
+    getGitHubReposRouteHandler();
   }, []);
 
   return (
