@@ -33,7 +33,7 @@ export function CarouselComponent() {
         "https://api.github.com/users/matheusgomessouza/repos",
         {
           headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN_ACCESS}`,
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN_ACCESS}`,
           },
           method: "GET",
         }
