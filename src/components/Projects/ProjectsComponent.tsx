@@ -5,6 +5,7 @@ import { ImGithub } from "react-icons/im";
 import ButtonComponent from "../Button/ButtonComponent";
 import Link from "next/link";
 import { convertDateFormat } from "@/utils/utils";
+import { useEffect, useState } from "react";
 
 export default function ProjectsComponent({
   id,
@@ -18,6 +19,29 @@ export default function ProjectsComponent({
   topics,
   language,
 }: interfaces.GithubReposProps) {
+  const [repoImages, setRepoImages] = useState<Array<string>>([]);
+
+  // Call the Route Handler `/api/automation/screenshot`
+  async function getProjectsImage() {
+    const data = { html_url: html_url, homepage: homepage };
+
+    try {
+      await fetch(`/api/automation/screenshot`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.error("Unable to retrieve repo images [getProjectsImage]", error);
+    }
+  }
+
+  useEffect(() => {
+    getProjectsImage();
+  }, []);
+
   return (
     <>
       <article
