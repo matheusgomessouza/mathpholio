@@ -5,7 +5,7 @@ import { ImGithub } from "react-icons/im";
 import ButtonComponent from "../Button/ButtonComponent";
 import Link from "next/link";
 import { convertDateFormat } from "@/utils/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 export default function ProjectsComponent({
   id,
@@ -21,6 +21,25 @@ export default function ProjectsComponent({
 }: interfaces.GithubReposProps) {
   const [repoImages, setRepoImages] = useState<Array<string>>([]);
 
+  const memoizedGetProjectsImage = useCallback(async () => {
+    const data = { html_url: html_url, homepage: homepage };
+
+    try {
+      const response = await fetch(
+        `/api/automation/${homepage ? homepage : html_url}/screenshot`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      // console.log(response);
+    } catch (error) {
+      console.error("Unable to retrieve repo images [getProjectsImage]", error);
+    }
+  }, [homepage, html_url]);
+
   // Call the Route Handler `/api/automation/screenshot`
   async function getProjectsImage() {
     const data = { html_url: html_url, homepage: homepage };
@@ -30,7 +49,7 @@ export default function ProjectsComponent({
         headers: {
           "Content-Type": "application/json",
         },
-        method: "POST",
+        method: "GET",
         body: JSON.stringify(data),
       });
     } catch (error) {
@@ -38,9 +57,9 @@ export default function ProjectsComponent({
     }
   }
 
-  useEffect(() => {
-    getProjectsImage();
-  }, []);
+  // useEffect(() => {
+  // memoizedGetProjectsImage();
+  // }, [memoizedGetProjectsImage]);
 
   return (
     <>
