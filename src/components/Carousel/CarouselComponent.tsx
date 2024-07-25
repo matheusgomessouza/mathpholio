@@ -6,7 +6,7 @@ import "keen-slider/keen-slider.min.css";
 
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 
-import ProjectsComponent from "../Projects/ProjectsComponent";
+import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
 import { Loading } from "../Loading/LoadingComponent";
 

@@ -1,19 +1,19 @@
 import Image from "next/image";
 import { ImGithub } from "react-icons/im";
 import { FaLinkedin } from "react-icons/fa";
-import { RiLoginCircleFill } from "react-icons/ri";
-import { MdEmail, MdHome, MdLocalPhone } from "react-icons/md";
+import { MdEmail, MdHome } from "react-icons/md";
 
 import { techs, services } from "@/variables/data";
 import * as interfaces from "@/types/interfaces";
 import myPicture from "../../public/assets/main-circle.png";
 
 import HeaderComponent from "@/components/Header/HeaderComponent";
-import TypewriterComponent from "@/components/Typewriter/TypewriterComponent";
+import TypewriterComponent from "@/components/Header/Typewriter/TypewriterComponent";
 import ButtonComponent from "@/components/Button/ButtonComponent";
 import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
 import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
 import { isLastTechsItem } from "@/utils/utils";
+import { FormComponent } from "@/components/Form/FormComponent";
 
 export default function Home() {
   return (
@@ -412,7 +412,7 @@ export default function Home() {
             </section>
 
             <div className="h-8 xl:h-20" id="contact" />
-            <section className="mb-4 flex flex-col justify-center gap-20 text-color-eight before:absolute before:left-0 before:z-10 before:h-[1200px] before:w-full before:bg-color-seven before:content-[''] dark:text-white dark:before:bg-color-five lg:flex-row lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[800px]">
+            <section className="mb-4 flex flex-col justify-center gap-20 text-color-eight before:absolute before:left-0 before:z-10 before:h-[1200px] before:w-full before:bg-color-seven before:content-[''] dark:text-white dark:before:bg-color-five lg:flex-row lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[880px]">
               <article className="relative z-20 mt-12 flex flex-col gap-16 text-center lg:w-1/2 xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <section>
                   <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
@@ -426,7 +426,7 @@ export default function Home() {
                 </section>
                 <section className="flex flex-col gap-10">
                   <div className="flex items-center gap-4">
-                    <div className="max-w-fit rounded-xl bg-black p-4">
+                    <div className="max-w-fit rounded-xl bg-color-five p-4 dark:bg-black">
                       <MdEmail size={32} fill="white" />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -437,7 +437,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="max-w-fit rounded-xl bg-black p-4">
+                    <div className="max-w-fit rounded-xl bg-color-five p-4 dark:bg-black">
                       <MdHome size={32} fill="white" />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -445,50 +445,18 @@ export default function Home() {
                       <p className="flex justify-start">Brazil</p>
                     </div>
                   </div>
-                  <div className="max-w-fit rounded-xl bg-black p-4">
-                    <MdLocalPhone size={32} fill="white" />
-                  </div>
                 </section>
               </article>
               <aside className="z-10 min-h-[660px] rounded-3xl lg:mt-12 lg:w-1/2 lg:bg-black lg:p-10">
-                <form action="" className="flex flex-col gap-8">
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    className="h-14 rounded-lg bg-color-five p-4 font-sans text-color-eight placeholder:text-color-eight"
-                    placeholder="Your name"
-                  />
-                  <input
-                    type="email"
-                    name=""
-                    id=""
-                    className="h-14 rounded-lg bg-color-five p-4 font-sans text-color-eight placeholder:text-color-eight"
-                    placeholder="Your email"
-                  />
-                  <textarea
-                    name=""
-                    id=""
-                    className="max-h-[330px] min-h-[330px] rounded-lg bg-color-five p-4 font-sans text-color-eight placeholder:text-color-eight"
-                    placeholder="You message"
-                  ></textarea>
-                  <button
-                    disabled
-                    type="submit"
-                    className="ml-auto flex cursor-not-allowed items-center gap-2 rounded-lg bg-color-five px-4 py-4 opacity-75"
-                  >
-                    <p className="font-alt">Send message</p>
-                    <RiLoginCircleFill size={24} />
-                  </button>
-                </form>
+                <FormComponent />
               </aside>
             </section>
           </section>
         </div>
       </main>
-      <footer className="fixed bottom-0 mt-12 w-full bg-black px-4 py-1 text-center text-color-six dark:bg-color-four lg:relative">
+      <footer className="fixed bottom-0 mt-40 w-full bg-black px-4 py-1 text-center text-color-six dark:bg-color-four lg:relative">
         <p className="text-white dark:text-white">
-          Mathpholio™️, Copyright © 2024 by Matheus Souza
+          Mathpholio™️, Copyright © {new Date().getFullYear()} by Matheus Souza
         </p>
       </footer>
     </>

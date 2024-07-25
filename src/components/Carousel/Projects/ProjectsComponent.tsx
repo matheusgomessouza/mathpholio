@@ -2,7 +2,7 @@
 
 import * as interfaces from "@/types/interfaces";
 import { ImGithub } from "react-icons/im";
-import ButtonComponent from "../Button/ButtonComponent";
+import ButtonComponent from "@/components/Button/ButtonComponent";
 import Link from "next/link";
 import { convertDateFormat } from "@/utils/utils";
 import { useEffect, useState, useCallback } from "react";

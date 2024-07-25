@@ -1,4 +1,5 @@
 import React from "react";
+import { FieldError, UseFormRegister } from "react-hook-form";
 
 export type ReposInfoProps = {
   id: string;
@@ -191,3 +192,20 @@ export interface GithubReposResponseProps {
   watchers_count: number;
   web_commit_signoff_required: boolean;
 }
+
+export type ContactFormProps = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+export type ValidFieldNames = "name" | "email" | "message";
+
+export type FormFieldProps = {
+  type?: string;
+  placeholder: string;
+  name: ValidFieldNames;
+  register: UseFormRegister<ContactFormProps>;
+  error: FieldError | undefined;
+  valueAsNumber?: boolean;
+};
