@@ -211,6 +211,12 @@ export default function Home() {
             </section>
 
             <div id="work-experience" className="h-2 lg:h-32" />
+            {/* content: "";
+                position: absolute;
+                height: 2120px;
+                background: black;
+                left: 0;
+                width: 100vw; */}
             <section className="flex flex-col justify-center dark:text-white lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[1380px] 2xl:before:h-[1480px]">
               <article className="relative z-20 mt-12 text-center xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
@@ -406,31 +412,45 @@ export default function Home() {
             </section>
 
             <div className="h-8 xl:h-20" id="contact" />
-            <section className="flex justify-center gap-20 dark:text-white lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[1380px] 2xl:before:h-[800px]">
-              <article className="relative z-20 mt-12 flex w-1/2 flex-col gap-16 text-center xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
+            <section className="mb-4 flex flex-col justify-center gap-20 text-color-eight before:absolute before:left-0 before:z-10 before:h-[1200px] before:w-full before:bg-color-seven before:content-[''] dark:text-white dark:before:bg-color-five lg:flex-row lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[800px]">
+              <article className="relative z-20 mt-12 flex flex-col gap-16 text-center lg:w-1/2 xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <section>
                   <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
                     Contact
                   </h2>
-                  <p className="w-[660px] 2xl:text-2xl">
+                  <p className="2xl:w-[660px] 2xl:text-2xl">
                     Looking to enhance your team with top-notch talent or
                     discuss exciting new opportunities? Reach out via email.
                     I&apos;d love to connect and explore how we can collaborate!
                   </p>
                 </section>
                 <section className="flex flex-col gap-10">
-                  <div className="max-w-fit rounded-xl bg-black p-4">
-                    <MdEmail size={32} fill="white" />
+                  <div className="flex items-center gap-4">
+                    <div className="max-w-fit rounded-xl bg-black p-4">
+                      <MdEmail size={32} fill="white" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="flex justify-start">Email address</h3>
+                      <p className="flex justify-start">
+                        matheusg_souza@outlook.com
+                      </p>
+                    </div>
                   </div>
-                  <div className="max-w-fit rounded-xl bg-black p-4">
-                    <MdHome size={32} fill="white" />
+                  <div className="flex items-center gap-4">
+                    <div className="max-w-fit rounded-xl bg-black p-4">
+                      <MdHome size={32} fill="white" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="flex justify-start">Country</h3>
+                      <p className="flex justify-start">Brazil</p>
+                    </div>
                   </div>
                   <div className="max-w-fit rounded-xl bg-black p-4">
                     <MdLocalPhone size={32} fill="white" />
                   </div>
                 </section>
               </article>
-              <aside className="z-50 mt-12 min-h-[660px] w-1/2 rounded-3xl bg-black p-10">
+              <aside className="z-10 min-h-[660px] rounded-3xl lg:mt-12 lg:w-1/2 lg:bg-black lg:p-10">
                 <form action="" className="flex flex-col gap-8">
                   <input
                     type="text"

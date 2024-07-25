@@ -13,7 +13,7 @@ export default function HeaderComponent() {
 
   return (
     <>
-      <header className="mobile flex w-full items-center justify-between gap-2 p-4 lg:hidden">
+      <header className="mobile z-50 flex w-full items-center justify-between gap-2 p-4 lg:hidden">
         <GiHamburgerMenu
           size={32}
           onClick={() => setToggleMobileMenu(!toggleMobileMenu)}
