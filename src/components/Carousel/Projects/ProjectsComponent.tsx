@@ -2,7 +2,7 @@
 
 import * as interfaces from "@/types/interfaces";
 import { ImGithub } from "react-icons/im";
-import ButtonComponent from "../Button/ButtonComponent";
+import ButtonComponent from "@/components/Button/ButtonComponent";
 import Link from "next/link";
 import { convertDateFormat } from "@/utils/utils";
 import { useEffect, useState, useCallback } from "react";
@@ -70,21 +70,21 @@ export default function ProjectsComponent({
         <aside className="w-full xl:w-1/2">
           <strong className="font-alt font-normal">{name}</strong>
           <p className="xl:text-base 2xl:text-xl">{description}</p>
-          <section className="mt-4 flex flex-col gap-1 xl:mt-6 xl:text-base 2xl:text-xl">
+          <section className="mt-4 flex flex-col xl:mt-6 xl:text-base 2xl:text-xl">
+            <div className="mb-2 xl:hidden">
+              <ButtonComponent
+                isMobile
+                label="Github"
+                link={html_url}
+                ariaLabel="Check out the GitHub page for this project!"
+              >
+                <ImGithub />
+              </ButtonComponent>
+            </div>
             {license ? (
               <span className="font-alt font-normal">{license.name}</span>
             ) : null}
             <div className="flex items-center gap-1">
-              <div className="xl:hidden">
-                <ButtonComponent
-                  isMobile
-                  label="Github"
-                  link={html_url}
-                  ariaLabel="Check out the GitHub page for this project!"
-                >
-                  <ImGithub />
-                </ButtonComponent>
-              </div>
               <div className="hidden gap-1 xl:flex">
                 <span className="font-alt font-normal">Github:</span>
                 <Link
@@ -108,11 +108,15 @@ export default function ProjectsComponent({
             ) : null}
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1">
-                <span className="font-alt font-normal">Created at:</span>
+                <span className="font-alt font-normal">
+                  {window.innerWidth < 640 ? "Created:" : "Created at:"}
+                </span>
                 <p>{convertDateFormat(created_at)}</p>
               </div>
               <div className="flex items-center gap-1">
-                <span className="font-alt font-normal">Updated at:</span>
+                <span className="font-alt font-normal">
+                  {window.innerWidth < 640 ? "Updated:" : "Updated at:"}
+                </span>
                 <p>{convertDateFormat(updated_at)}</p>
               </div>
             </div>
@@ -130,7 +134,7 @@ export default function ProjectsComponent({
               {topics.map((item: string) => (
                 <li
                   key={item}
-                  className="rounded-full bg-color-two p-1 px-6 font-alt text-sm font-normal text-color-eight xl:text-xs 2xl:text-base"
+                  className="rounded-full bg-black p-1 px-6 font-alt text-sm font-normal text-color-eight dark:bg-color-two xl:text-xs 2xl:text-base"
                 >
                   {item}
                 </li>
@@ -140,7 +144,7 @@ export default function ProjectsComponent({
         </aside>
 
         <figure className="w-full xl:w-1/2">
-          <div className="h-60 w-full rounded-3xl bg-color-two xl:h-[50vh]"></div>
+          <div className="h-60 w-full rounded-3xl bg-color-seven dark:bg-color-two xl:h-[50vh]"></div>
         </figure>
       </article>
     </>

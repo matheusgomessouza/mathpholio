@@ -35,14 +35,5 @@ export async function GET(request: Request) {
   const matchURL = request.url.match(`\/automation\/([^/]+)\/screenshot`);
   console.log(matchURL?.[0]);
   try {
-    // fetch(
-    //   `${requestBody.homepage ? requestBody.homepage : requestBody.html_url}`
-    // )
-    //   .then(async (response) => console.log(response))
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
-  } catch (error) {
-    // console.log(error);
-  }
+  } catch (error) {}
 }

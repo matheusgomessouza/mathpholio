@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { expect, test, describe } from "vitest";
-import ProjectsComponent from "@/components/Projects/ProjectsComponent";
+import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
 
 const repos: Array<interfaces.GithubReposProps> = [
