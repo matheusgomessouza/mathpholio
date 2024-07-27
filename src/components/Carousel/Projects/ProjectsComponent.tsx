@@ -65,7 +65,7 @@ export default function ProjectsComponent({
     <>
       <article
         key={id}
-        className="keen-slider__slide mb-8 flex flex-col-reverse items-center justify-end gap-6 px-6 xl:flex-row xl:justify-between xl:gap-20 xl:text-xl"
+        className="keen-slider__slide flex w-full flex-col-reverse items-center justify-end gap-6 xl:flex-row xl:justify-between xl:gap-20 xl:text-xl"
       >
         <aside className="w-full xl:w-1/2">
           <strong className="font-alt font-normal">{name}</strong>
