@@ -22,7 +22,7 @@ export function FormComponent() {
     console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="lg flex flex-col gap-2">
       <FormFieldComponent
         type="text"
         name="name"
@@ -48,7 +48,7 @@ export function FormComponent() {
 
       <button
         type="submit"
-        className="ml-auto mt-8 flex cursor-pointer items-center gap-2 rounded-lg bg-color-five px-4 py-4"
+        className="ml-auto flex cursor-pointer items-center gap-2 rounded-lg bg-color-five  px-4 py-4 dark:bg-color-seven lg:mt-8 lg:bg-color-five"
       >
         <p className="font-alt">Send message</p>
         <RiLoginCircleFill size={24} />

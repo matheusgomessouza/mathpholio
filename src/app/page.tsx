@@ -19,9 +19,9 @@ export default function Home() {
   return (
     <>
       <HeaderComponent />
-      <main className="p-8 pb-16 xl:px-[9%]">
+      <main>
         <div className="m-auto flex flex-col lg:mt-8">
-          <section className="relative flex flex-col-reverse items-center xl:h-screen xl:flex-row">
+          <section className="hero-section relative flex flex-col-reverse items-center px-wrapper xl:h-screen xl:flex-row">
             <article className="flex w-1/2 flex-col items-center">
               <div className="sm:w-full">
                 <TypewriterComponent />
@@ -65,9 +65,9 @@ export default function Home() {
             </aside>
           </section>
 
-          <div id="skills" className="h-8 lg:h-32" />
           <section className="mt-12">
-            <section>
+            <div id="skills" className="h-8" />
+            <section className="mobile relative px-wrapper">
               <h2 className="mb-6 text-center text-2xl leading-tight lg:hidden lg:text-2xl">
                 Revolutionizing Development
               </h2>
@@ -81,7 +81,7 @@ export default function Home() {
                   return (
                     <div
                       key={item.title}
-                      className="-ml-8 mt-8 flex h-52 w-[90vw] items-center rounded-r-[30px] bg-black p-4 dark:bg-color-four lg:hidden"
+                      className="absolute left-0 mt-8 flex h-52 w-[90vw] items-center rounded-r-[30px] bg-black p-4 dark:bg-color-four lg:hidden"
                     >
                       <article className="flex gap-4">
                         <div className="flex flex-col items-center justify-center text-center">
@@ -108,7 +108,7 @@ export default function Home() {
                   return (
                     <div
                       key={item.title}
-                      className="ml-[0.7rem] mt-8 flex h-52 w-[90vw] items-center rounded-l-[30px] bg-black p-4 dark:bg-color-four lg:hidden"
+                      className="-mb-4 mt-64 flex h-52 w-[90vw] items-center rounded-l-[30px] bg-black p-4 dark:bg-color-four lg:hidden"
                     >
                       <article className="flex flex-row-reverse gap-2">
                         <div className="flex flex-col items-center justify-center text-center">
@@ -138,8 +138,7 @@ export default function Home() {
                 }
               })}
             </section>
-
-            <section className="hidden items-center justify-between gap-8 before:absolute before:left-0 before:z-10 before:h-80 before:w-full before:bg-black before:content-[''] before:dark:bg-color-four lg:flex lg:w-full lg:items-center 2xl:gap-20">
+            <section className="my-10 hidden items-center justify-between gap-8 bg-color-seven px-wrapper py-12 dark:bg-color-four lg:flex lg:w-full lg:items-center 2xl:gap-20">
               <article className="z-20 text-white">
                 <h2 className="mb-6 w-4 text-4xl leading-tight lg:text-2xl">
                   Revolutionizing Development
@@ -171,7 +170,7 @@ export default function Home() {
               ))}
             </section>
 
-            <section className="flex w-full flex-col gap-10 lg:mt-40 lg:flex lg:flex-row lg:items-center">
+            <section className="my-10 flex w-full flex-col gap-10 px-wrapper lg:flex lg:flex-row lg:items-center xl:mt-20">
               <article className="flex flex-col justify-center">
                 <h2
                   id="services"
@@ -210,15 +209,9 @@ export default function Home() {
               </div>
             </section>
 
-            <div id="work-experience" className="h-2 lg:h-32" />
-            {/* content: "";
-                position: absolute;
-                height: 2120px;
-                background: black;
-                left: 0;
-                width: 100vw; */}
-            <section className="flex flex-col justify-center dark:text-white lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[1380px] 2xl:before:h-[1480px]">
-              <article className="relative z-20 mt-12 text-center xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
+            <div id="work-experience" className="h-2" />
+            <section className="work-section my-10 flex w-auto flex-col justify-center bg-color-seven px-wrapper py-12 text-white dark:bg-color-four lg:text-white">
+              <article className="relative z-20 text-center xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
                   Building Solutions Across Technologies and Industries
                 </h2>
@@ -385,12 +378,12 @@ export default function Home() {
               </ExperienceDescriptionComponent>
             </section>
 
-            <div className="h-8 xl:h-20" id="projects" />
-            <section>
+            <div id="projects" className="h-2" />
+            <section className="projects-section my-10 px-wrapper py-12">
               <article className="flex flex-col justify-center">
                 <h2
                   id="services"
-                  className="mx-auto mb-8 w-4/5 text-center text-2xl lg:mx-0 lg:text-left xl:mt-12 2xl:text-4xl 2xl:leading-tight"
+                  className="mx-auto mb-8 w-4/5 text-center text-2xl lg:mx-0 lg:text-left 2xl:text-4xl 2xl:leading-tight"
                 >
                   Expertise in Software Development with Diverse Projects and
                   Cutting-Edge Solutions
@@ -411,9 +404,9 @@ export default function Home() {
               <CarouselComponent />
             </section>
 
-            <div className="h-8 xl:h-20" id="contact" />
-            <section className="mb-4 flex flex-col justify-center gap-20 text-color-eight before:absolute before:left-0 before:z-10 before:h-[1200px] before:w-full before:bg-color-seven before:content-[''] dark:text-white dark:before:bg-color-five lg:flex-row lg:text-white lg:before:absolute lg:before:left-0 lg:before:z-10 lg:before:w-full lg:before:bg-black lg:before:content-[''] lg:before:dark:bg-color-four xl:before:h-[880px]">
-              <article className="relative z-20 mt-12 flex flex-col gap-16 text-center lg:w-1/2 xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
+            <div id="contact" />
+            <section className="contact-section mt-10 flex flex-col justify-center gap-20 bg-color-seven px-wrapper py-12 text-color-eight dark:bg-color-four dark:text-white lg:flex-row lg:text-white">
+              <article className="relative z-20 flex flex-col gap-16 text-center lg:w-1/2 xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <section>
                   <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
                     Contact
@@ -447,15 +440,15 @@ export default function Home() {
                   </div>
                 </section>
               </article>
-              <aside className="z-10 min-h-[660px] rounded-3xl lg:mt-12 lg:w-1/2 lg:bg-black lg:p-10">
+              <aside className="z-10 rounded-3xl lg:mt-12 lg:w-1/2 lg:bg-black lg:p-10">
                 <FormComponent />
               </aside>
             </section>
           </section>
         </div>
       </main>
-      <footer className="fixed bottom-0 mt-40 w-full bg-black px-4 py-1 text-center text-color-six dark:bg-color-four lg:relative">
-        <p className="text-white dark:text-white">
+      <footer className="fixed bottom-0 z-50 w-full bg-color-eight px-4 py-1 text-center text-color-seven dark:bg-color-seven lg:relative">
+        <p className="text-color-seven dark:text-color-eight">
           Mathpholio™️, Copyright © {new Date().getFullYear()} by Matheus Souza
         </p>
       </footer>

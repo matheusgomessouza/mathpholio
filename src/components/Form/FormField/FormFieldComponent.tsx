@@ -14,8 +14,8 @@ export function FormFieldComponent({
         {...register(name, { required: true })}
         className={
           error
-            ? "focus-within::border-2 focus-within::border-rose-500 h-14 rounded-lg border-2 border-rose-500 bg-color-five p-4 font-sans text-color-eight placeholder:text-color-eight"
-            : "h-14 rounded-lg bg-color-five p-4 font-sans text-color-eight placeholder:text-color-eight"
+            ? "h-14 rounded-lg border-2 border-rose-500 p-4 font-sans text-color-five placeholder:text-color-tree dark:bg-color-seven dark:text-color-eight dark:placeholder:text-color-eight dark:lg:bg-color-five"
+            : "h-14 rounded-lg p-4 font-sans text-color-five placeholder:text-color-tree dark:bg-color-seven dark:text-color-eight dark:placeholder:text-color-eight dark:lg:bg-color-five"
         }
         placeholder={placeholder}
       />
