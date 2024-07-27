@@ -6,7 +6,7 @@ import "keen-slider/keen-slider.min.css";
 
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 
-import ProjectsComponent from "../Projects/ProjectsComponent";
+import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
 import { Loading } from "../Loading/LoadingComponent";
 
@@ -16,7 +16,10 @@ export function CarouselComponent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    slides: repos && repos.length ? repos.length : 32,
+    slides: {
+      spacing: 8,
+      number: repos && repos.length ? repos.length : 36,
+    },
     renderMode: "performance",
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
@@ -74,7 +77,7 @@ export function CarouselComponent() {
       </article>
 
       {repos && loaded && instanceRef.current && (
-        <section className="relative mt-16 flex items-center justify-center xl:mt-8">
+        <section className="relative mt-16 hidden items-center justify-center lg:flex xl:mt-8">
           <div className="hidden justify-center px-0 py-3 xl:flex">
             {[
               ...Array(instanceRef.current.track.details.slides.length).keys(),
@@ -86,8 +89,10 @@ export function CarouselComponent() {
                     instanceRef.current?.moveToIdx(idx);
                   }}
                   className={
-                    "mx-1 my-0 h-3 w-3 cursor-pointer rounded-full border-0 bg-color-five p-1" +
-                    (currentSlide === idx ? " bg-white" : "")
+                    "mx-1 my-0 h-3 w-3 cursor-pointer rounded-full border-0 bg-color-tree p-1 dark:bg-color-five" +
+                    (currentSlide === idx
+                      ? " bg-color-seven dark:bg-white"
+                      : "")
                   }
                 ></button>
               );
@@ -95,7 +100,7 @@ export function CarouselComponent() {
           </div>
           <section className="absolute right-6 ml-auto hidden gap-4 xl:flex">
             <div
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-color-two"
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black dark:bg-color-two"
               onClick={(e: any) =>
                 e.stopPropagation() || instanceRef.current?.prev()
               }
@@ -103,7 +108,7 @@ export function CarouselComponent() {
               <MdOutlineChevronLeft size={24} color="#FFFF" />
             </div>
             <div
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-color-two"
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black dark:bg-color-two"
               onClick={(e: any) =>
                 e.stopPropagation() || instanceRef.current?.next()
               }
