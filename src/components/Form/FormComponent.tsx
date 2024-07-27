@@ -49,7 +49,7 @@ export function FormComponent() {
       <button
         disabled
         type="submit"
-        className="ml-auto flex cursor-pointer items-center gap-2 rounded-lg bg-color-five  px-4 py-4 dark:bg-color-seven lg:mt-8 lg:bg-color-five"
+        className="ml-auto flex cursor-not-allowed items-center gap-2 rounded-lg bg-color-five  px-4 py-4 dark:bg-color-seven lg:mt-8 lg:bg-color-five"
       >
         <p className="font-alt">Send message</p>
         <RiLoginCircleFill size={24} />
