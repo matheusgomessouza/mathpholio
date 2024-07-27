@@ -16,7 +16,10 @@ export function CarouselComponent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    slides: repos && repos.length ? repos.length : 32,
+    slides: {
+      spacing: 8,
+      number: repos && repos.length ? repos.length : 36,
+    },
     renderMode: "performance",
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
