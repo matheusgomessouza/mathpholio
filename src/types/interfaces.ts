@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
 
 export type ReposInfoProps = {
@@ -197,6 +197,7 @@ export type ContactFormProps = {
   name: string;
   email: string;
   message: string;
+  sendEmail: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
 export type ValidFieldNames = "name" | "email" | "message";
