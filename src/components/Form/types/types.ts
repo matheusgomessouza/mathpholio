@@ -8,5 +8,4 @@ export const ContactSchema: ZodType<interfaces.ContactFormProps> = z.object({
     .min(1, { message: "Required field" })
     .email({ message: "Invalid email address" }),
   message: z.string().min(1, { message: "Required field" }),
-  sendEmail: z.function(),
 });

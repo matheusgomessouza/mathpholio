@@ -197,7 +197,6 @@ export type ContactFormProps = {
   name: string;
   email: string;
   message: string;
-  sendEmail: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
 export type ValidFieldNames = "name" | "email" | "message";
