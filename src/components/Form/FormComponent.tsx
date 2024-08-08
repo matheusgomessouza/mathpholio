@@ -104,7 +104,7 @@ export function FormComponent() {
 
       <button
         type="submit"
-        className="ml-auto flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-color-five  px-4 py-4 dark:bg-color-seven lg:mt-8 lg:bg-color-five"
+        className="ml-auto flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-color-five px-4 py-4 dark:bg-color-seven xl:mt-4 xl:bg-color-five 2xl:mt-8"
       >
         {loading ? (
           <>
