@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
 
 export type ReposInfoProps = {

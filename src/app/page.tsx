@@ -425,7 +425,7 @@ export default function Home() {
                     <div className="flex flex-col gap-2">
                       <h3 className="flex justify-start">Email address</h3>
                       <p className="flex justify-start">
-                        matheusg_souza@outlook.com
+                        matheuscoworking@outlook.com
                       </p>
                     </div>
                   </div>
