@@ -2,9 +2,10 @@ import Image from "next/image";
 import { ImGithub } from "react-icons/im";
 import { FaLinkedin } from "react-icons/fa";
 import { MdEmail, MdHome } from "react-icons/md";
+import { BsChatFill } from "react-icons/bs";
 
-import { techs, services } from "@/variables/data";
 import * as interfaces from "@/types/interfaces";
+import { techs, services } from "@/variables/data";
 import myPicture from "../../public/assets/main-circle.png";
 
 import HeaderComponent from "@/components/Header/HeaderComponent";
@@ -14,6 +15,7 @@ import ExperienceDescriptionComponent from "@/components/ExperienceDescription/E
 import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
 import { isLastTechsItem } from "@/utils/utils";
 import { FormComponent } from "@/components/Form/FormComponent";
+import { AccordionComponent } from "@/components/Accordion/AccordionComponent";
 
 export default function Home() {
   return (
@@ -76,7 +78,7 @@ export default function Home() {
                 Expo, Jest, Git, and TypeScript for efficiency, scalability, and
                 innovation in software development.
               </p>
-              {techs.map((item: interfaces.TechSkills, index) => {
+              {techs.map((item: interfaces.TechSkillsProps, index) => {
                 if (index % 2 === 0) {
                   return (
                     <div
@@ -149,7 +151,7 @@ export default function Home() {
                   scalability, and innovation in software development.
                 </p>
               </article>
-              {techs.map((item: interfaces.TechSkills, index) => (
+              {techs.map((item: interfaces.TechSkillsProps, index) => (
                 <aside
                   key={item.title}
                   className="z-20 flex flex-col items-center justify-center gap-4 text-center"
@@ -186,7 +188,7 @@ export default function Home() {
                 </p>
               </article>
               <div className="flex w-full flex-col gap-8 lg:flex-row lg:justify-end lg:gap-4 2xl:gap-10">
-                {services.map((item: interfaces.Services) => (
+                {services.map((item: interfaces.ServicesProps) => (
                   <aside
                     key={item.id}
                     className="flex flex-col items-center justify-center gap-8 rounded-3xl bg-black p-10 dark:bg-color-four lg:h-auto lg:w-auto lg:text-center 2xl:h-[425px] 2xl:w-[350px]"
@@ -444,10 +446,17 @@ export default function Home() {
                 <FormComponent />
               </aside>
             </section>
+
+            <section className="faq-section mt-10 items-center px-wrapper py-12">
+              <h2 className="mb-6 flex gap-2 text-2xl leading-tight 2xl:text-4xl">
+                Frequently Asked Questions <BsChatFill size={32} />
+              </h2>
+              <AccordionComponent />
+            </section>
           </section>
         </div>
       </main>
-      <footer className="fixed bottom-0 z-50 w-full bg-color-eight px-4 py-1 text-center text-color-seven dark:bg-color-seven lg:relative">
+      <footer className="fixed bottom-0 z-50 w-full bg-color-eight px-4 py-1 text-center text-color-seven dark:bg-color-four lg:relative">
         <p className="text-color-seven dark:text-color-eight">
           Mathpholio™️, Copyright © {new Date().getFullYear()} by Matheus Souza
         </p>
