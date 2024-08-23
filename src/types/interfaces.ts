@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
 
 export type ReposInfoProps = {
@@ -27,13 +27,13 @@ export interface MenuProps {
   link: string;
 }
 
-export interface TechSkills {
+export interface TechSkillsProps {
   icon: string;
   title: string;
   description: string;
 }
 
-export interface Services {
+export interface ServicesProps {
   id: string;
   title: string;
   icon: string;
@@ -41,7 +41,7 @@ export interface Services {
 }
 
 export interface ReorderProps {
-  data: Array<TechSkills>;
+  data: Array<TechSkillsProps>;
 }
 
 export interface ButtonComponentProps {
@@ -209,3 +209,5 @@ export type FormFieldProps = {
   error: FieldError | undefined;
   valueAsNumber?: boolean;
 };
+
+export type QuestionsProps = { title: string; information: string };
