@@ -456,8 +456,8 @@ export default function Home() {
           </section>
         </div>
       </main>
-      <footer className="fixed bottom-0 z-50 w-full bg-color-eight px-4 py-1 text-center text-color-seven dark:bg-color-four lg:relative">
-        <p className="text-color-seven dark:text-color-eight">
+      <footer className="fixed bottom-0 z-50 w-full bg-color-seven px-4 py-1 text-center text-color-seven dark:bg-color-four lg:relative">
+        <p className="text-color-eight dark:text-color-eight">
           Mathpholio™️, Copyright © {new Date().getFullYear()} by Matheus Souza
         </p>
       </footer>

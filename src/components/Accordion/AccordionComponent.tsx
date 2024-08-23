@@ -7,10 +7,10 @@ export function AccordionComponent() {
       {questions &&
         questions.map((item: interfaces.QuestionsProps) => (
           <details key={item.title} className="mb-10">
-            <summary className="relative mt-4 cursor-pointer font-alt after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-full after:content-[''] dark:after:bg-white">
+            <summary className="relative mt-4 cursor-pointer font-alt after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-full after:bg-black after:content-[''] dark:after:bg-white">
               {item.title}
             </summary>
-            <p className="py-16">{item.information}</p>
+            <p className="py-16 text-justify">{item.information}</p>
           </details>
         ))}
     </article>
