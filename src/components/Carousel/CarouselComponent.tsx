@@ -17,8 +17,8 @@ export function CarouselComponent() {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     slides: {
-      spacing: 8,
-      number: repos && repos.length ? repos.length : 36,
+      spacing: 24,
+      number: repos && repos.length ? repos.length : 39,
     },
     renderMode: "performance",
     slideChanged(slider) {
