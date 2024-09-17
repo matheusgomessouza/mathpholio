@@ -130,12 +130,14 @@ export default function ProjectsComponent({
         <figure className="w-full xl:w-1/2">
           {repoImage.match(/^https?:\/\/github.com\//i) ? (
             <Image
-              width={2560}
-              height={1440}
+              width={987}
+              height={653}
+              quality={80}
+              loading="lazy"
               src="/assets/github-wallpaper-scaled.webp"
-              alt="Github"
+              alt="Github logo, an octocat and Github label written in the right side. Both in white, the background is gray."
               className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-color-seven dark:bg-white xl:h-[50vh]"
-            ></Image>
+            />
           ) : (
             <iframe
               scrolling="no"
