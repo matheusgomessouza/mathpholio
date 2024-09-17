@@ -6,6 +6,7 @@ import ButtonComponent from "@/components/Button/ButtonComponent";
 import Link from "next/link";
 import { convertDateFormat } from "@/utils/utils";
 import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 
 export default function ProjectsComponent({
   id,
@@ -19,14 +20,12 @@ export default function ProjectsComponent({
   topics,
   language,
 }: interfaces.GithubReposProps) {
-  const [repoImages, setRepoImages] = useState<Array<string>>([]);
+  const [repoImage, setRepoImage] = useState<string>("");
 
   const memoizedGetProjectsImage = useCallback(async () => {
-    const data = { html_url: html_url, homepage: homepage };
-
     try {
       const response = await fetch(
-        `/api/automation/${homepage ? homepage : html_url}/screenshot`,
+        `/api/automation/screenshot?url=${homepage ? homepage : html_url}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -34,38 +33,23 @@ export default function ProjectsComponent({
           method: "GET",
         }
       );
-      // console.log(response);
+      const url = await response.json().then((data) => data.payload);
+
+      setRepoImage(url);
     } catch (error) {
       console.error("Unable to retrieve repo images [getProjectsImage]", error);
     }
   }, [homepage, html_url]);
 
-  // Call the Route Handler `/api/automation/screenshot`
-  async function getProjectsImage() {
-    const data = { html_url: html_url, homepage: homepage };
-
-    try {
-      await fetch(`/api/automation/screenshot`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-        body: JSON.stringify(data),
-      });
-    } catch (error) {
-      console.error("Unable to retrieve repo images [getProjectsImage]", error);
-    }
-  }
-
-  // useEffect(() => {
-  // memoizedGetProjectsImage();
-  // }, [memoizedGetProjectsImage]);
+  useEffect(() => {
+    memoizedGetProjectsImage();
+  }, [memoizedGetProjectsImage]);
 
   return (
     <>
       <article
         key={id}
-        className="keen-slider__slide flex w-full flex-col-reverse items-center justify-end gap-6 xl:flex-row xl:justify-between xl:gap-20 xl:text-xl"
+        className="keen-slider__slide flex w-full flex-col-reverse items-center justify-end gap-6 px-4 xl:flex-row xl:justify-between xl:gap-20 xl:text-xl"
       >
         <aside className="w-full xl:w-1/2">
           <strong className="font-alt font-normal">{name}</strong>
@@ -144,7 +128,24 @@ export default function ProjectsComponent({
         </aside>
 
         <figure className="w-full xl:w-1/2">
-          <div className="h-60 w-full rounded-3xl bg-color-seven dark:bg-color-two xl:h-[50vh]"></div>
+          {repoImage.match(/^https?:\/\/github.com\//i) ? (
+            <Image
+              width={987}
+              height={653}
+              quality={80}
+              loading="lazy"
+              src="/assets/github-wallpaper-scaled.webp"
+              alt="Github logo, an octocat and Github label written in the right side. Both in white, the background is gray."
+              className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-color-seven dark:bg-white xl:h-[50vh]"
+            />
+          ) : (
+            <iframe
+              scrolling="no"
+              allowFullScreen
+              src={repoImage}
+              className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-color-seven dark:bg-white xl:h-[50vh]"
+            ></iframe>
+          )}
         </figure>
       </article>
     </>

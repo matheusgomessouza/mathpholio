@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { ImGithub } from "react-icons/im";
 import { FaLinkedin } from "react-icons/fa";
@@ -231,7 +233,7 @@ export default function Home() {
                 jobTitle="Software Developer"
                 company="Cognizant"
                 locality="São Paulo, SP, Brazil"
-                period="04/2022 - Current"
+                period="04/2022 - 06/2024"
               >
                 <li className="xl:w-3/4">
                   Implement features and layouts from Figma into a{" "}
@@ -448,8 +450,9 @@ export default function Home() {
             </section>
 
             <section className="faq-section mt-10 items-center px-wrapper py-12">
-              <h2 className="mb-6 flex gap-2 text-2xl leading-tight 2xl:text-4xl">
-                Frequently Asked Questions <BsChatFill size={32} />
+              <h2 className="mb-6 flex gap-2 text-4xl leading-tight xl:gap-4 xl:text-3xl 2xl:text-4xl">
+                Frequently Asked Questions{" "}
+                <BsChatFill className="h-16 w-16 xl:h-8 xl:w-8" />
               </h2>
               <AccordionComponent />
             </section>
