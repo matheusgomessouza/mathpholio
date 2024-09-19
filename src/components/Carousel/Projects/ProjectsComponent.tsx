@@ -1,12 +1,14 @@
 "use client";
 
-import * as interfaces from "@/types/interfaces";
-import { ImGithub } from "react-icons/im";
-import ButtonComponent from "@/components/Button/ButtonComponent";
 import Link from "next/link";
-import { convertDateFormat } from "@/utils/utils";
-import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
+import { ImGithub } from "react-icons/im";
+import { useEffect, useState, useCallback } from "react";
+
+import * as interfaces from "@/types/interfaces";
+import { convertDateFormat } from "@/utils/utils";
+import ButtonComponent from "@/components/Button/ButtonComponent";
+import githubMockup from "./github-wallpaper-scaled.webp";
 
 export default function ProjectsComponent({
   id,
@@ -134,7 +136,7 @@ export default function ProjectsComponent({
               height={653}
               quality={80}
               loading="lazy"
-              src="/assets/github-wallpaper-scaled.webp"
+              src={githubMockup}
               alt="Github logo, an octocat and Github label written in the right side. Both in white, the background is gray."
               className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-color-seven dark:bg-white xl:h-[50vh]"
             />
