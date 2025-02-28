@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import React from "react";
 import "../styles/globals.css";
 import { Anton, Khand } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
