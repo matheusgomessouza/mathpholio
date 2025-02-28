@@ -45,11 +45,6 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
-        <script
-          async
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
-        ></script>
       </body>
     </html>
   );

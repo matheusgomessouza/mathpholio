@@ -1,8 +1,8 @@
 import { afterEach, expect, test, describe, beforeAll, afterAll } from "vitest";
 import { render, screen } from "@testing-library/react";
-import Carousel from "../src/components/Carousel/CarouselComponent";
 import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
+import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
 
 const repos = [
   {
@@ -513,7 +513,7 @@ const repos = [
 ];
 
 export const restHandlers = [
-  http.get("/api/github/repos", () => {
+  http.get("https://api.github.com/users/matheusgomessouza/repos", () => {
     return HttpResponse.json(repos);
   }),
 ];
@@ -532,7 +532,7 @@ describe("Carousel component", () => {
   afterEach(() => server.resetHandlers());
 
   test("if component has an carousel child component", async () => {
-    render(<Carousel />);
+    render(<CarouselComponent />);
     // mock the API response
     expect(screen.findByRole("slider")).toBeDefined();
   });
