@@ -229,6 +229,35 @@ export default function Home() {
                 </p>
               </article>
               <ExperienceDescriptionComponent
+                jobTitle="Mobile Developer"
+                company="Linx"
+                locality="Blumenau, SC, Brazil"
+                period="12/2024 - 03/2025"
+              >
+                <li className="xl:w-3/4">
+                  Implement functional testing for the{" "}
+                  <strong>React Native</strong> application components with{" "}
+                  <strong>Jest</strong> and <strong>Testing Library</strong>.
+                </li>
+                <li>
+                  Write functional and unit tests with <strong>Jest</strong> and{" "}
+                  <strong>Testing Library</strong>.
+                </li>
+                <li>
+                  Implement API calls using <strong>Axios</strong> and{" "}
+                  <strong>Redux-saga</strong> to preserve the payload in the
+                  application contexts states.
+                </li>
+                <li>
+                  Use <strong>Git</strong> for code versioning and{" "}
+                  <strong>Azure DevOps</strong> to CI/CD and code repository
+                  hosting service.
+                </li>
+                <li>
+                  Contribute on Code Reviews to ensure quality deliveries.
+                </li>
+              </ExperienceDescriptionComponent>
+              <ExperienceDescriptionComponent
                 jobTitle="Software Developer"
                 company="Cognizant"
                 locality="São Paulo, SP, Brazil"

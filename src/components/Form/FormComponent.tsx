@@ -59,6 +59,10 @@ export function FormComponent() {
         );
   };
 
+  const isFormValid = () => {
+    return !errors.name && !errors.email && !errors.message;
+  };
+
   const onSubmit: SubmitHandler<interfaces.ContactFormProps> = () =>
     sendEmail();
 
@@ -104,7 +108,8 @@ export function FormComponent() {
 
       <button
         type="submit"
-        className="ml-auto flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-color-five px-4 py-4 dark:bg-color-seven xl:mt-4 xl:bg-color-five 2xl:mt-8"
+        disabled={isFormValid() ? false : true}
+        className="ml-auto flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-color-five px-4 py-4 disabled:cursor-default disabled:opacity-40 dark:bg-color-seven xl:mt-4 xl:bg-color-five 2xl:mt-8"
       >
         {loading ? (
           <>
