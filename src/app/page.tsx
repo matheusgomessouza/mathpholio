@@ -20,6 +20,7 @@ import { FormComponent } from "@/components/Form/FormComponent";
 import { AccordionComponent } from "@/components/Accordion/AccordionComponent";
 
 export default function Home() {
+  const year = new Date().getFullYear();
   return (
     <>
       <HeaderComponent />
@@ -220,7 +221,7 @@ export default function Home() {
                   Building Solutions Across Technologies and Industries
                 </h2>
                 <p className="2xl:text-2xl">
-                  With over 3 years of experience in developing interactive and
+                  With over 5 years of experience in developing interactive and
                   scalable web applications, I have a strong foundation in both
                   front-end and full-stack development. I have a proven track
                   record of delivering projects across various technologies,
@@ -230,39 +231,84 @@ export default function Home() {
                 </p>
               </article>
               <ExperienceDescriptionComponent
+                jobTitle="Capstone Advisor"
+                company="Crimson Education"
+                locality="Auckland, New Zealand"
+                period="12/2024 - Present"
+              >
+                <li className="xl:w-3/4">
+                  Guided students through their capstone projects, enhancing
+                  their research and analytical skills.
+                </li>
+                <li>
+                  Collaborated with a diverse team to develop innovative
+                  educational products, impacting over 100,000 students
+                  globally.
+                </li>
+                <li>Provided personalized mentorship in student projects.</li>
+              </ExperienceDescriptionComponent>
+              <ExperienceDescriptionComponent
+                jobTitle="Mobile Developer"
+                company="Linx"
+                locality="Blumenau, SC, Brazil"
+                period="12/2024 - 03/2025"
+              >
+                <li className="xl:w-3/4">
+                  Built and executed unit and functional test suites using Jest
+                  and Testing Library for a React Native application.
+                </li>
+                <li>
+                  Developed and maintained API integrations using Axios and
+                  Redux-saga, optimizing context state persistence.
+                </li>
+                <li>
+                  Enhanced codebase quality through active code reviews and
+                  adherence to best practices.
+                </li>
+                <li>
+                  Streamlined deployment cycles using Azure DevOps and Git for
+                  version control and CI/CD.
+                </li>
+                <li>
+                  Implemented styling solutions with Styled-Components for
+                  modular, maintainable UI components.
+                </li>
+              </ExperienceDescriptionComponent>
+              <ExperienceDescriptionComponent
                 jobTitle="Software Developer"
                 company="Cognizant"
                 locality="São Paulo, SP, Brazil"
                 period="04/2022 - 06/2024"
               >
                 <li className="xl:w-3/4">
-                  Implement features and layouts from Figma into a{" "}
-                  <strong>React/React Native + Expo</strong> application,
-                  utilizing <strong>Redux/ContextAPI</strong> for state
-                  management, <strong>Typescript</strong>, and a client Design
-                  System similar to Material UI.
+                  Engineered mobile and web features by translating Figma
+                  designs into React and React Native interfaces using Expo.
                 </li>
                 <li>
-                  Write functional and unit tests with <strong>Jest</strong> and{" "}
-                  <strong>Testing Library</strong>.
+                  Applied Redux and ContextAPI for scalable state management in
+                  TypeScript-based applications.
                 </li>
                 <li>
-                  Utilize <strong>Axios</strong> to write HTTP requests.
+                  Developed a private crop science web application using React,
+                  Typescript, and Redux, enhancing crop management efficiency.
                 </li>
                 <li>
-                  Use <strong>Git</strong> for code versioning and{" "}
-                  <strong>Azure DevOps</strong> to CI/CD and code repository
-                  hosting service.
+                  Diagnosed and resolved system incidents through in-depth
+                  analysis of AWS and SAP reports.
                 </li>
                 <li>
-                  Contribute to Code Reviews, Technical Interviews and Q&A
-                  sessions with a foreign technical team.
+                  Boosted application observability by implementing custom
+                  Datadog alerts and dashboards.
                 </li>
                 <li>
-                  Analyze reports on AWS and SAP in order to identify production
-                  environment failed requests.
+                  Collaborated with international teams through code reviews and
+                  technical interviews, fostering a culture of knowledge
+                  sharing.
                 </li>
-                <li>Implement triggers and rules on Datadog.</li>
+                <li>
+                  Conducted functional testing with Jest and Testing Library,
+                  ensuring high-quality code and application reliability.
+                </li>
               </ExperienceDescriptionComponent>
               <ExperienceDescriptionComponent
                 jobTitle="Frontend Developer"
@@ -271,51 +317,42 @@ export default function Home() {
                 period="07/2021 - 02/2022"
               >
                 <li className="xl:w-3/4">
-                  Convert layouts built on Figma to a <strong>React</strong>{" "}
-                  application, using
-                  <strong> Typescript </strong> to ensure scalability and add
-                  static typing to the code base.
+                  Developed a micro-frontend application using Angular and
+                  React, enhancing user experience in financial services.
                 </li>
                 <li>
-                  Implement API calls using <strong>Axios</strong> and{" "}
-                  <strong>Redux-saga</strong> to preserve the payload in the
-                  application contexts.
+                  Developed payload-preserving API calls via Axios and
+                  Redux-saga within Next.js and Angular applications.
                 </li>
                 <li>
-                  Implement functional testing for the <strong>React</strong>{" "}
-                  application components with <strong>Jest</strong> and{" "}
-                  <strong>Testing Library</strong>.
+                  Automated deployment workflows via Jenkins and Bitbucket,
+                  accelerating release cycles.
                 </li>
                 <li>
-                  Implement layout adjustments in a{" "}
-                  <strong>React/Angular/Next.js </strong>
-                  application, using <strong>SASS</strong> as stylesheet
-                  language.
+                  Collaborated in BDD sessions to align business expectations
+                  with technical delivery.
                 </li>
                 <li>
-                  Deploy code changes using <strong>Jenkins</strong> and{" "}
-                  <strong>Bitbucket</strong> platforms.
+                  Designed email templates using Mjml, tailored for marketing
+                  campaigns.
                 </li>
                 <li>
-                  Participate in BDD meetings to discuss the
-                  application/features expected behavior.
+                  Integrated Google Analytics tracking triggers in collaboration
+                  with the Data Analysis team.
                 </li>
                 <li>
-                  Create mail templates using <strong>Mjml framework</strong>.
+                  Implemented functional testing with Jest and Testing Library,
+                  improving application reliability and performance.
                 </li>
                 <li>
-                  Contribute to Code Reviews to ensure quality deliveries.
+                  Translated Figma layouts into TypeScript-based React
+                  components, ensuring robust code quality, component
+                  reusability and scalability.
                 </li>
                 <li>
-                  Use <strong>Git</strong> for local code versioning and{" "}
-                  <strong>Bitbucket</strong> for code repository hosting
-                  service.
-                </li>
-                <li>
-                  Work alongside the Data Analysis team to implement code
-                  triggers to store user interactions for{" "}
-                  <strong>Google Analytics </strong>
-                  during the user&apos;s journey in the application.
+                  Collaborated with cross-functional teams to create a
+                  Lock&Unlock feature, empowering millions of users to manage
+                  their credit scores effectively.
                 </li>
               </ExperienceDescriptionComponent>
               <ExperienceDescriptionComponent
@@ -325,37 +362,25 @@ export default function Home() {
                 period="08/2020 - 05/2021"
               >
                 <li className="xl:w-3/4">
-                  Convert layouts built in Adobe Photoshop into a{" "}
-                  <strong>Wordpress</strong> or
-                  <strong> Tray Ecommerce</strong> platform, using{" "}
-                  <strong>Elementor</strong> or <strong>Oxygen</strong> plugins,
-                  always using good practices for <strong>SEO</strong> and
-                  optimization.
+                  Developed and optimized Wordpress and Tray Ecommerce websites,
+                  ensuring adherence to SEO best practices.
                 </li>
                 <li>
-                  Implement features in <strong>HTML/CSS</strong> and{" "}
-                  <strong>Javascript</strong>.
+                  Translated Adobe Photoshop designs into responsive web
+                  interfaces using HTML, CSS, and JavaScript, maintaining high
+                  standards of visual accuracy and front-end performance.
                 </li>
                 <li>
-                  Implement new layouts on the <strong>PHP</strong> website
-                  using <strong>Smarty</strong>.
+                  Collaborated with the Customer Success team to implement
+                  features using HTML, CSS, and JavaScript.
                 </li>
                 <li>
-                  Implement features on a <strong>React</strong> financial
-                  project that uses
-                  <strong> Redux</strong> as a state management library.
+                  Boosted traffic via SEO-optimized WordPress/Tray Ecommerce
+                  page.
                 </li>
                 <li>
-                  Create a P.O.C for a mobile application using{" "}
-                  <strong>React Native</strong>.
-                </li>
-                <li>
-                  Deploy websites on hosting websites like{" "}
-                  <strong>Locaweb</strong>, <strong>Hostinger</strong>, etc.
-                </li>
-                <li>
-                  Deploy the files with the code changes using{" "}
-                  <strong>Filezilla (FTP protocol)</strong>.
+                  Optimized frontend performance through clean HTML/CSS/JS
+                  implementation.
                 </li>
               </ExperienceDescriptionComponent>
               <ExperienceDescriptionComponent
@@ -365,19 +390,20 @@ export default function Home() {
                 period="06/2020 - 07/2020"
               >
                 <li className="xl:w-3/4">
-                  Implement features using <strong>HTML/CSS</strong>,{" "}
-                  <strong>Javascript</strong> and <strong>PHP</strong>.
+                  Developed and implemented features for CMS-based and MVC PHP
+                  websites using HTML, CSS, JavaScript, and PHP.
                 </li>
                 <li>
-                  Deploy the files with the code changes using{" "}
-                  <strong>Filezilla (FTP protocol)</strong>.
+                  Resolved bugs and optimized website performance, enhancing
+                  user experience for clients.
                 </li>
                 <li>
-                  Fix bugs in websites that were in a production environment.
+                  Deployed code changes efficiently via Filezilla, ensuring
+                  seamless updates to production environments.
                 </li>
                 <li>
-                  Implement new layouts in a proprietary <strong>CMS</strong>{" "}
-                  provided by the company to the clients.
+                  Created new layouts in a proprietary CMS, improving client
+                  satisfaction and engagement.
                 </li>
               </ExperienceDescriptionComponent>
             </section>
@@ -461,7 +487,7 @@ export default function Home() {
       </main>
       <footer className="fixed bottom-0 z-50 w-full bg-color-seven px-4 py-1 text-center text-color-seven dark:bg-color-four lg:relative">
         <p className="text-color-eight dark:text-color-eight">
-          Mathpholio™️, Copyright © {new Date().getFullYear()} by Matheus Souza
+          Mathpholio™️, Copyright © {year} by Matheus Souza
         </p>
       </footer>
     </>
