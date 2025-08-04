@@ -35,10 +35,6 @@ export default function RootLayout({
       <title>Mathpholio!</title>
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-        <link
-          href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
-          rel="stylesheet"
-        ></link>
       </head>
       <body className={`${anton.variable} ${khand.variable}`}>
         {children}

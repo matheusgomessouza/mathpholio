@@ -141,7 +141,7 @@ export default function ProjectsComponent({
             />
           ) : (
             <iframe
-              scrolling="no"
+              title="Project Screenshot"
               allowFullScreen
               src={repoImage}
               className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-color-seven dark:bg-white xl:h-[50vh]"

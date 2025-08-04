@@ -197,6 +197,7 @@ export default function Home() {
                     className="flex flex-col items-center justify-center gap-8 rounded-3xl bg-black p-10 dark:bg-color-four lg:h-auto lg:w-auto lg:text-center 2xl:h-[425px] 2xl:w-[350px]"
                   >
                     <Image
+                      fetchPriority="low"
                       alt={item.title}
                       src={item.icon}
                       width={108}
@@ -431,7 +432,6 @@ export default function Home() {
                   commitment to excellence and continuous learning.
                 </p>
               </article>
-              <CarouselComponent />
             </section>
 
             <div id="contact" />
