@@ -39,7 +39,6 @@ export default function RootLayout({
       <title>Mathpholio!</title>
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-        <link rel="icon" href="/assets/favicon.ico" sizes="any" />
         <link rel="preload" href="/assets/main-circle.png" as="image" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link
