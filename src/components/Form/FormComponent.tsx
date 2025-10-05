@@ -95,7 +95,6 @@ export function FormComponent() {
           Error on sending message, please try again.
         </span>
       )}
-
       {success && (
         <span className="font-sans font-bold text-green-500">
           Message sent.
@@ -105,6 +104,7 @@ export function FormComponent() {
       <button
         type="submit"
         className="ml-auto flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-color-five px-4 py-4 dark:bg-color-seven xl:mt-4 xl:bg-color-five 2xl:mt-8"
+        disabled={loading}
       >
         {loading ? (
           <>
@@ -119,7 +119,7 @@ export function FormComponent() {
                 cy="50"
                 r="40"
                 stroke="green"
-                stroke-width="4"
+                strokeWidth="4"
                 fill="yellow"
               />
             </svg>

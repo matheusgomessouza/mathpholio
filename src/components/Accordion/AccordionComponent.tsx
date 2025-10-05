@@ -5,8 +5,9 @@ export function AccordionComponent() {
   return (
     <article className="mt-20">
       {questions &&
+        questions.length !== 0 &&
         questions.map((item: interfaces.QuestionsProps, index) => (
-          <details key={item.title} className="mb-10">
+          <details key={item.title} className="mb-10" role="group">
             <summary className="relative mt-4 cursor-pointer list-none font-alt transition duration-300 ease-in after:absolute after:-bottom-4 after:left-0 after:h-[2px] after:w-full after:bg-black after:content-[''] dark:after:bg-color-four xl:text-xl">
               {item.title}
             </summary>

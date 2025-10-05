@@ -1,5 +1,4 @@
 import * as interfaces from "@/types/interfaces";
-import { ComponentType, lazy, LazyExoticComponent } from "react";
 
 export function isLastTechsItem(item: number, length: number) {
   if (item === length - 1) return true;
@@ -58,19 +57,4 @@ export function payloadManipulation(
   });
 
   return extractedReposProps.flat();
-}
-
-export function lazyLoad(
-  path: string,
-  namedExport: string
-): LazyExoticComponent<ComponentType<any>> {
-  return lazy(() => {
-    const promise = import(path);
-
-    if (namedExport === null) {
-      return promise;
-    } else {
-      return promise.then((module) => ({ default: module[namedExport] }));
-    }
-  });
 }

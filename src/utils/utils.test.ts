@@ -1,5 +1,5 @@
-import { payloadManipulation } from "@/utils/utils";
 import { describe, test, expect, expectTypeOf } from "vitest";
+import { isLastTechsItem, payloadManipulation } from "@/utils/utils";
 
 const mockData = [
   {
@@ -4567,5 +4567,47 @@ describe("Object manipulation [payloadManipulation]", () => {
 
     expectTypeOf(result).toBeArray();
     expect(result).not.toBeTypeOf("undefined");
+  });
+
+  describe("Object manipulation [payloadManipulation]", () => {
+    test("if payloadManipulation function returns an Array<GithubReposProps>", () => {
+      const result = payloadManipulation(mockData);
+
+      expectTypeOf(result).toBeArray();
+      expect(result).not.toBeTypeOf("undefined");
+    });
+
+    test("payloadManipulation returns correct number of items", () => {
+      const result = payloadManipulation(mockData);
+      expect(result.length).toBe(30);
+    });
+
+    test("payloadManipulation extracts correct properties", () => {
+      const result = payloadManipulation(mockData);
+      expect(result[0]).toHaveProperty("id", 271365549);
+      expect(result[0]).toHaveProperty("name", "agenda-live");
+      expect(result[1]).toHaveProperty("id", 249829125);
+      expect(result[1]).toHaveProperty("language", "JavaScript");
+    });
+  });
+
+  describe("Checking the last item in a list [isLastTechsItem]", () => {
+    test("returns true if item is the last index", () => {
+      expect(isLastTechsItem(2, 3)).toBe(true);
+      expect(isLastTechsItem(4, 5)).toBe(true);
+    });
+
+    test("returns false if item is not the last index", () => {
+      expect(isLastTechsItem(0, 3)).toBe(false);
+      expect(isLastTechsItem(1, 5)).toBe(false);
+    });
+
+    test("returns false for negative item index", () => {
+      expect(isLastTechsItem(-1, 3)).toBe(false);
+    });
+
+    test("returns false if length is zero", () => {
+      expect(isLastTechsItem(0, 0)).toBe(false);
+    });
   });
 });

@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ExperienceDescriptionComponent > matches snapshot 1`] = `
+<div>
+  <article
+    class="relative z-20 w-full py-8"
+  >
+    <section
+      class="flex flex-col items-center justify-between md:flex-row xl:justify-start xl:gap-8 2xl:justify-between"
+    >
+      <div
+        class="flex w-full items-center justify-between md:hidden"
+      >
+        <h3>
+          Software Engineer
+        </h3>
+        <h3
+          class="underline md:hidden"
+        >
+          Tech Corp
+        </h3>
+      </div>
+      <h3
+        class="hidden lg:flex 2xl:text-xl"
+      >
+        Software Engineer
+      </h3>
+      <h3
+        class="hidden underline lg:flex 2xl:text-xl"
+      >
+        Tech Corp
+      </h3>
+      <section
+        class="flex w-full items-center justify-between gap-8 md:w-auto md:justify-end 2xl:text-xl"
+      >
+        <p>
+          Remote
+        </p>
+        <h3>
+          2020 - 2023
+        </h3>
+      </section>
+    </section>
+    <ul
+      class="mt-4 list-disc pl-8"
+    >
+      <li>
+        Developed cool features
+      </li>
+      <li>
+        Improved performance
+      </li>
+    </ul>
+  </article>
+</div>
+`;

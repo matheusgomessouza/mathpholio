@@ -8,12 +8,16 @@ const anton = Anton({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-anton",
+  display: "swap", // Prevents render blocking
+  preload: true,
 });
 
 const khand = Khand({
   subsets: ["latin"],
   weight: "300",
   variable: "--font-khand",
+  display: "swap", // Prevents render blocking
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -35,6 +39,14 @@ export default function RootLayout({
       <title>Mathpholio!</title>
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+        <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+        <link rel="preload" href="/assets/main-circle.png" as="image" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
       </head>
       <body className={`${anton.variable} ${khand.variable}`}>
         {children}
