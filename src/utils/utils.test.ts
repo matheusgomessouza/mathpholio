@@ -4569,7 +4569,7 @@ describe("Object manipulation [payloadManipulation]", () => {
     expect(result).not.toBeTypeOf("undefined");
   });
 
-  describe("Object manipulation [payloadManipulation]", () => {
+  describe("payloadManipulation core functionality", () => {
     test("if payloadManipulation function returns an Array<GithubReposProps>", () => {
       const result = payloadManipulation(mockData);
 
