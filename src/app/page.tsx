@@ -88,7 +88,7 @@ export default function Home() {
                   alt="A person with a long beard, serious expression"
                   className="relative z-[2] brightness-100 invert dark:invert-0 lg:w-[35vw] xl:w-[45vw]"
                   placeholder="blur" // Add this
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQ..." // Add base64 placeholder
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAgMBAp6FZpQAAAAASUVORK5CYII=" // 1x1 transparent PNG
                 />
               </div>
             </aside>
