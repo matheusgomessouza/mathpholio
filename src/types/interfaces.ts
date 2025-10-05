@@ -1,26 +1,6 @@
 import React from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
 
-export type ReposInfoProps = {
-  id: string;
-  name: string;
-  html_url: string;
-  description: string;
-  topics: string[];
-  owner: {
-    avatar_url: string;
-  };
-};
-
-export type RepoResponseProps = {
-  id: string;
-  avatar: string;
-  name: string;
-  description: string;
-  url: string;
-  techs: string[];
-};
-
 export interface MenuProps {
   id: string;
   title: string;
@@ -40,16 +20,16 @@ export interface ServicesProps {
   description: string;
 }
 
-export interface ReorderProps {
-  data: Array<TechSkillsProps>;
-}
+// export interface ReorderProps {
+//   data: Array<TechSkillsProps>;
+// }
 
 export interface ButtonComponentProps {
   label: string;
-  link: string;
+  link?: string;
   ariaLabel: string;
   isMobile?: boolean;
-  children: React.ReactElement;
+  children?: React.ReactElement;
 }
 
 export interface ExperienceDescriptionComponentProps {
@@ -199,7 +179,7 @@ export type ContactFormProps = {
   message: string;
 };
 
-export type ValidFieldNames = "name" | "email" | "message";
+type ValidFieldNames = "name" | "email" | "message";
 
 export type FormFieldProps = {
   type?: string;

@@ -50,11 +50,7 @@ export function CarouselComponent() {
 
   return (
     <>
-      <article
-        ref={sliderRef}
-        className="keen-slider mt-20"
-        role="slider-wrapper"
-      >
+      <article ref={sliderRef} className="keen-slider mt-20" role="article">
         <Suspense fallback={<Loading />}>
           {typeof repos !== "undefined" &&
             repos.length > 0 &&
@@ -83,10 +79,15 @@ export function CarouselComponent() {
               ...Array(instanceRef.current.track.details.slides.length).keys(),
             ].map((idx) => {
               return (
-                <button
+                <div
                   key={idx}
                   onClick={() => {
-                    instanceRef.current?.moveToIdx(idx);
+                    if (
+                      instanceRef.current &&
+                      instanceRef.current.track.details
+                    ) {
+                      instanceRef.current.moveToIdx(idx);
+                    }
                   }}
                   className={
                     "mx-1 my-0 h-3 w-3 cursor-pointer rounded-full border-0 bg-color-tree p-1 dark:bg-color-five" +
@@ -94,7 +95,7 @@ export function CarouselComponent() {
                       ? " bg-color-seven dark:bg-white"
                       : "")
                   }
-                ></button>
+                ></div>
               );
             })}
           </div>

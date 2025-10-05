@@ -1,11 +1,11 @@
-"use client";
-
 import Image from "next/image";
+import { lazy, Suspense } from "react";
 import { ImGithub } from "react-icons/im";
 import { FaLinkedin } from "react-icons/fa";
 import { MdEmail, MdHome } from "react-icons/md";
 import { BsChatFill } from "react-icons/bs";
 
+import { isLastTechsItem } from "@/utils/utils";
 import * as interfaces from "@/types/interfaces";
 import { techs, services } from "@/variables/data";
 import myPicture from "../../public/assets/main-circle.png";
@@ -13,11 +13,33 @@ import myPicture from "../../public/assets/main-circle.png";
 import HeaderComponent from "@/components/Header/HeaderComponent";
 import TypewriterComponent from "@/components/Header/Typewriter/TypewriterComponent";
 import ButtonComponent from "@/components/Button/ButtonComponent";
-import ExperienceDescriptionComponent from "@/components/ExperienceDescription/ExperienceDescriptionComponent";
-import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
-import { isLastTechsItem } from "@/utils/utils";
-import { FormComponent } from "@/components/Form/FormComponent";
-import { AccordionComponent } from "@/components/Accordion/AccordionComponent";
+import { Loading } from "@/components/Loading/LoadingComponent";
+
+const CarouselComponent = lazy(() =>
+  import("@/components/Carousel/CarouselComponent").then((module) => ({
+    default: module.CarouselComponent,
+  }))
+);
+
+const AccordionComponent = lazy(() =>
+  import("@/components/Accordion/AccordionComponent").then((module) => ({
+    default: module.AccordionComponent,
+  }))
+);
+
+const FormComponent = lazy(() =>
+  import("@/components/Form/FormComponent").then((module) => ({
+    default: module.FormComponent,
+  }))
+);
+
+const ExperienceDescriptionComponent = lazy(() =>
+  import(
+    "@/components/ExperienceDescription/ExperienceDescriptionComponent"
+  ).then((module) => ({
+    default: module.ExperienceDescriptionComponent,
+  }))
+);
 
 export default function Home() {
   const year = new Date().getFullYear();
@@ -41,8 +63,8 @@ export default function Home() {
                 <div className="flex gap-4 pt-6">
                   <ButtonComponent
                     label="LinkedIn"
-                    link="https://www.linkedin.com/in/matheus-gomes-de-souza/?locale=en_US"
-                    ariaLabel="Check out my LinkedIn page"
+                    link="https://www.linkedin.com/in/matheus-gomes-de-souza"
+                    ariaLabel="Check out my LinkedIn profile"
                   >
                     <FaLinkedin />
                   </ButtonComponent>
@@ -65,6 +87,8 @@ export default function Home() {
                   height={700}
                   alt="A person with a long beard, serious expression"
                   className="relative z-[2] brightness-100 invert dark:invert-0 lg:w-[35vw] xl:w-[45vw]"
+                  placeholder="blur" // Add this
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAgMBAp6FZpQAAAAASUVORK5CYII=" // 1x1 transparent PNG
                 />
               </div>
             </aside>
@@ -197,6 +221,7 @@ export default function Home() {
                     className="flex flex-col items-center justify-center gap-8 rounded-3xl bg-black p-10 dark:bg-color-four lg:h-auto lg:w-auto lg:text-center 2xl:h-[425px] 2xl:w-[350px]"
                   >
                     <Image
+                      fetchPriority="low"
                       alt={item.title}
                       src={item.icon}
                       width={108}
@@ -431,7 +456,9 @@ export default function Home() {
                   commitment to excellence and continuous learning.
                 </p>
               </article>
-              <CarouselComponent />
+              <Suspense fallback={<Loading />}>
+                <CarouselComponent />
+              </Suspense>
             </section>
 
             <div id="contact" />
@@ -471,7 +498,9 @@ export default function Home() {
                 </section>
               </article>
               <aside className="z-10 rounded-3xl lg:mt-12 lg:w-1/2 lg:bg-black lg:p-10">
-                <FormComponent />
+                <Suspense fallback={<Loading />}>
+                  <FormComponent />
+                </Suspense>
               </aside>
             </section>
 
@@ -480,7 +509,9 @@ export default function Home() {
                 Frequently Asked Questions{" "}
                 <BsChatFill className="h-16 w-16 xl:h-8 xl:w-8" />
               </h2>
-              <AccordionComponent />
+              <Suspense fallback={<Loading />}>
+                <AccordionComponent />
+              </Suspense>
             </section>
           </section>
         </div>

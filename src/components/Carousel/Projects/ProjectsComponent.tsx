@@ -8,6 +8,7 @@ import { useEffect, useState, useCallback } from "react";
 import * as interfaces from "@/types/interfaces";
 import { convertDateFormat } from "@/utils/utils";
 import ButtonComponent from "@/components/Button/ButtonComponent";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 export default function ProjectsComponent({
   id,
@@ -21,6 +22,8 @@ export default function ProjectsComponent({
   topics,
   language,
 }: interfaces.GithubReposProps) {
+  const screenSize = useScreenSize();
+  const isMobile = screenSize > 0 && screenSize < 640;
   const [repoImage, setRepoImage] = useState<string>("");
 
   const memoizedGetProjectsImage = useCallback(async () => {
@@ -94,13 +97,13 @@ export default function ProjectsComponent({
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1">
                 <span className="font-alt font-normal">
-                  {window.innerWidth < 640 ? "Created:" : "Created at:"}
+                  {isMobile ? "Created:" : "Created at:"}
                 </span>
                 <p>{convertDateFormat(created_at)}</p>
               </div>
               <div className="flex items-center gap-1">
                 <span className="font-alt font-normal">
-                  {window.innerWidth < 640 ? "Updated:" : "Updated at:"}
+                  {isMobile ? "Updated:" : "Updated at:"}
                 </span>
                 <p>{convertDateFormat(updated_at)}</p>
               </div>
@@ -129,7 +132,8 @@ export default function ProjectsComponent({
         </aside>
 
         <figure className="w-full xl:w-1/2">
-          {repoImage.match(/^https?:\/\/github.com\//i) ? (
+          {typeof repoImage === "string" &&
+          repoImage.match(/^https?:\/\/github.com\//i) ? (
             <Image
               width={987}
               height={653}
@@ -141,7 +145,7 @@ export default function ProjectsComponent({
             />
           ) : (
             <iframe
-              scrolling="no"
+              title="Project Screenshot"
               allowFullScreen
               src={repoImage}
               className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-color-seven dark:bg-white xl:h-[50vh]"

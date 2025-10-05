@@ -5,7 +5,6 @@ import {
   QuestionsProps,
 } from "../types/interfaces";
 
-export const websiteLogo: string = "/assets/logo.png";
 export const menuLabels: Array<MenuProps> = [
   { id: "1", title: "Work experience", link: "#work-experience" },
   { id: "2", title: "Projects", link: "#projects" },

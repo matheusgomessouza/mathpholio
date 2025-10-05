@@ -1,9 +1,14 @@
-import { render, screen } from "@testing-library/react";
-import { expect, test, describe } from "vitest";
-import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
-import * as interfaces from "@/types/interfaces";
+/**
+ * @vitest-environment jsdom
+ */
 
-const repos: Array<interfaces.GithubReposProps> = [
+import { afterEach, expect, test, describe, beforeAll, afterAll } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { setupServer } from "msw/node";
+import { http, HttpResponse } from "msw";
+import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
+
+const repos = [
   {
     id: 271365549,
     name: "agenda-live",
@@ -511,26 +516,31 @@ const repos: Array<interfaces.GithubReposProps> = [
   },
 ];
 
-describe("Projects component", () => {
-  test("if ProjectsComponent renders JSX content", () => {
-    render(
-      repos.map((item) => (
-        <ProjectsComponent
-          created_at={item.created_at}
-          updated_at={item.updated_at}
-          description={item.description}
-          html_url={item.html_url}
-          id={item.id}
-          name={item.name}
-          topics={item.topics}
-          homepage={item.homepage}
-          key={item.id}
-          language={item.language}
-          license={item.license}
-        />
-      ))
-    );
+export const restHandlers = [
+  http.get("https://api.github.com/users/matheusgomessouza/repos", () => {
+    return HttpResponse.json(repos);
+  }),
+  http.get("/api/github/repos", () => {
+    return HttpResponse.json(repos);
+  }),
+];
 
-    expect(screen.getAllByRole("article")).toBeDefined();
+const server = setupServer(...restHandlers);
+
+describe("Carousel component", () => {
+  // Start server before all tests
+  beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
+  // Configuring the server with onUnhandleRequest: 'error' ensures that an error is thrown whenever there is a request that does not have a corresponding request handler.
+
+  //  Close server after all tests
+  afterAll(() => server.close());
+
+  // Reset handlers after each test `important for test isolation`
+  afterEach(() => server.resetHandlers());
+
+  test("if component has an carousel child component", async () => {
+    render(<CarouselComponent />);
+    // mock the API response
+    expect(screen.findByRole("slider")).toBeDefined();
   });
 });

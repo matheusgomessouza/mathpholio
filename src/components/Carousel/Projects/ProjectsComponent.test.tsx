@@ -1,10 +1,16 @@
-import { afterEach, expect, test, describe, beforeAll, afterAll } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { setupServer } from "msw/node";
-import { http, HttpResponse } from "msw";
-import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
+/**
+ * @vitest-environment jsdom
+ */
 
-const repos = [
+import { render, screen } from "@testing-library/react";
+import { expect, test, describe, beforeAll, afterAll } from "vitest";
+import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
+import * as interfaces from "@/types/interfaces";
+import { http, HttpResponse } from "msw";
+import { setupServer } from "msw/node";
+import { afterEach } from "node:test";
+
+const repos: Array<interfaces.GithubReposProps> = [
   {
     id: 271365549,
     name: "agenda-live",
@@ -512,28 +518,35 @@ const repos = [
   },
 ];
 
-export const restHandlers = [
-  http.get("https://api.github.com/users/matheusgomessouza/repos", () => {
-    return HttpResponse.json(repos);
-  }),
-];
+const server = setupServer(
+  http.get("/api/automation/screenshot", ({ request }) => {
+    return HttpResponse.json({ image: "mock-image-url" });
+  })
+);
 
-const server = setupServer(...restHandlers);
+beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
+afterAll(() => server.close());
+afterEach(() => server.resetHandlers());
 
-describe("Carousel component", () => {
-  // Start server before all tests
-  beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
-  // Configuring the server with onUnhandleRequest: 'error' ensures that an error is thrown whenever there is a request that does not have a corresponding request handler.
+describe("Projects component", () => {
+  test("if ProjectsComponent renders JSX content", () => {
+    const item = repos[0];
+    render(
+      <ProjectsComponent
+        created_at={item.created_at}
+        updated_at={item.updated_at}
+        description={item.description}
+        html_url={item.html_url}
+        id={item.id}
+        name={item.name}
+        topics={item.topics}
+        homepage={item.homepage}
+        key={item.id}
+        language={item.language}
+        license={item.license}
+      />
+    );
 
-  //  Close server after all tests
-  afterAll(() => server.close());
-
-  // Reset handlers after each test `important for test isolation`
-  afterEach(() => server.resetHandlers());
-
-  test("if component has an carousel child component", async () => {
-    render(<CarouselComponent />);
-    // mock the API response
-    expect(screen.findByRole("slider")).toBeDefined();
+    expect(screen.getByRole("article")).toBeDefined();
   });
 });
