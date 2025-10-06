@@ -2,11 +2,30 @@
  * @vitest-environment jsdom
  */
 
-import { afterEach, expect, test, describe, beforeAll, afterAll } from "vitest";
-import { render, screen } from "@testing-library/react";
+import {
+  afterEach,
+  expect,
+  test,
+  describe,
+  beforeAll,
+  afterAll,
+  vi,
+} from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
 import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
 import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
+
+// Add this at the top of your test file, after imports
+vi.mock("@/components/Carousel/Projects/ProjectsComponent", () => ({
+  default: ({ name, html_url }: { name: string; html_url: string }) => (
+    <div data-testid={`project-${name}`} className="keen-slider__slide">
+      <h3>{name}</h3>
+      <a href={html_url}>View Project</a>
+    </div>
+  ),
+}));
 
 const repos = [
   {
@@ -521,7 +540,14 @@ export const restHandlers = [
     return HttpResponse.json(repos);
   }),
   http.get("/api/github/repos", () => {
-    return HttpResponse.json(repos);
+    return HttpResponse.json({ data: repos });
+  }),
+  // Add this mock to prevent URL parsing errors
+  http.get("/api/automation/screenshot", () => {
+    return HttpResponse.json({
+      imageUrl:
+        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSIjNjM2MzYzIi8+PC9zdmc+",
+    });
   }),
 ];
 
@@ -530,17 +556,39 @@ const server = setupServer(...restHandlers);
 describe("Carousel component", () => {
   // Start server before all tests
   beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
-  // Configuring the server with onUnhandleRequest: 'error' ensures that an error is thrown whenever there is a request that does not have a corresponding request handler.
-
   //  Close server after all tests
   afterAll(() => server.close());
-
   // Reset handlers after each test `important for test isolation`
   afterEach(() => server.resetHandlers());
 
   test("if component has an carousel child component", async () => {
-    render(<CarouselComponent />);
-    // mock the API response
-    expect(screen.findByRole("slider")).toBeDefined();
+    const TestWrapper = ({ children }: { children: React.ReactNode }) => {
+      const ErrorComponent = () => <div>Error occurred</div>;
+      return (
+        <ErrorBoundary errorComponent={ErrorComponent}>
+          {children}
+        </ErrorBoundary>
+      );
+    };
+
+    render(
+      <TestWrapper>
+        <CarouselComponent />
+      </TestWrapper>
+    );
+
+    // Wait for the API call to complete and component to render
+    await waitFor(() => {
+      const carousel = screen.getByRole("article");
+      expect(carousel.classList.contains("keen-slider")).toBe(true);
+    });
+
+    // Verify projects are rendered
+    await waitFor(
+      () => {
+        expect(screen.getByTestId("project-agenda-live")).toBeTruthy();
+      },
+      { timeout: 3000 }
+    );
   });
 });

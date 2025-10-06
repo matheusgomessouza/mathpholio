@@ -1,8 +1,16 @@
 "use client";
 
-import { useState, useEffect, memo, Suspense } from "react";
+import {
+  useState,
+  useEffect,
+  memo,
+  Suspense,
+  useMemo,
+  useCallback,
+} from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { KeenSliderInstance } from "keen-slider";
 
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 
@@ -10,26 +18,30 @@ import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent"
 import * as interfaces from "@/types/interfaces";
 import { Loading } from "../Loading/LoadingComponent";
 
-export function CarouselComponent() {
+export const CarouselComponent = memo(() => {
   const [repos, setRepos] = useState<interfaces.GithubReposProps[]>([]);
   const [loaded, setLoaded] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    slides: {
-      spacing: 24,
-      number: repos && repos.length ? repos.length : 39,
-    },
-    renderMode: "performance",
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
-    },
-    created() {
-      setLoaded(true);
-    },
-  });
+  const [_, setCurrentSlide] = useState(0);
+  // Memoize slider configuration
+  const sliderConfig = useMemo(
+    () => ({
+      loop: true,
+      slides: {
+        number: repos && repos.length ? repos.length : 39,
+      },
+      renderMode: "performance" as const,
+      slideChanged(slider: KeenSliderInstance) {
+        setCurrentSlide(slider.track.details.rel);
+      },
+      created() {
+        setLoaded(true);
+      },
+    }),
+    [repos]
+  );
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(sliderConfig);
 
-  async function getGitHubReposRouteHandler() {
+  const getGitHubReposRouteHandler = useCallback(async () => {
     try {
       await fetch("/api/github/repos")
         .then((response) => response.json())
@@ -42,11 +54,11 @@ export function CarouselComponent() {
         error
       );
     }
-  }
+  }, []);
 
   useEffect(() => {
     getGitHubReposRouteHandler();
-  }, []);
+  }, [getGitHubReposRouteHandler]);
 
   return (
     <>
@@ -73,33 +85,8 @@ export function CarouselComponent() {
       </article>
 
       {repos && loaded && instanceRef.current && (
-        <section className="relative mt-16 hidden items-center justify-center lg:flex xl:mt-8">
-          <div className="hidden justify-center px-0 py-3 xl:flex">
-            {[
-              ...Array(instanceRef.current.track.details.slides.length).keys(),
-            ].map((idx) => {
-              return (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    if (
-                      instanceRef.current &&
-                      instanceRef.current.track.details
-                    ) {
-                      instanceRef.current.moveToIdx(idx);
-                    }
-                  }}
-                  className={
-                    "mx-1 my-0 h-3 w-3 cursor-pointer rounded-full border-0 bg-color-tree p-1 dark:bg-color-five" +
-                    (currentSlide === idx
-                      ? " bg-color-seven dark:bg-white"
-                      : "")
-                  }
-                ></div>
-              );
-            })}
-          </div>
-          <section className="absolute right-6 ml-auto hidden gap-4 xl:flex">
+        <section className="relative mt-24 hidden items-center justify-center lg:flex xl:mt-8">
+          <section className="absolute right-6 ml-auto mt-8 hidden gap-4 xl:flex">
             <div
               className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black dark:bg-color-two"
               onClick={(e: any) =>
@@ -121,4 +108,6 @@ export function CarouselComponent() {
       )}
     </>
   );
-}
+});
+
+CarouselComponent.displayName = "CarouselComponent";

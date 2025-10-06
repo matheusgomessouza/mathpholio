@@ -167,7 +167,7 @@ export default function Home() {
                 }
               })}
             </section>
-            <section className="my-10 hidden items-center justify-between gap-8 bg-color-seven px-wrapper py-12 dark:bg-color-four lg:flex lg:w-full lg:items-center 2xl:gap-20">
+            <section className="my-10 hidden items-center justify-between gap-8 bg-black px-wrapper py-12 dark:bg-color-four lg:flex lg:w-full lg:items-center 2xl:gap-20">
               <article className="z-20 text-white">
                 <h2 className="mb-6 w-4 text-4xl leading-tight lg:text-2xl">
                   Revolutionizing Development
@@ -240,7 +240,7 @@ export default function Home() {
             </section>
 
             <div id="work-experience" className="h-2" />
-            <section className="work-section my-10 flex w-auto flex-col justify-center bg-color-seven px-wrapper py-12 text-white dark:bg-color-four lg:text-white">
+            <section className="work-section my-10 flex w-auto flex-col justify-center bg-black px-wrapper py-12 text-white dark:bg-color-four lg:text-white">
               <article className="relative z-20 text-center xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
                   Building Solutions Across Technologies and Industries
@@ -462,7 +462,7 @@ export default function Home() {
             </section>
 
             <div id="contact" />
-            <section className="contact-section mt-10 flex flex-col justify-center gap-20 bg-color-seven px-wrapper py-12 text-color-eight dark:bg-color-four dark:text-white lg:flex-row lg:text-white">
+            <section className="contact-section mt-10 flex flex-col justify-center gap-20 bg-black px-wrapper py-12 text-color-eight dark:bg-color-four dark:text-white lg:flex-row lg:text-white">
               <article className="relative z-20 flex flex-col gap-16 text-center lg:w-1/2 xl:mt-8 xl:text-left 2xl:mb-20 2xl:mt-16">
                 <section>
                   <h2 className="mb-6 text-2xl leading-tight 2xl:text-4xl">
@@ -516,7 +516,7 @@ export default function Home() {
           </section>
         </div>
       </main>
-      <footer className="fixed bottom-0 z-50 w-full bg-color-seven px-4 py-1 text-center text-color-seven dark:bg-color-four lg:relative">
+      <footer className="fixed bottom-0 z-50 w-full bg-black px-4 py-1 text-center text-color-seven dark:bg-color-four lg:relative">
         <p className="text-color-eight dark:text-color-eight">
           Mathpholio™️, Copyright © {year} by Matheus Souza
         </p>

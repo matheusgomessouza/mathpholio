@@ -141,14 +141,14 @@ export default function ProjectsComponent({
               loading="lazy"
               src="/assets/github-wallpaper-scaled.jpg"
               alt="Github logo, an octocat and Github label written in the right side. Both in white, the background is gray."
-              className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-color-seven dark:bg-white xl:h-[50vh]"
+              className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-black dark:bg-white xl:h-[50vh]"
             />
           ) : (
             <iframe
               title="Project Screenshot"
               allowFullScreen
               src={repoImage}
-              className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-color-seven dark:bg-white xl:h-[50vh]"
+              className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-black dark:bg-white xl:h-[50vh]"
             ></iframe>
           )}
         </figure>
