@@ -12,8 +12,8 @@ export function TextAreaComponent({
         {...register(name, { required: true })}
         className={
           error
-            ? "max-h-[330px] min-h-[330px] rounded-lg border-2 border-rose-500 p-4 font-sans text-color-five dark:bg-black dark:text-color-eight dark:placeholder:text-color-eight dark:lg:bg-color-five"
-            : "max-h-[330px] min-h-[330px] rounded-lg p-4 font-sans  text-color-five dark:bg-black dark:text-color-eight dark:placeholder:text-color-eight dark:lg:bg-color-five"
+            ? "min-h-[220px] rounded-lg border border-danger bg-color-five p-3 text-color-eight shadow-sm placeholder:text-color-one focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+            : "min-h-[220px] rounded-lg border border-color-two bg-color-five p-3 text-color-eight shadow-sm placeholder:text-color-one focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
         }
         placeholder={placeholder}
       ></textarea>

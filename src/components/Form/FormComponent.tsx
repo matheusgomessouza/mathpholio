@@ -65,7 +65,7 @@ export function FormComponent() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="lg flex flex-col gap-2"
+      className="flex flex-col gap-4"
       ref={form}
     >
       <FormFieldComponent
@@ -103,7 +103,7 @@ export function FormComponent() {
 
       <button
         type="submit"
-        className="ml-auto flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-color-five px-4 py-4 dark:bg-black xl:mt-4 xl:bg-color-five 2xl:mt-8"
+        className="ml-auto inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:opacity-70"
         disabled={loading}
       >
         {loading ? (
@@ -112,15 +112,15 @@ export function FormComponent() {
             <svg
               width="100"
               height="100"
-              className="h-5 w-5 animate-spin rounded-full border-4 border-dotted border-white"
+              className="h-5 w-5 animate-spin rounded-full border-2 border-dotted border-white"
             >
               <circle
                 cx="50"
                 cy="50"
                 r="40"
-                stroke="green"
+                stroke="white"
                 strokeWidth="4"
-                fill="yellow"
+                fill="transparent"
               />
             </svg>
           </>

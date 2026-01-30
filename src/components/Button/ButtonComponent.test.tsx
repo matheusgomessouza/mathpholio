@@ -42,7 +42,7 @@ describe("ButtonComponent", () => {
       />
     );
     const link = screen.getByRole("link", { name: "desktop button" });
-    expect(link.className).toContain("dark:bg-color-four");
+    expect(link.className).toContain("bg-primary");
   });
 
   it("applies correct className for mobile", () => {
@@ -55,7 +55,7 @@ describe("ButtonComponent", () => {
       />
     );
     const link = screen.getByRole("link", { name: "mobile button" });
-    expect(link.className).toContain("dark:bg-color-two");
+    expect(link.className).toContain("bg-primary");
   });
 
   it("renders children if provided", () => {

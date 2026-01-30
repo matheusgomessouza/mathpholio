@@ -1,6 +1,6 @@
 export default function TypewriterComponent() {
   return (
-    <h1 className="hidden flex-wrap pb-10 lg:block xl:text-6xl 2xl:text-7xl">
+    <h1 className="hidden flex-wrap pb-6 font-alt text-4xl font-semibold tracking-tight lg:block lg:text-5xl xl:text-6xl">
       I&apos;m Matheus Souza.
     </h1>
   );

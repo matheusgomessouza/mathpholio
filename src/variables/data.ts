@@ -6,9 +6,10 @@ import {
 } from "../types/interfaces";
 
 export const menuLabels: Array<MenuProps> = [
-  { id: "1", title: "Work experience", link: "#work-experience" },
-  { id: "2", title: "Projects", link: "#projects" },
-  { id: "3", title: "Skills", link: "#skills" },
+  { id: "1", title: "About", link: "#about" },
+  { id: "2", title: "Services", link: "#services" },
+  { id: "3", title: "Projects", link: "#projects" },
+  { id: "4", title: "Contact", link: "#contact" },
 ];
 export const services: Array<ServicesProps> = [
   {

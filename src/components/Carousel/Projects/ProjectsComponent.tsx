@@ -29,19 +29,23 @@ export default function ProjectsComponent({
   const memoizedGetProjectsImage = useCallback(async () => {
     try {
       const response = await fetch(
-        `/api/automation/screenshot?url=${homepage ? homepage : html_url}`,
+        `/api/automation/screenshot?url=${
+          homepage ? homepage : html_url
+        }&width=1280&height=720`,
         {
           headers: {
             "Content-Type": "application/json",
           },
           method: "GET",
+          cache: "no-store",
         }
       );
-      const url = await response.json().then((data) => data.payload);
+      const payload = await response.json().then((data) => data.payload);
 
-      setRepoImage(url);
+      setRepoImage(typeof payload === "string" ? payload : "");
     } catch (error) {
       console.error("Unable to retrieve repo images [getProjectsImage]", error);
+      setRepoImage("");
     }
   }, [homepage, html_url]);
 
@@ -53,76 +57,74 @@ export default function ProjectsComponent({
     <>
       <article
         key={id}
-        className="keen-slider__slide flex w-full flex-col-reverse items-center justify-end gap-6 px-4 xl:flex-row xl:justify-between xl:gap-20 xl:text-xl"
+        className="keen-slider__slide flex w-full flex-col overflow-hidden rounded-3xl border border-color-two bg-color-four shadow-md"
       >
-        <aside className="w-full xl:w-1/2">
-          <strong className="font-alt font-normal">{name}</strong>
-          <p className="xl:text-base 2xl:text-xl">{description}</p>
-          <section className="mt-4 flex flex-col xl:mt-6 xl:text-base 2xl:text-xl">
-            <div className="mb-2 xl:hidden">
-              <ButtonComponent
-                isMobile
-                label="Github"
-                link={html_url}
-                ariaLabel="Check out the GitHub page for this project!"
-              >
-                <ImGithub />
-              </ButtonComponent>
-            </div>
-            {license ? (
-              <span className="font-alt font-normal">{license.name}</span>
-            ) : null}
-            <div className="flex items-center gap-1">
-              <div className="hidden gap-1 xl:flex">
-                <span className="font-alt font-normal">Github:</span>
-                <Link
-                  href={html_url ?? ""}
-                  className="font-sans underline-offset-2"
-                >
-                  {html_url}
-                </Link>
-              </div>
-            </div>
+        <figure className="w-full p-4">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-color-two bg-color-seven">
+            {repoImage &&
+            (repoImage.startsWith("data:image") ||
+              repoImage.startsWith("http")) ? (
+              <Image
+                fill
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={80}
+                loading="lazy"
+                src={repoImage}
+                alt={`Screenshot preview of ${name}`}
+                className="pointer-events-none cursor-default bg-color-seven object-contain"
+              />
+            ) : (
+              <Image
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={80}
+                loading="lazy"
+                src="/assets/github-wallpaper-scaled.jpg"
+                alt="Github logo, an octocat and Github label written in the right side. Both in white, the background is gray."
+                className="pointer-events-none cursor-default bg-color-seven object-contain"
+              />
+            )}
+          </div>
+        </figure>
+        <aside className="flex w-full flex-col gap-3 px-6 pb-6">
+          <div className="flex items-center justify-between">
+            <span className="rounded-full border border-color-two bg-color-five px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-color-one">
+              {language ?? "Project"}
+            </span>
+            <span className="text-xs text-color-one">
+              {isMobile ? "Updated" : "Updated at"}{" "}
+              {convertDateFormat(updated_at)}
+            </span>
+          </div>
+          <strong className="font-alt text-lg font-semibold text-color-eight">
+            {name}
+          </strong>
+          <p className="text-sm text-color-one md:text-base">{description}</p>
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <ButtonComponent
+              isMobile
+              label="Github"
+              link={html_url}
+              ariaLabel="Check out the GitHub page for this project!"
+            >
+              <ImGithub />
+            </ButtonComponent>
             {homepage ? (
-              <div className="flex items-center gap-1">
-                <span className="font-alt font-normal">Link:</span>
-                <Link
-                  href={homepage ?? ""}
-                  className="font-sans underline-offset-2"
-                >
-                  {homepage}
-                </Link>
-              </div>
+              <Link
+                href={homepage ?? ""}
+                className="text-xs font-semibold text-color-eight underline underline-offset-4"
+              >
+                Live demo
+              </Link>
             ) : null}
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                <span className="font-alt font-normal">
-                  {isMobile ? "Created:" : "Created at:"}
-                </span>
-                <p>{convertDateFormat(created_at)}</p>
-              </div>
-              <div className="flex items-center gap-1">
-                <span className="font-alt font-normal">
-                  {isMobile ? "Updated:" : "Updated at:"}
-                </span>
-                <p>{convertDateFormat(updated_at)}</p>
-              </div>
-            </div>
-          </section>
-          {language && (
-            <div className="flex items-center gap-1">
-              <span className="font-alt font-normal xl:text-base 2xl:text-xl">
-                Related Languages:
-              </span>
-              <p className="xl:text-base 2xl:text-xl">{language}</p>
-            </div>
-          )}
+          </div>
           {topics ? (
-            <ul className="mt-8 flex w-full flex-wrap items-center gap-2">
-              {topics.map((item: string) => (
+            <ul className="mt-2 flex w-full flex-wrap items-center gap-2">
+              {topics.slice(0, 6).map((item: string) => (
                 <li
                   key={item}
-                  className="rounded-full bg-black p-1 px-6 font-alt text-sm font-normal text-color-eight dark:bg-color-two xl:text-xs 2xl:text-base"
+                  className="rounded-full border border-color-two bg-color-five px-2 py-1 text-[10px] font-medium text-color-one"
                 >
                   {item}
                 </li>
@@ -130,28 +132,6 @@ export default function ProjectsComponent({
             </ul>
           ) : null}
         </aside>
-
-        <figure className="w-full xl:w-1/2">
-          {typeof repoImage === "string" &&
-          repoImage.match(/^https?:\/\/github.com\//i) ? (
-            <Image
-              width={987}
-              height={653}
-              quality={80}
-              loading="lazy"
-              src="/assets/github-wallpaper-scaled.jpg"
-              alt="Github logo, an octocat and Github label written in the right side. Both in white, the background is gray."
-              className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-black dark:bg-white xl:h-[50vh]"
-            />
-          ) : (
-            <iframe
-              title="Project Screenshot"
-              allowFullScreen
-              src={repoImage}
-              className="pointer-events-none h-60 w-full cursor-default overscroll-none overscroll-y-none overscroll-x-none rounded-3xl bg-black dark:bg-white xl:h-[50vh]"
-            ></iframe>
-          )}
-        </figure>
       </article>
     </>
   );

@@ -3,15 +3,21 @@ import { questions } from "@/variables/data";
 
 export function AccordionComponent() {
   return (
-    <article className="mt-20">
+    <article className="mt-6">
       {questions &&
         questions.length !== 0 &&
         questions.map((item: interfaces.QuestionsProps, index) => (
-          <details key={item.title} className="mb-10" role="group">
-            <summary className="relative mt-4 cursor-pointer list-none font-alt transition duration-300 ease-in after:absolute after:-bottom-4 after:left-0 after:h-[2px] after:w-full after:bg-black after:content-[''] dark:after:bg-color-four xl:text-xl">
+          <details
+            key={item.title}
+            className="mb-6 rounded-2xl border border-color-two bg-color-four p-4"
+            role="group"
+          >
+            <summary className="cursor-pointer list-none font-alt text-base font-semibold text-color-eight transition duration-300 ease-in">
               {item.title}
             </summary>
-            <p className="py-16 text-justify">{item.information}</p>
+            <p className="pt-4 text-sm text-color-one md:text-base">
+              {item.information}
+            </p>
           </details>
         ))}
     </article>

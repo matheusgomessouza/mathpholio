@@ -62,7 +62,7 @@ export const CarouselComponent = memo(() => {
 
   return (
     <>
-      <article ref={sliderRef} className="keen-slider mt-20" role="article">
+      <article ref={sliderRef} className="keen-slider" role="article">
         <Suspense fallback={<Loading />}>
           {typeof repos !== "undefined" &&
             repos.length > 0 &&
@@ -85,24 +85,26 @@ export const CarouselComponent = memo(() => {
       </article>
 
       {repos && loaded && instanceRef.current && (
-        <section className="relative mt-24 hidden items-center justify-center lg:flex xl:mt-8">
-          <section className="absolute right-6 ml-auto mt-8 hidden gap-4 xl:flex">
-            <div
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black dark:bg-color-two"
+        <section className="relative mt-6 hidden items-center justify-center lg:flex">
+          <section className="absolute right-0 ml-auto flex gap-3">
+            <button
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-color-two bg-color-four text-color-eight shadow-sm transition hover:bg-color-five focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
               onClick={(e: any) =>
                 e.stopPropagation() || instanceRef.current?.prev()
               }
+              aria-label="Previous project"
             >
-              <MdOutlineChevronLeft size={24} color="#FFFF" />
-            </div>
-            <div
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black dark:bg-color-two"
+              <MdOutlineChevronLeft size={20} />
+            </button>
+            <button
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-color-two bg-color-four text-color-eight shadow-sm transition hover:bg-color-five focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
               onClick={(e: any) =>
                 e.stopPropagation() || instanceRef.current?.next()
               }
+              aria-label="Next project"
             >
-              <MdOutlineChevronRight size={24} color="#FFFF" />
-            </div>
+              <MdOutlineChevronRight size={20} />
+            </button>
           </section>
         </section>
       )}

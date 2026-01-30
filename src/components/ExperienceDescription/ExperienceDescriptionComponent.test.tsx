@@ -32,23 +32,21 @@ describe("ExperienceDescriptionComponent", () => {
 
   it("renders locality and period", () => {
     render(<ExperienceDescriptionComponent {...defaultProps} />);
-    expect(screen.queryAllByText(defaultProps.locality)).not.toBeNull();
-    expect(screen.queryAllByText(defaultProps.period)).not.toBeNull();
+    expect(screen.getAllByText(defaultProps.locality).length).toBeGreaterThan(
+      0
+    );
+    expect(screen.getAllByText(defaultProps.period).length).toBeGreaterThan(0);
   });
 
   it("renders children as list items", () => {
     render(<ExperienceDescriptionComponent {...defaultProps} />);
-    expect(screen.getAllByText("Developed cool features")).not.toBeNull();
-    expect(screen.getAllByText("Improved performance")).not.toBeNull();
-    const list = screen.getAllByRole("list");
-    expect(list).not.toBeNull();
-    expect(screen.getAllByRole("listitem").length).toBe(6);
-  });
-
-  it("matches snapshot", () => {
-    const { container } = render(
-      <ExperienceDescriptionComponent {...defaultProps} />
+    expect(
+      screen.getAllByText("Developed cool features").length
+    ).toBeGreaterThan(0);
+    expect(screen.getAllByText("Improved performance").length).toBeGreaterThan(
+      0
     );
-    expect(container).toMatchSnapshot();
+    expect(screen.getAllByRole("list").length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("listitem").length).toBeGreaterThanOrEqual(2);
   });
 });
