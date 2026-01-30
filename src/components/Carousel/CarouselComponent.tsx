@@ -16,7 +16,7 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 
 import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
-import { Loading } from "../Loading/LoadingComponent";
+import { LoadingComponent } from "../Loading/LoadingComponent";
 
 export const CarouselComponent = memo(() => {
   const [repos, setRepos] = useState<interfaces.GithubReposProps[]>([]);
@@ -63,7 +63,7 @@ export const CarouselComponent = memo(() => {
   return (
     <>
       <article ref={sliderRef} className="keen-slider" role="article">
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<LoadingComponent />}>
           {typeof repos !== "undefined" &&
             repos.length > 0 &&
             repos.map((item: interfaces.GithubReposProps) => (
