@@ -9,7 +9,6 @@ import { SiNotion } from "react-icons/si";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { menuLabels } from "@/variables/data";
 import { MenuProps } from "@/types/interfaces";
-import ButtonComponent from "../Button/ButtonComponent";
 
 export default function HeaderComponent() {
   const [toggleMobileMenu, setToggleMobileMenu] = useState(false);

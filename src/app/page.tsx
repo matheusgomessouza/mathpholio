@@ -7,7 +7,7 @@ import { isLastTechsItem } from "@/utils/utils";
 import * as interfaces from "@/types/interfaces";
 import { techs, services } from "@/variables/data";
 import HeaderComponent from "@/components/Header/HeaderComponent";
-import { Loading } from "@/components/Loading/LoadingComponent";
+import { LoadingComponent } from "@/components/Loading/LoadingComponent";
 
 const CarouselComponent = lazy(() =>
   import("@/components/Carousel/CarouselComponent").then((module) => ({
@@ -362,7 +362,7 @@ export default function Home() {
                   pragmatic solutions, thoughtful UX, and clean architecture.
                 </p>
               </article>
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<LoadingComponent />}>
                 <CarouselComponent />
               </Suspense>
             </section>
@@ -406,7 +406,7 @@ export default function Home() {
                 </section>
               </article>
               <aside className="z-10 rounded-2xl border border-color-two bg-color-four p-6 lg:w-1/2">
-                <Suspense fallback={<Loading />}>
+                <Suspense fallback={<LoadingComponent />}>
                   <FormComponent />
                 </Suspense>
               </aside>
@@ -416,7 +416,7 @@ export default function Home() {
               <h2 className="mb-6 flex items-center gap-3 text-2xl font-semibold tracking-tight lg:text-3xl">
                 Frequently Asked Questions <BsChatFill className="h-8 w-8" />
               </h2>
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<LoadingComponent />}>
                 <AccordionComponent />
               </Suspense>
             </section>
