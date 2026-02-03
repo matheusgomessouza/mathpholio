@@ -4,7 +4,14 @@ import Image from "next/image";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { MdEmail, MdHome, MdKeyboardArrowUp } from "react-icons/md";
 import { BsChatFill } from "react-icons/bs";
-import { AnimatePresence, motion, type MotionProps } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+  type MotionProps,
+} from "framer-motion";
 
 import { isLastTechsItem } from "@/utils/utils";
 import * as interfaces from "@/types/interfaces";
@@ -41,6 +48,11 @@ const ExperienceDescriptionComponent = lazy(() =>
 export default function Home() {
   const year = new Date().getFullYear();
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const smoothX = useSpring(pointerX, { stiffness: 120, damping: 20 });
+  const smoothY = useSpring(pointerY, { stiffness: 120, damping: 20 });
+  const mask = useMotionTemplate`radial-gradient(420px circle at ${smoothX}px ${smoothY}px, rgba(255,255,255,0.95), transparent 65%)`;
   const sectionMotion: MotionProps = {
     initial: { opacity: 0, y: 24 },
     whileInView: { opacity: 1, y: 0 },
@@ -53,16 +65,65 @@ export default function Home() {
       setShowScrollTop(window.scrollY > 360);
     };
 
+    const handlePointerMove = (event: PointerEvent) => {
+      pointerX.set(event.clientX);
+      pointerY.set(event.clientY);
+    };
+
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("pointermove", handlePointerMove, {
+      passive: true,
+    });
+
+    pointerX.set(window.innerWidth / 2);
+    pointerY.set(window.innerHeight / 3);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("pointermove", handlePointerMove);
+    };
   }, []);
 
   return (
     <>
+      <motion.div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-color-seven" />
+        <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_50%_0%,_rgba(91,140,255,0.28),_rgba(11,15,20,0)_70%)]" />
+        <motion.div
+          className="absolute inset-0 opacity-90"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(91,140,255,0.38) 1px, transparent 1px)",
+            backgroundSize: "10px 10px",
+            WebkitMaskImage: mask,
+            maskImage: mask,
+          }}
+        />
+        <motion.div
+          className="opacity-65 absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(91,140,255,0.24) 1px, transparent 1px)",
+            backgroundSize: "18px 18px",
+            WebkitMaskImage: mask,
+            maskImage: mask,
+          }}
+        />
+        <motion.div
+          className="opacity-35 absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(91,140,255,0.18) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+            WebkitMaskImage: mask,
+            maskImage: mask,
+          }}
+        />
+      </motion.div>
       <HeaderComponent />
-      <main className="bg-[radial-gradient(900px_420px_at_50%_0%,_rgba(91,140,255,0.28),_rgba(11,15,20,0)_70%)] bg-no-repeat pt-16">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 pb-16 pt-4">
+      <main className="relative z-10 pt-16">
+        <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 pb-16 pt-4">
           <div id="about" className="h-2" />
           <motion.section
             {...sectionMotion}
@@ -470,7 +531,7 @@ export default function Home() {
           </section>
         </div>
       </main>
-      <footer className="relative border-t border-color-two bg-color-seven/90 px-4 py-8">
+      <footer className="relative z-10 border-t border-color-two bg-color-seven/90 px-4 py-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_120px_at_50%_0%,_rgba(91,140,255,0.18),_rgba(11,15,20,0)_70%)]" />
         <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
           <div className="flex flex-col gap-1">
