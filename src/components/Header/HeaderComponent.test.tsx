@@ -7,6 +7,7 @@ import {
   fireEvent,
   cleanup,
   within,
+  waitFor,
 } from "@testing-library/react";
 import HeaderComponent from "./HeaderComponent";
 
@@ -59,7 +60,7 @@ describe("HeaderComponent", () => {
     );
   });
 
-  it("toggles the mobile navigation menu open and closed", () => {
+  it("toggles the mobile navigation menu open and closed", async () => {
     render(<HeaderComponent />);
 
     const toggle = screen.getAllByLabelText("Toggle navigation")[0];
@@ -70,20 +71,29 @@ describe("HeaderComponent", () => {
 
     const close = screen.getByLabelText("Close navigation");
     fireEvent.click(close);
-    expect(screen.queryByLabelText("Close navigation")).toBeNull();
+    await waitFor(() =>
+      expect(screen.queryByLabelText("Close navigation")).toBeNull()
+    );
   });
 
-  it("closes the mobile menu when a nav item is clicked", () => {
+  it("closes the mobile menu when a nav item is clicked", async () => {
     render(<HeaderComponent />);
 
     fireEvent.click(screen.getAllByLabelText("Toggle navigation")[0]);
-    const mobileNav = screen.getAllByRole("navigation", {
+    const navs = screen.getAllByRole("navigation", {
       name: "Navigation Menu",
-    })[0];
+    });
+    const mobileNav = navs.find((nav) => within(nav).queryByText("Menu"));
+    expect(mobileNav).toBeDefined();
+    if (!mobileNav) {
+      throw new Error("Mobile navigation menu not found");
+    }
     const navLink = within(mobileNav).getByLabelText("Go to section Home");
     fireEvent.click(navLink);
 
-    expect(screen.queryByLabelText("Close navigation")).toBeNull();
+    await waitFor(() =>
+      expect(screen.queryByLabelText("Close navigation")).toBeNull()
+    );
   });
 
   it("renders navigation labels from menuLabels", () => {

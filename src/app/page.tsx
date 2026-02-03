@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import { lazy, Suspense } from "react";
-import { MdEmail, MdHome } from "react-icons/md";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { MdEmail, MdHome, MdKeyboardArrowUp } from "react-icons/md";
 import { BsChatFill } from "react-icons/bs";
+import { AnimatePresence, motion, type MotionProps } from "framer-motion";
 
 import { isLastTechsItem } from "@/utils/utils";
 import * as interfaces from "@/types/interfaces";
@@ -37,30 +40,56 @@ const ExperienceDescriptionComponent = lazy(() =>
 
 export default function Home() {
   const year = new Date().getFullYear();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const sectionMotion: MotionProps = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" },
+    viewport: { once: false, amount: 0.2 },
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 360);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <HeaderComponent />
       <main className="bg-[radial-gradient(900px_420px_at_50%_0%,_rgba(91,140,255,0.28),_rgba(11,15,20,0)_70%)] bg-no-repeat pt-16">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 pb-16 pt-4">
           <div id="about" className="h-2" />
-          <section className="hero-section relative z-10 flex flex-col items-center gap-4 rounded-3xl bg-transparent px-6 py-8 text-center">
+          <motion.section
+            {...sectionMotion}
+            className="hero-section relative z-10 flex flex-col items-center gap-4 rounded-3xl bg-transparent px-6 py-8 text-center"
+          >
             <div className="flex max-w-2xl flex-col gap-3">
               <h1 className="bg-gradient-to-b from-[#dbe8ff] to-[#7aa2ff] bg-clip-text text-5xl font-semibold tracking-tight text-transparent md:text-6xl">
                 Transforming ideas into robust software.
               </h1>
               <p className="text-sm text-color-one md:text-base">
-                I&apos;m Matheus Souza, a Fullstack Developer crafting scalable
-                web and mobile applications...
+                I&apos;m Matheus Souza, a Full‑Stack Engineer with 5+ years of
+                experience building scalable web and mobile products across
+                Finance, Retail, Consulting, and Marketing. I focus on
+                high‑performance interfaces, maintainable architectures, and
+                smooth release pipelines — delivering production‑ready features
+                from Figma to launch with React, Next.js, React Native, Node.js,
+                and TypeScript. Open to remote Frontend and Full‑Stack roles.
               </p>
             </div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-color-two bg-color-four/60 px-3 py-1 text-xs font-medium text-color-one">
-              <span className="h-2 w-2 rounded-full bg-success" />
+            <span className="relative inline-flex items-center gap-2 rounded-full border border-color-two bg-color-four/60 px-3 py-1 text-xs font-medium text-color-one before:pointer-events-none before:absolute before:inset-0 before:animate-pulse before:rounded-full before:shadow-[0_0_16px_rgba(91,140,255,0.7)] before:ring-2 before:ring-primary/80">
+              <span className="h-2 w-2 rounded-full bg-primary" />
               Available for new projects
             </span>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <a
                 href="#projects"
-                className="inline-flex h-9 items-center justify-center rounded-full bg-primary px-4 text-xs font-semibold text-white shadow-[0_0_20px_rgba(91,140,255,0.45)] transition hover:bg-primary-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+                className="inline-flex h-9 items-center justify-center rounded-full bg-primary px-4 text-xs font-semibold text-white shadow-[0_0_20px_bg-success] transition hover:bg-primary-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
               >
                 View Projects
               </a>
@@ -71,11 +100,14 @@ export default function Home() {
                 Contact Me
               </a>
             </div>
-          </section>
+          </motion.section>
 
           <section className="flex flex-col gap-8">
             <div id="skills" className="h-8" />
-            <section className="rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md">
+            <motion.section
+              {...sectionMotion}
+              className="rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md"
+            >
               <div className="mb-8 flex flex-col gap-3 text-center lg:text-left">
                 <h2 className="text-2xl font-semibold tracking-tight lg:text-3xl">
                   Revolutionizing Development
@@ -112,10 +144,13 @@ export default function Home() {
                   </aside>
                 ))}
               </div>
-            </section>
+            </motion.section>
 
             <div id="services" className="h-2" />
-            <section className="flex w-full flex-col gap-6">
+            <motion.section
+              {...sectionMotion}
+              className="flex w-full flex-col gap-6"
+            >
               <article className="flex flex-col gap-2 text-left">
                 <h2 className="text-2xl font-semibold tracking-tight lg:text-3xl">
                   Technical Expertise
@@ -152,10 +187,13 @@ export default function Home() {
                   </aside>
                 ))}
               </div>
-            </section>
+            </motion.section>
 
             <div id="work-experience" className="h-2" />
-            <section className="work-section flex w-auto flex-col justify-center rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md">
+            <motion.section
+              {...sectionMotion}
+              className="work-section flex w-auto flex-col justify-center rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md"
+            >
               <article className="relative z-20 text-center lg:text-left">
                 <h2 className="mb-4 text-2xl font-semibold tracking-tight lg:text-3xl">
                   Building Solutions Across Technologies and Industries
@@ -346,10 +384,13 @@ export default function Home() {
                   satisfaction and engagement.
                 </li>
               </ExperienceDescriptionComponent>
-            </section>
+            </motion.section>
 
             <div id="projects" className="h-2" />
-            <section className="projects-section flex flex-col gap-8 rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md">
+            <motion.section
+              {...sectionMotion}
+              className="projects-section flex flex-col gap-8 rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md"
+            >
               <article className="flex flex-col gap-3 text-center lg:text-left">
                 <span className="text-xs font-semibold uppercase tracking-wide text-color-one">
                   Featured Projects
@@ -365,10 +406,13 @@ export default function Home() {
               <Suspense fallback={<LoadingComponent />}>
                 <CarouselComponent />
               </Suspense>
-            </section>
+            </motion.section>
 
             <div id="contact" />
-            <section className="contact-section flex flex-col gap-10 rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md lg:flex-row">
+            <motion.section
+              {...sectionMotion}
+              className="contact-section flex flex-col gap-10 rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md lg:flex-row"
+            >
               <article className="relative z-20 flex flex-col gap-10 text-center lg:w-1/2 lg:text-left">
                 <section>
                   <h2 className="mb-4 text-2xl font-semibold tracking-tight lg:text-3xl">
@@ -410,24 +454,69 @@ export default function Home() {
                   <FormComponent />
                 </Suspense>
               </aside>
-            </section>
+            </motion.section>
 
-            <section className="faq-section items-center rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md">
+            <motion.section
+              {...sectionMotion}
+              className="faq-section items-center rounded-3xl border border-color-two bg-color-five/60 p-8 shadow-md"
+            >
               <h2 className="mb-6 flex items-center gap-3 text-2xl font-semibold tracking-tight lg:text-3xl">
                 Frequently Asked Questions <BsChatFill className="h-8 w-8" />
               </h2>
               <Suspense fallback={<LoadingComponent />}>
                 <AccordionComponent />
               </Suspense>
-            </section>
+            </motion.section>
           </section>
         </div>
       </main>
-      <footer className="border-t border-color-two bg-color-seven px-4 py-4 text-center">
-        <p className="text-sm text-color-one">
-          Mathpholio™️, Copyright © {year} by Matheus Souza
-        </p>
+      <footer className="relative border-t border-color-two bg-color-seven/90 px-4 py-8">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(600px_120px_at_50%_0%,_rgba(91,140,255,0.18),_rgba(11,15,20,0)_70%)]" />
+        <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+          <div className="flex flex-col gap-1">
+            <span className="text-sm font-semibold text-color-eight">
+              Mathpholio™
+            </span>
+            <p className="text-xs text-color-one">
+              Building modern, resilient products with clean UI and scalable
+              architecture.
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-2 text-xs text-color-one md:items-end">
+            <span className="relative inline-flex items-center gap-2 rounded-full border border-color-two bg-color-four/60 px-3 py-1 text-xs font-medium text-color-one before:pointer-events-none before:absolute before:inset-0 before:animate-pulse before:rounded-full before:shadow-[0_0_16px_rgba(91,140,255,0.7)] before:ring-2 before:ring-primary/80">
+              <span className="h-2 w-2 rounded-full bg-primary" />
+              Available for new projects
+            </span>
+            <p>© {year} Matheus Souza. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
+      <AnimatePresence>
+        {showScrollTop ? (
+          <motion.button
+            type="button"
+            aria-label="Back to top"
+            className="fixed bottom-6 right-6 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-color-two bg-color-four/80 text-color-eight shadow-[0_0_20px_rgba(91,140,255,0.35)] backdrop-blur transition hover:bg-color-five focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+            initial={{ opacity: 0, y: 16, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 260, damping: 22 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <motion.span
+              className="text-lg"
+              animate={{ y: [0, -2, 0] }}
+              transition={{
+                duration: 1.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <MdKeyboardArrowUp className="h-5 w-5" />
+            </motion.span>
+          </motion.button>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 }

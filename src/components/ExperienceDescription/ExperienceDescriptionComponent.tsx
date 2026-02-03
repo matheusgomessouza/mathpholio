@@ -10,7 +10,7 @@ export const ExperienceDescriptionComponent = React.memo(
     children,
   }: interfaces.ExperienceDescriptionComponentProps) {
     return (
-      <article className="relative z-20 w-full border-b border-color-two py-6">
+      <article className="relative z-20 w-full border-b border-color-two py-6 last:border-b-0">
         <section className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center xl:justify-start xl:gap-8 2xl:justify-between">
           <div className="flex w-full items-center justify-between md:hidden">
             <h3>{jobTitle}</h3>

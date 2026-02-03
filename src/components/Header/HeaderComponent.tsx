@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 
 import { IoIosMail, IoIosClose } from "react-icons/io";
 import { FaLinkedin } from "react-icons/fa";
@@ -12,6 +13,7 @@ import { MenuProps } from "@/types/interfaces";
 
 export default function HeaderComponent() {
   const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
+  const [activeTabId, setActiveTabId] = useState(menuLabels[0]?.id ?? 0);
 
   return (
     <>
@@ -24,41 +26,79 @@ export default function HeaderComponent() {
         >
           <GiHamburgerMenu size={32} />
         </button>
-        {toggleMobileMenu && (
-          <div className="absolute left-0 top-0 z-50 h-screen w-full bg-color-seven/95 p-4 lg:hidden">
-            <nav
-              role="navigation"
-              aria-label="Navigation Menu"
-              className="relative flex items-center"
+        <AnimatePresence>
+          {toggleMobileMenu ? (
+            <motion.div
+              className="absolute left-0 top-0 z-50 h-screen w-full bg-color-seven/90 p-4 backdrop-blur lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
             >
-              <ul className="mt-2 flex flex-col justify-evenly gap-4">
-                {menuLabels.map((item: MenuProps) => (
-                  <li
-                    className="text-xl text-color-six"
-                    key={item.id}
+              <motion.nav
+                role="navigation"
+                aria-label="Navigation Menu"
+                className="relative mx-auto flex h-full max-w-md flex-col rounded-3xl border border-color-two bg-color-four/60 p-6 shadow-xl"
+                initial={{ y: -8, scale: 0.98 }}
+                animate={{ y: 0, scale: 1 }}
+                exit={{ y: -8, scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              >
+                <div className="mb-6 flex items-center justify-between">
+                  <h2 className="text-lg font-semibold text-color-eight">
+                    Menu
+                  </h2>
+                  <button
+                    type="button"
+                    aria-label="Close navigation"
+                    className="rounded-md p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
                     onClick={() => setToggleMobileMenu(false)}
                   >
-                    <Link
-                      href={item.link ?? ""}
-                      aria-label={`Go to section ${item.title}`}
+                    <IoIosClose size={36} fill="#ffff" />
+                  </button>
+                </div>
+                <motion.ul
+                  className="mt-2 flex flex-1 flex-col gap-3"
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: {
+                      opacity: 1,
+                      transition: { staggerChildren: 0.06, delayChildren: 0.1 },
+                    },
+                  }}
+                >
+                  {menuLabels.map((item: MenuProps) => (
+                    <motion.li
+                      key={item.id}
+                      variants={{
+                        hidden: { opacity: 0, x: -12 },
+                        show: { opacity: 1, x: 0 },
+                      }}
                     >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <button
-                type="button"
-                aria-label="Close navigation"
-                className="absolute right-0 top-0 rounded-md p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
-                onClick={() => setToggleMobileMenu(false)}
-              >
-                <IoIosClose size={40} fill="#ffff" />
-              </button>
-            </nav>
-          </div>
-        )}
-        <h1 className="text-2xl">
+                      <Link
+                        href={item.link ?? ""}
+                        aria-label={`Go to section ${item.title}`}
+                        onClick={() => setToggleMobileMenu(false)}
+                        className="flex items-center justify-between rounded-2xl border border-color-two bg-color-five/50 px-4 py-3 text-lg font-medium text-color-eight transition hover:bg-color-four focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+                      >
+                        {item.title}
+                        <span className="text-color-one">→</span>
+                      </Link>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+                <div className="mt-6 flex items-center justify-between rounded-2xl border border-color-two bg-color-five/40 px-4 py-3 text-xs text-color-one">
+                  <span>Let’s build something great.</span>
+                  <span className="h-2 w-2 rounded-full bg-success shadow-[0_0_12px_rgba(34,197,94,0.7)]" />
+                </div>
+              </motion.nav>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+        <h1 className="text-base font-bold text-color-eight">
           <Link href="#" className="cssanimation leFadeInRight sequence">
             Mathpholio!
           </Link>
@@ -81,19 +121,41 @@ export default function HeaderComponent() {
             </Link>
           </h1>
           <nav role="navigation" aria-label="Navigation Menu">
-            <ul className="flex items-center gap-7">
-              {menuLabels.map((item: MenuProps) => (
-                <li className="text-sm font-medium" key={item.id}>
-                  <Link
-                    className="nav text-color-one transition hover:text-color-eight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
-                    href={item.link ?? ""}
-                    aria-label={`Go to section ${item.title}`}
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <LayoutGroup>
+              <ul className="flex items-center gap-2">
+                {menuLabels.map((item: MenuProps) => (
+                  <li className="relative" key={item.id}>
+                    {activeTabId === item.id ? (
+                      <motion.span
+                        layoutId="header-tabs-indicator"
+                        className="absolute inset-0 rounded-full bg-color-two/60"
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 32,
+                        }}
+                        aria-hidden
+                      />
+                    ) : null}
+                    <Link
+                      className={`nav relative z-10 rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus ${
+                        activeTabId === item.id
+                          ? "text-color-eight"
+                          : "text-color-one hover:text-color-eight"
+                      }`}
+                      href={item.link ?? ""}
+                      aria-label={`Go to section ${item.title}`}
+                      aria-current={
+                        activeTabId === item.id ? "page" : undefined
+                      }
+                      onClick={() => setActiveTabId(item.id)}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </LayoutGroup>
           </nav>
           <div className="flex items-center gap-2">
             <Link
