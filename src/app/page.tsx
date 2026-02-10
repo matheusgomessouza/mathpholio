@@ -18,6 +18,7 @@ import * as interfaces from "@/types/interfaces";
 import { techs, services } from "@/variables/data";
 import HeaderComponent from "@/components/Header/HeaderComponent";
 import { LoadingComponent } from "@/components/Loading/LoadingComponent";
+import DownloadCvButtonComponent from "@/components/DownloadCVButton/DownloadCVButtonComponent";
 
 const CarouselComponent = lazy(() =>
   import("@/components/Carousel/CarouselComponent").then((module) => ({
@@ -160,6 +161,7 @@ export default function Home() {
               >
                 Contact Me
               </a>
+              <DownloadCvButtonComponent />
             </div>
           </motion.section>
 
