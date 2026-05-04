@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  useState,
-  useEffect,
-  memo,
-  Suspense,
-  useMemo,
-  useCallback,
-} from "react";
+import { useState, useEffect, memo, Suspense, useMemo } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { KeenSliderInstance } from "keen-slider";
@@ -17,9 +10,10 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
 import * as interfaces from "@/types/interfaces";
 import { LoadingComponent } from "../Loading/LoadingComponent";
+import { useGithubRepos } from "@/hooks/queries/useGithubRepos";
 
 export const CarouselComponent = memo(() => {
-  const [repos, setRepos] = useState<interfaces.GithubReposProps[]>([]);
+  const { data: repos = [] } = useGithubRepos();
   const [loaded, setLoaded] = useState(false);
   const [_, setCurrentSlide] = useState(0);
   // Memoize slider configuration
@@ -40,25 +34,6 @@ export const CarouselComponent = memo(() => {
     [repos]
   );
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(sliderConfig);
-
-  const getGitHubReposRouteHandler = useCallback(async () => {
-    try {
-      await fetch("/api/github/repos")
-        .then((response) => response.json())
-        .then((repos) => {
-          setRepos(repos.data);
-        });
-    } catch (error) {
-      console.error(
-        "Unable to retrieve GitHub response /getGitHubReposData",
-        error
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    getGitHubReposRouteHandler();
-  }, [getGitHubReposRouteHandler]);
 
   return (
     <>

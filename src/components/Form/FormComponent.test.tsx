@@ -11,7 +11,21 @@ import {
   cleanup,
 } from "@testing-library/react";
 import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { FormComponent } from "./FormComponent";
+
+const renderWithClient = (ui: React.ReactElement) => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  });
+  return render(
+    <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
+  );
+};
 
 // Mock dependencies
 vi.mock("@/components/Form/FormField/FormFieldComponent", () => ({
@@ -86,7 +100,7 @@ describe("FormComponent", () => {
   });
 
   it("renders all form fields and submit button", () => {
-    render(<FormComponent />);
+    renderWithClient(<FormComponent />);
     expect(screen.getByTestId("name")).not.toBeNull();
     expect(screen.getByTestId("email")).not.toBeNull();
     expect(screen.getByTestId("message")).not.toBeNull();
@@ -104,7 +118,7 @@ describe("FormComponent", () => {
 
     sendFormMock.mockReturnValue(emailJSPromise);
 
-    render(<FormComponent />);
+    renderWithClient(<FormComponent />);
 
     // Fill out the form
     fireEvent.input(screen.getByTestId("name"), {
@@ -132,7 +146,7 @@ describe("FormComponent", () => {
 
   it("does not call emailjs if env vars are missing", async () => {
     process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID = "";
-    render(<FormComponent />);
+    renderWithClient(<FormComponent />);
     fireEvent.input(screen.getByTestId("name"), {
       target: { value: "John" },
     });
