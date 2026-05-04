@@ -18,15 +18,14 @@ import { http, HttpResponse } from "msw";
 import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-    },
-  },
-});
-
 const renderWithClient = (ui: React.ReactElement) => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  });
   return render(
     <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
   );

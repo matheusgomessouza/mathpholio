@@ -7,15 +7,14 @@ import { expect, test, describe, beforeAll, afterAll } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-    },
-  },
-});
-
 const renderWithClient = (ui: React.ReactElement) => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  });
   return render(
     <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
   );

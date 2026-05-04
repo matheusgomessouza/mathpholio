@@ -1,12 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import emailjs from "@emailjs/browser";
 
-export const useSendEmail = (
-  formElement: HTMLFormElement | null,
-  onSuccessCallback?: () => void
-) => {
+export const useSendEmail = (onSuccessCallback?: () => void) => {
   return useMutation({
-    mutationFn: async () => {
+    mutationFn: async (formElement: HTMLFormElement | null) => {
       if (
         !process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
         !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||

@@ -28,10 +28,10 @@ export function FormComponent() {
     isPending: loading,
     isError: error,
     isSuccess: success,
-  } = useSendEmail(form.current, () => reset());
+  } = useSendEmail(() => reset());
 
   const onSubmit: SubmitHandler<interfaces.ContactFormProps> = () => {
-    sendEmail();
+    sendEmail(form.current);
   };
 
   return (

@@ -5,8 +5,9 @@ export const useScreenshot = (url: string | null | undefined) => {
     queryKey: ["screenshot", url],
     queryFn: async (): Promise<string> => {
       if (!url) return "";
+      const encodedUrl = encodeURIComponent(url);
       const response = await fetch(
-        `/api/automation/screenshot?url=${url}&width=1280&height=720`,
+        `/api/automation/screenshot?url=${encodedUrl}&width=1280&height=720`,
         {
           headers: {
             "Content-Type": "application/json",
