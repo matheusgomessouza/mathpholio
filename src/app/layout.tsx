@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import "../styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Mathpholio!",
@@ -24,7 +25,7 @@ export default function RootLayout({
         <link rel="preload" href="/assets/main-circle.png" as="image" />
       </head>
       <body className="bg-color-seven text-color-eight antialiased">
-        {children}
+        <Providers>{children}</Providers>
         <Analytics />
         <SpeedInsights />
       </body>

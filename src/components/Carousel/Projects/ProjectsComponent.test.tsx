@@ -4,7 +4,22 @@
 
 import { render, screen } from "@testing-library/react";
 import { expect, test, describe, beforeAll, afterAll } from "vitest";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ProjectsComponent from "@/components/Carousel/Projects/ProjectsComponent";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
+
+const renderWithClient = (ui: React.ReactElement) => {
+  return render(
+    <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
+  );
+};
 import * as interfaces from "@/types/interfaces";
 import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
@@ -531,7 +546,7 @@ afterEach(() => server.resetHandlers());
 describe("Projects component", () => {
   test("if ProjectsComponent renders JSX content", () => {
     const item = repos[0];
-    render(
+    renderWithClient(
       <ProjectsComponent
         created_at={item.created_at}
         updated_at={item.updated_at}

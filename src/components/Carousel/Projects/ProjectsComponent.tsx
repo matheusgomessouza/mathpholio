@@ -3,12 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ImGithub } from "react-icons/im";
-import { useEffect, useState, useCallback } from "react";
 
 import * as interfaces from "@/types/interfaces";
 import { convertDateFormat } from "@/utils/utils";
 import ButtonComponent from "@/components/Button/ButtonComponent";
 import { useScreenSize } from "@/hooks/useScreenSize";
+import { useScreenshot } from "@/hooks/queries/useScreenshot";
 
 export default function ProjectsComponent({
   id,
@@ -24,34 +24,10 @@ export default function ProjectsComponent({
 }: interfaces.GithubReposProps) {
   const screenSize = useScreenSize();
   const isMobile = screenSize > 0 && screenSize < 640;
-  const [repoImage, setRepoImage] = useState<string>("");
 
-  const memoizedGetProjectsImage = useCallback(async () => {
-    try {
-      const response = await fetch(
-        `/api/automation/screenshot?url=${
-          homepage ? homepage : html_url
-        }&width=1280&height=720`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "GET",
-          cache: "no-store",
-        }
-      );
-      const payload = await response.json().then((data) => data.payload);
-
-      setRepoImage(typeof payload === "string" ? payload : "");
-    } catch (error) {
-      console.error("Unable to retrieve repo images [getProjectsImage]", error);
-      setRepoImage("");
-    }
-  }, [homepage, html_url]);
-
-  useEffect(() => {
-    memoizedGetProjectsImage();
-  }, [memoizedGetProjectsImage]);
+  const { data: repoImage = "" } = useScreenshot(
+    homepage ? homepage : html_url
+  );
 
   return (
     <>

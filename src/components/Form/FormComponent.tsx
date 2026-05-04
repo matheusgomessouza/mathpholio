@@ -1,20 +1,18 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { RiLoginCircleFill } from "react-icons/ri";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import emailjs from "@emailjs/browser";
 
 import * as interfaces from "@/types/interfaces";
 import { ContactSchema } from "@/components/Form/types/types";
 import { FormFieldComponent } from "./FormField/FormFieldComponent";
 import { TextAreaComponent } from "./TextArea/TextAreaComponent";
+import { useSendEmail } from "@/hooks/queries/useSendEmail";
 
 export function FormComponent() {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
+  const form = useRef<HTMLFormElement>(null);
 
   const {
     register,
@@ -25,42 +23,16 @@ export function FormComponent() {
     resolver: zodResolver(ContactSchema),
   });
 
-  const form = useRef<HTMLFormElement>(null);
+  const {
+    mutate: sendEmail,
+    isPending: loading,
+    isError: error,
+    isSuccess: success,
+  } = useSendEmail(form.current, () => reset());
 
-  const sendEmail = () => {
-    setLoading(true);
-    setError(false);
-    setSuccess(false);
-
-    if (
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-    )
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-          form.current!,
-          {
-            publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-          }
-        )
-        .then(
-          () => {
-            setLoading(false);
-            setSuccess(true);
-            reset();
-          },
-          () => {
-            setLoading(false);
-            setError(true);
-          }
-        );
-  };
-
-  const onSubmit: SubmitHandler<interfaces.ContactFormProps> = () =>
+  const onSubmit: SubmitHandler<interfaces.ContactFormProps> = () => {
     sendEmail();
+  };
 
   return (
     <form

@@ -12,10 +12,25 @@ import {
   vi,
 } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
 import { CarouselComponent } from "@/components/Carousel/CarouselComponent";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
+
+const renderWithClient = (ui: React.ReactElement) => {
+  return render(
+    <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
+  );
+};
 
 // Add this at the top of your test file, after imports
 vi.mock("@/components/Carousel/Projects/ProjectsComponent", () => ({
@@ -571,7 +586,7 @@ describe("Carousel component", () => {
       );
     };
 
-    render(
+    renderWithClient(
       <TestWrapper>
         <CarouselComponent />
       </TestWrapper>
